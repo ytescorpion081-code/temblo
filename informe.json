@@ -1,0 +1,127 @@
+{
+ "actualizado": "2026-10-09T20:42:00-05:00",
+ "actualizado_txt": "9 de octubre de 2026, noche",
+ "nota_cabecera": "Viernes 9/10/2026, 12:56 hora local. Balance preliminar compilado de Sinaproc, USGS, IGC‑UP y prensa. Cifras sujetas a cambio.",
+ "kpis": [
+  [
+   "0",
+   "Fallecidos (prelim.)"
+  ],
+  [
+   "0",
+   "Desaparecidos (prelim.)"
+  ],
+  [
+   "15+",
+   "Lesionados confirmados*"
+  ],
+  [
+   "80+",
+   "Réplicas contadas por Sinaproc"
+  ],
+  [
+   "6",
+   "Estaciones de bomberos con daños"
+  ],
+  [
+   "100+",
+   "Viviendas afectadas en el Casco Antiguo (prelim.)"
+  ]
+ ],
+ "nota": "*15 estudiantes con lesiones menores en Coclé y 1 persona rescatada en Aguadulce. No hay total nacional de lesionados. La CSS informó que no hubo pacientes ni trabajadores lesionados en sus instalaciones.",
+ "secciones": [
+  {
+   "t": "El sismo: magnitud y epicentro",
+   "open": true,
+   "items": [
+    "**USGS:** magnitud 7.7 (primero 8.0, luego 7.6), profundidad 10 km, a unos 10 km al suroeste de Pitaloza Arriba (Herrera), cerca de Tonosí.",
+    "**IGC‑UP (Universidad de Panamá):** magnitud 7.2, a 39 km al noroeste de Tonosí.",
+    "Las dos cifras difieren porque cada institución usa redes y métodos distintos.",
+    "**Réplicas:** 5.8, 5.5 y 5.2 (USGS) y hasta 6.6 (EFE y CNN). Una de 6.9 la menciona un solo medio y no está confirmada.",
+    "Último sismo con daños generalizados en Panamá antes de este: 1991 (AP)."
+   ]
+  },
+  {
+   "t": "Daños por provincia",
+   "open": false,
+   "items": [
+    "**Coclé:** Hotel Dos Continentes (Penonomé) con colapso parcial y sin heridos dentro; fachadas comerciales caídas; iglesias y carreteras dañadas; estación de bomberos de Penonomé con desprendimientos del techo. Infobae y France 24 reportaron daños de consideración o colapso en la gobernación y la iglesia de Penonomé; Sinaproc habla de afectaciones en iglesias y edificios gubernamentales.",
+    "**Los Santos:** viviendas colapsadas, edificios gubernamentales y religiosos dañados, red vial afectada. Tonosí quedó incomunicado (EFE). Hospitales de Tonosí y Pedasí con daños menores. Isla Cañas: oleaje anómalo en viviendas.",
+    "**Veraguas:** estación de bomberos de Soná en gran parte desplomada (quedaron atrapados vehículos de emergencia y una embarcación); estación de Santiago con losas desprendidas y rajaduras; carretera de acceso a Torio (Mariato) fracturada.",
+    "**Herrera:** Catedral de Chitré con daños leves; rajaduras en otras edificaciones.",
+    "**Ciudad de Panamá:** más de 100 viviendas afectadas en el Casco Antiguo; los daños no se calificaron como graves y no se reportaron personas afectadas allí (Noticias RCN).",
+    "**Panamá y Panamá Oeste:** 4 propiedades horizontales con daños menores; estación de La Chorrera con losas desprendidas y grietas; Veracruz con rajaduras; daños en comercios y viviendas de Las Perlas.",
+    "**Chiriquí:** daños leves en viviendas, comercios y 11 escuelas; estación de bomberos de David con rajaduras.",
+    "**Darién:** Centro Educativo de Zapayal con daños menores.",
+    "**Sin daños estructurales reportados:** estaciones de Colón, Bocas del Toro, Panamá Este y Bugaba."
+   ]
+  },
+  {
+   "t": "Servicios e infraestructura",
+   "open": false,
+   "items": [
+    "**Agua potable:** varias plantas potabilizadoras dañadas; la de Federico Guardia Conte (Chilibre) operaba al 70% de su capacidad, afectando a Panamá y San Miguelito.",
+    "**Hospitales:** 2 con daños leves y evacuaciones preventivas. La CSS mantiene urgencias abiertas las 24 horas.",
+    "**Escuelas:** Meduca habló de 7 afectadas y el listado de Sinaproc incluye 12. No hay cifra definitiva.",
+    "**Aeropuerto de Tocumen:** suspendió operaciones y las reanudó sin daños de consideración; vuelos desviados a Colombia y 7 a Costa Rica.",
+    "**Metro:** servicio interrumpido temporalmente en las dos líneas. **Canal de Panamá:** tránsito normal.",
+    "**Electricidad:** se reportaron cortes de energía.",
+    "**Tsunami:** hubo alertas iniciales en el Pacífico. No pude verificar su estado actual; consulta a Sinaproc."
+   ]
+  },
+  {
+   "t": "Lo que todavía no se sabe",
+   "open": false,
+   "items": [
+    "Número total de lesionados.",
+    "Viviendas dañadas o destruidas en todo el país (no hay cifra nacional).",
+    "Número exacto de escuelas afectadas.",
+    "Monto económico de los daños: ninguna fuente oficial lo ha publicado.",
+    "Estado de comunidades aisladas, como Tonosí."
+   ]
+  }
+ ],
+ "advertencia": "Una página de CNN en Español menciona 335 muertos y 4,516 heridos, pero ese párrafo se refiere a un sismo en Chocó, Colombia. No corresponde a Panamá.",
+ "fuentes": [
+  [
+   "La Estrella de Panamá (Sinaproc)",
+   "https://www.laestrella.com.pa/panama/nacional/sinaproc-confirma-que-no-hay-victimas-fatales-tras-terremoto-de-72-en-panama-IC26359625"
+  ],
+  [
+   "Infobae: primer balance de Sinaproc",
+   "https://www.infobae.com/panama/2026/10/09/terremoto-en-panama-deja-al-menos-15-estudiantes-lesionados-y-danos-en-edificios-publicos-y-viviendas/"
+  ],
+  [
+   "Noticias RCN: balance y viviendas del Casco Antiguo",
+   "https://www.noticiasrcn.com/internacional/balance-del-terremoto-en-panama-no-hay-victimas-mortales-1070384"
+  ],
+  [
+   "ContraPunto: balance provisional y CSS",
+   "https://www.contrapunto.com.sv/terremoto-de-magnitud-77-sacude-panama-danos-en-iglesias-hoteles-y-edificios-descartan-victimas-mortales-en-el-balance-preliminar/"
+  ],
+  [
+   "Infobae / EFE",
+   "https://www.infobae.com/america/agencias/2026/10/10/terremoto-de-77-sacude-panama-derrumbes-un-pueblo-aislado-y-sin-victimas-mortales/"
+  ],
+  [
+   "France 24",
+   "https://www.france24.com/es/am%C3%A9rica-latina/20261009-en-directo-el-fuerte-terremoto-en-panam%C3%A1-causa-da%C3%B1os-en-edificaciones-el-canal-no-se-vio-afectado"
+  ],
+  [
+   "CNN",
+   "https://www.cnn.com/2026/10/09/americas/panama-earthquake-latam-intl"
+  ],
+  [
+   "AP / CP24",
+   "https://www.cp24.com/news/world/2026/10/09/massive-76-magnitude-earthquake-strikes-panama-tsunami-threat-issued/"
+  ],
+  [
+   "USGS (actualizaciones)",
+   "https://earthquake.usgs.gov"
+  ],
+  [
+   "Sinaproc (sinaproc.gob.pa) · IGC‑UP (igc.up.ac.pa)",
+   ""
+  ]
+ ]
+}

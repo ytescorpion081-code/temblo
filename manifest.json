@@ -1,0 +1,31 @@
+{
+ "id": "./",
+ "name": "¿Tembló? Sismos en Panamá",
+ "short_name": "¿Tembló?",
+ "description": "Sismos en Panamá en tiempo real, informe del terremoto y plan de emergencia. Funciona sin conexión.",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "orientation": "portrait",
+ "background_color": "#0a1730",
+ "theme_color": "#0a1730",
+ "lang": "es",
+ "categories": [
+  "utilities",
+  "news"
+ ],
+ "icons": [
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any maskable"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any maskable"
+  }
+ ]
+}
