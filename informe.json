@@ -5,9 +5,9 @@
     "minmag": 4,
     "excluir_desde_mag": 7
   },
-  "actualizado": "2026-10-10T13:25:00-05:00",
-  "actualizado_txt": "10 de octubre de 2026 · guía preventiva",
-  "nota_cabecera": "Esta sección es una guía preventiva, no un boletín de sismos ni un balance de daños. Los eventos y sus magnitudes deben comprobarse directamente en las fuentes enlazadas.",
+  "actualizado": "2026-10-10T15:15:00-05:00",
+  "actualizado_txt": "10 de octubre de 2026 · guía preventiva y resumen en vivo",
+  "nota_cabecera": "Resumen automático de los catálogos públicos y guía de preparación. No es un boletín oficial ni un balance de daños: comprueba los eventos y sus magnitudes en las fuentes enlazadas.",
   "kpis": [
     [
       "USGS",
@@ -32,9 +32,10 @@
       "t": "Qué hacer durante un sismo",
       "open": true,
       "items": [
-        "Agáchate, cúbrete y agárrate. Protégete bajo una mesa resistente o junto a un mueble bajo y firme.",
+        "**Agáchate, cúbrete y agárrate.** Protégete bajo una mesa resistente o junto a un mueble bajo y firme.",
         "Aléjate de ventanas, cristales, estanterías y objetos que puedan caer. No corras hacia las escaleras ni uses ascensores mientras tiembla.",
-        "Si estás afuera, aléjate de edificios, postes, cables y fachadas. Si conduces, detente en un lugar seguro lejos de puentes y líneas eléctricas."
+        "Si estás afuera, aléjate de edificios, postes, cables y fachadas. Si conduces, detente en un lugar seguro lejos de puentes y líneas eléctricas.",
+        "Si estás en la cama, quédate ahí y protégete la cabeza con la almohada."
       ]
     },
     {
@@ -43,7 +44,48 @@
       "items": [
         "Prepárate para posibles réplicas. Revisa si hay heridos y brinda primeros auxilios solo si puedes hacerlo sin ponerte en peligro.",
         "Si percibes olor a gas, fuego o daños estructurales, aléjate y contacta a los servicios de emergencia. No entres en edificios dañados.",
-        "Sigue los comunicados oficiales de SINAPROC y de las autoridades locales. No compartas cifras de daños que no tengan fuente verificable."
+        "Usa mensajes de texto en vez de llamadas para dejar las líneas libres, y avisa que estás bien desde la pestaña Plan.",
+        "Sigue los comunicados oficiales de SINAPROC y de las autoridades locales."
+      ]
+    },
+    {
+      "t": "Qué significa la magnitud",
+      "open": false,
+      "items": [
+        "**Menos de 3:** casi nunca se siente; los instrumentos sí lo registran.",
+        "**3 a 3,9:** muchas personas lo sienten, sobre todo cerca del epicentro; los daños son poco comunes.",
+        "**4 a 4,9:** se siente claramente y hace vibrar objetos; puede haber daños leves cerca del epicentro.",
+        "**5 a 5,9:** puede dañar construcciones frágiles o mal construidas en el área cercana.",
+        "**6 o más:** puede causar daños importantes y sentirse a gran distancia. Sigue de inmediato las instrucciones oficiales.",
+        "La magnitud mide la energía del sismo; la intensidad es lo que se siente en cada lugar y depende de la distancia, la profundidad y el tipo de suelo."
+      ]
+    },
+    {
+      "t": "Costa y tsunami",
+      "open": false,
+      "items": [
+        "Si estás cerca de la costa y el temblor es fuerte o dura más de 20 segundos, o ves que el mar se retira de forma inusual, **sube a terreno alto sin esperar un aviso**.",
+        "Mantente en zona alta hasta que las autoridades indiquen que es seguro volver.",
+        "Un sismo pequeño o lejano rara vez genera tsunami, pero sigue siempre los avisos oficiales de SINAPROC."
+      ]
+    },
+    {
+      "t": "En casa, edificio, escuela o con movilidad reducida",
+      "open": false,
+      "items": [
+        "En un edificio no uses el ascensor; cuando pase la sacudida, sal con calma por las escaleras si es seguro.",
+        "En una escuela o lugar con niños, sigue el plan del centro y ayúdalos a protegerse bajo mesas o pupitres.",
+        "Si usas silla de ruedas, ponle el freno y cúbrete la cabeza y el cuello. Si puedes, pide ayuda a quien esté cerca."
+      ]
+    },
+    {
+      "t": "Prepárate antes de que ocurra",
+      "open": false,
+      "items": [
+        "Revisa la pestaña **Plan**: mochila de emergencia, números útiles y mensaje «Estoy bien».",
+        "Acuerda con tu familia un punto de encuentro y un contacto fuera de la zona.",
+        "Guarda copias de tus documentos en una bolsa plástica y en tu teléfono.",
+        "Asegura estantes, televisores y objetos pesados, y ubica las llaves del gas y la electricidad."
       ]
     },
     {
@@ -52,7 +94,17 @@
       "items": [
         "La hora del evento es distinta de la hora en que una institución lo publica o revisa.",
         "Magnitud, profundidad y ubicación pueden cambiar en los primeros minutos. Diferentes instituciones pueden publicar estimaciones distintas.",
-        "Esta aplicación muestra datos de catálogos públicos y no sustituye una alerta oficial, las instrucciones de las autoridades ni una evaluación de daños."
+        "El resumen de esta pestaña une y depura los eventos de USGS, EMSC e IGC‑UP; un mismo sismo puede aparecer en varios catálogos con valores algo distintos.",
+        "Esta aplicación no sustituye una alerta oficial, las instrucciones de las autoridades ni una evaluación de daños."
+      ]
+    },
+    {
+      "t": "Evita la desinformación",
+      "open": false,
+      "items": [
+        "Antes de compartir una alerta, comprueba la fuente: SINAPROC, IGC‑UP, USGS o EMSC.",
+        "Desconfía de mensajes que dicen predecir sismos: hoy no es posible saber cuándo ni dónde ocurrirá uno.",
+        "No compartas cifras de daños o víctimas que no tengan fuente oficial."
       ]
     }
   ],
