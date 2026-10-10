@@ -76,6 +76,8 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 summary::-webkit-details-marker{display:none}
 select,input{font-size:16px}
 button{touch-action:manipulation}
+:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.q[role=button]{cursor:pointer}
 section.tab{display:none}section.tab.on{display:block}
 nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;background:var(--card);border-top:1px solid var(--bd);padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -4px 16px rgba(2,8,23,.08)}
 nav.tabs button{flex:1;border:0;background:none;color:var(--mu);font:inherit;font-size:11px;padding:8px 2px 7px;display:flex;flex-direction:column;align-items:center;gap:2px;border-radius:0}
@@ -86,12 +88,12 @@ main{padding-bottom:calc(88px + env(safe-area-inset-bottom))!important}
 </head>
 <body>
 <section class="hero"><div class="wrap">
- <div class="top"><div class="logo">¿Tembló?<span>Panamá</span></div><div class="live"><i class="dot" id="dot"></i><span id="st">Conectando…</span></div></div>
+ <div class="top"><div class="logo">¿Tembló?<span>Panamá</span></div><div class="live"><i class="dot" id="dot"></i><span id="st" role="status" aria-live="polite">Conectando…</span></div></div>
  <div class="last" id="last"><div class="ring" style="border-color:#64748b"><b>–</b><small>MAG</small></div><div><h2>Último sismo</h2><p class="pl">Buscando datos…</p></div></div>
 </div></section>
 <main class="wrap">
- <div id="banner"></div>
- <div id="err"></div>
+ <div id="banner" role="alert"></div>
+ <div id="err" role="status"></div>
  <section class="tab on" data-tab="inicio">
 <div class="card stats">
   <div><b id="s1">–</b><span>Sismos</span></div><div><b id="s2">–</b><span>Mayor</span></div><div><b id="s3">–</b><span>Más reciente</span></div>
@@ -102,6 +104,8 @@ main{padding-bottom:calc(88px + env(safe-area-inset-bottom))!important}
   <div class="lbl">Período</div>
   <div class="chips" id="cd"><button class="chip" data-v="0.0417">1 h</button><button class="chip" data-v="1">24 h</button><button class="chip on" data-v="7">7 días</button><button class="chip" data-v="30">30 días</button></div>
   <button class="al" id="alerta">🔔 Activar alertas de sismo</button>
+  <button class="al sec" id="loc">📍 Mostrar distancia desde mi ubicación</button>
+  <p class="note">La ubicación se usa solo en tu teléfono para calcular la distancia; no se envía ni se guarda.</p>
  </div>
  <div class="card"><div class="lbl">Historial</div><div id="lista"></div></div>
  </section>
@@ -172,7 +176,7 @@ main{padding-bottom:calc(88px + env(safe-area-inset-bottom))!important}
 </div>
 <div class="tip">🛟 <b>Durante un sismo:</b> agáchate, cúbrete y sujétate. Aléjate de ventanas y objetos que puedan caer. Emergencias: <b>911</b> · SINAPROC <b>520‑4400</b>.</div>
  </section>
-<footer>Funciona sin conexión: guarda los últimos datos recibidos y se actualiza sola al volver el internet. Datos abiertos de USGS y EMSC, actualizados cada minuto. Información referencial: para comunicados oficiales consulta al Instituto de Geociencias de la Universidad de Panamá (IGC‑UP) y SINAPROC. Mantén esta página abierta para recibir alertas.</footer>
+<footer>Funciona sin conexión: guarda los últimos datos recibidos y se actualiza sola al volver el internet. Datos abiertos de USGS, EMSC y del IGC‑UP: el mapa se actualiza en tiempo real cuando hay conexión (con respaldo cada minuto). Información referencial: para comunicados oficiales consulta al Instituto de Geociencias de la Universidad de Panamá (IGC‑UP) y SINAPROC. Mantén esta página abierta para recibir alertas.</footer>
 </main>
 <nav class="tabs" aria-label="Apartados">
 <button data-t="inicio" class="on"><span>🏠</span>Inicio</button><button data-t="mapa"><span>🗺️</span>Mapa</button><button data-t="informe"><span>📰</span>Informe</button><button data-t="herramientas"><span>🧰</span>Herramientas</button><button data-t="plan"><span>🛟</span>Plan</button>
@@ -180,7 +184,7 @@ main{padding-bottom:calc(88px + env(safe-area-inset-bottom))!important}
 
 <script>
 const B={la1:5.5,la2:10.5,lo1:-84,lo2:-76.5},$=id=>document.getElementById(id);
-let vistos=new Set(),primera=true,activas=false,ctx,datos=[],sel=-1,mm='0',dd='7';
+let vistos=new Set(),primera=true,activas=false,ctx,datos=[],sel=-1,mm='0',dd='7',lastCarga=0,miPos=null;
 const col=m=>m>=6?'#991b1b':m>=5?'#ef4444':m>=4?'#f97316':m>=3?'#eab308':'#22c55e';
 const niv=m=>m>=6?'FUERTE':m>=5?'MODERADO':m>=4?'LIGERO':m>=3?'MENOR':'MICRO';
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -188,6 +192,9 @@ function lugar(p){p=p||'Panamá';
  const m=p.match(/^(\d+)\s*km\s+([NSEW]{1,3})\w*\s+of\s+(.+)$/i);
  if(m){const d={W:'O',NW:'NO',SW:'SO',WNW:'ONO',WSW:'OSO',NNW:'NNO',SSW:'SSO'};const k=m[2].toUpperCase();p=`${m[1]} km al ${d[k]||k} de ${m[3]}`}
  return p.replace(/Panama\b/g,'Panamá').replace(/PANAMA/g,'PANAMÁ')}
+function km(a,b,c,d){const R=6371,r=Math.PI/180,x=(c-a)*r,y=(d-b)*r,h=Math.sin(x/2)**2+Math.cos(a*r)*Math.cos(c*r)*Math.sin(y/2)**2;return 2*R*Math.asin(Math.sqrt(h))}
+function dist(q){return miPos?` · a ${Math.round(km(miPos.la,miPos.lo,q.la,q.lo))} km de ti`:''}
+const urlOk=u=>/^https:\/\//.test(u||'')?u:'#';
 function hace(t){const s=(Date.now()-t)/1000;if(s<60)return 'hace instantes';const m=s/60;if(m<60)return `hace ${Math.floor(m)} min`;const h=m/60;if(h<24)return `hace ${Math.floor(h)} h`;return `hace ${Math.floor(h/24)} d`}
 function sonido(){try{ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();ctx.resume&&ctx.resume();[0,.35,.7].forEach(t=>{const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.value=880;o.connect(g);g.connect(ctx.destination);g.gain.setValueAtTime(.2,ctx.currentTime+t);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+t+.3);o.start(ctx.currentTime+t);o.stop(ctx.currentTime+t+.3)})}catch(e){}}
 function avisar(q){const t=`M ${q.mag.toFixed(1)} · ${lugar(q.place)}`;
@@ -211,6 +218,14 @@ async function emsc(d,m){
  const j=await tj(`https://www.seismicportal.eu/fdsnws/event/1/query?format=json&orderby=time&limit=300&minmag=${m}&start=${ini}&minlat=${B.la1}&maxlat=${B.la2}&minlon=${B.lo1}&maxlon=${B.lo2}`);
  return j.features.filter(f=>f.properties.mag!=null).map(f=>({id:'e'+f.id,mag:f.properties.mag,place:f.properties.flynn_region,t:Date.parse(f.properties.time),url:'https://www.seismicportal.eu/eventdetails.html?unid='+f.properties.unid,lo:f.properties.lon,la:f.properties.lat,z:f.properties.depth,src:'EMSC'}));
 }
+/* IGC-UP: listado local que publica igc.json (lo genera .github/workflows/igc.yml) */
+async function igc(d,m){
+ const j=await tj('igc.json?'+Math.floor(Date.now()/6e4));
+ if(!Array.isArray(j))throw new Error('formato inválido');
+ const ini=Date.now()-d*864e5;
+ return j.filter(q=>q&&Number.isFinite(q.mag)&&Number.isFinite(q.t)&&Number.isFinite(q.la)&&Number.isFinite(q.lo)&&q.t>=ini&&q.mag>=m&&q.la>=B.la1&&q.la<=B.la2&&q.lo>=B.lo1&&q.lo<=B.lo2)
+  .map(q=>({id:String(q.id),mag:q.mag,place:q.place,t:q.t,url:q.url,lo:q.lo,la:q.la,z:q.z||0,src:'IGC-UP'}));
+}
 function unir(a){a.sort((x,y)=>y.t-x.t);const o=[];for(const q of a){if(!o.some(r=>Math.abs(r.t-q.t)<120000&&Math.abs(r.la-q.la)<.7&&Math.abs(r.lo-q.lo)<.7))o.push(q)}return o}
 
 function pintar(qs){
@@ -218,9 +233,9 @@ function pintar(qs){
  $('s2').textContent=qs.length?Math.max(...qs.map(q=>q.mag)).toFixed(1):'–';
  $('s3').textContent=qs.length?hace(qs[0].t).replace('hace ',''):'–';
  if(qs.length){const q=qs[0];
-  $('last').innerHTML=`<div class="ring" style="border-color:${col(q.mag)}"><b>${q.mag.toFixed(1)}</b><small>${niv(q.mag)}</small></div><div><h2>Último sismo</h2><p class="pl">${esc(lugar(q.place))}</p><p class="tm">${hace(q.t)} · prof. ${Math.round(q.z)} km</p></div>`}
+  $('last').innerHTML=`<div class="ring" style="border-color:${col(q.mag)}"><b>${q.mag.toFixed(1)}</b><small>${niv(q.mag)}</small></div><div><h2>Último sismo</h2><p class="pl">${esc(lugar(q.place))}</p><p class="tm">${hace(q.t)} · prof. ${Math.round(q.z)} km${dist(q)}</p></div>`}
  else $('last').innerHTML='<div class="ring" style="border-color:#22c55e"><b>✓</b><small>CALMA</small></div><div><h2>Último sismo</h2><p class="pl">Sin sismos en este período</p></div>';
- $('lista').innerHTML=qs.length?qs.map((q,i)=>`<div class="q${i?'':' f'}" data-i="${i}"><div class="m" style="background:${col(q.mag)}">${q.mag.toFixed(1)}<small>${niv(q.mag)}</small></div><div><h3>${esc(lugar(q.place))}</h3><p>${hace(q.t)} · ${new Date(q.t).toLocaleString('es-PA',{dateStyle:'medium',timeStyle:'short'})}</p><p>Prof. ${Math.round(q.z)} km<span class="tag">${q.src}</span> <a href="${q.url}" target="_blank" rel="noopener">Detalle ›</a></p></div></div>`).join(''):'<p style="color:var(--mu);margin:4px 0">No hay sismos con estos filtros 🎉</p>';
+ $('lista').innerHTML=qs.length?qs.map((q,i)=>`<div class="q${i?'':' f'}" data-i="${i}" role="button" tabindex="0" aria-label="Ver en el mapa: magnitud ${q.mag.toFixed(1)}, ${esc(lugar(q.place))}"><div class="m" style="background:${col(q.mag)}">${q.mag.toFixed(1)}<small>${niv(q.mag)}</small></div><div><h3>${esc(lugar(q.place))}</h3><p>${hace(q.t)} · ${new Date(q.t).toLocaleString('es-PA',{dateStyle:'medium',timeStyle:'short'})}</p><p>Prof. ${Math.round(q.z)} km${dist(q)}<span class="tag">${q.src}</span> <a href="${esc(urlOk(q.url))}" target="_blank" rel="noopener">Detalle ›</a></p></div></div>`).join(''):'<p style="color:var(--mu);margin:4px 0">No hay sismos con estos filtros 🎉</p>';
  dibujar(qs);
 }
 const CK='tp_cache_v2';
@@ -302,8 +317,8 @@ function aviso(h){const e=$('err');e.style.display=h?'block':'none';e.innerHTML=
 async function cargar(){
  const k=mm+'|'+dd;
  if(primera&&!datos.length){const c=leer(k);if(c){datos=c.d;pintar(datos);$('st').textContent='Datos guardados · actualizando…'}}
- const r=await Promise.allSettled([usgs(dd,mm),emsc(dd,mm)]),ok=r.filter(x=>x.status==='fulfilled'),nom=['USGS','EMSC'];
- if(!ok.length){const c=leer(k);$('dot').className='dot off';
+ lastCarga=Date.now();
+ const r=await Promise.allSettled([usgs(dd,mm),emsc(dd,mm),igc(dd,mm)]),ok=r.filter(x=>x.status==='fulfilled'),nom=['USGS','EMSC','IGC-UP']; if(!ok.length){const c=leer(k);$('dot').className='dot off';
   if(c){datos=c.d;pintar(datos);$('st').textContent='Sin conexión · guardado '+hace(c.t);
    aviso('📴 <b>Sin conexión.</b> Mostrando los últimos datos guardados ('+hace(c.t)+'). Se actualizarán solos cuando vuelva el internet.')}
   else{$('st').textContent='Sin conexión';aviso('📴 <b>Sin conexión y aún no hay datos guardados.</b> Conéctate una vez a internet para descargar los sismos recientes; después podrás verlos sin conexión. '+esc(r.map((x,i)=>nom[i]+': '+(x.reason&&x.reason.message||'error')).join(' · ')))}
@@ -312,11 +327,17 @@ async function cargar(){
  datos=unir(ok.flatMap(x=>x.value));guardar(k,datos);P.s('ult',Date.now());offEstado();
  datos.forEach(q=>{if(!yaVisto(q)){marcar(q);if(!primera&&Date.now()-q.t>=-120000&&Date.now()-q.t<=30*60*1000&&q.mag>=umbral)avisar(q)}});
  primera=false;pintar(datos);
- $('dot').className='dot on';$('st').textContent='En vivo · '+new Date().toLocaleTimeString('es-PA',{hour:'2-digit',minute:'2-digit'})+(ok.length<2?' (1 fuente)':'')+(wsOk?' ⚡':'');
+ $('dot').className='dot on';$('st').textContent='En vivo · '+new Date().toLocaleTimeString('es-PA',{hour:'2-digit',minute:'2-digit'})+(ok.length<r.length?` (${ok.length} de ${r.length} fuentes)`:'')+(wsOk?' ⚡':'');
 }
 function chips(id,set){$(id).onclick=e=>{const b=e.target.closest('.chip');if(!b)return;[...$(id).children].forEach(c=>c.classList.toggle('on',c===b));set(b.dataset.v);primera=true;vistos.clear();vl.length=0;$('banner').style.display='none';cargar()}}
 chips('cm',v=>mm=v);chips('cd',v=>dd=v);
-$('lista').onclick=e=>{const el=e.target.closest('.q');if(!el||e.target.tagName==='A')return;elegir(+el.dataset.i,true);ir('mapa');window.scrollTo({top:0,behavior:'smooth'})};
+function abrirSismo(el){elegir(+el.dataset.i,true);ir('mapa');window.scrollTo({top:0,behavior:'smooth'})}
+$('lista').onclick=e=>{const el=e.target.closest('.q');if(!el||e.target.tagName==='A')return;abrirSismo(el)};
+$('lista').onkeydown=e=>{if(e.key!=='Enter'&&e.key!==' ')return;const el=e.target.closest('.q');if(!el||e.target.tagName==='A')return;e.preventDefault();abrirSismo(el)};
+$('loc').onclick=()=>{const b=$('loc');
+ if(miPos){miPos=null;b.classList.remove('on');b.textContent='📍 Mostrar distancia desde mi ubicación';pintar(datos);return}
+ if(!navigator.geolocation){b.textContent='⚠️ Tu navegador no permite ubicación';return}
+ navigator.geolocation.getCurrentPosition(p=>{miPos={la:p.coords.latitude,lo:p.coords.longitude};b.classList.add('on');b.textContent='✅ Distancia activada (toca para quitar)';pintar(datos)},()=>{b.textContent='⚠️ No se pudo obtener tu ubicación'},{timeout:8000,maximumAge:300000})};
 $('alerta').onclick=async()=>{sonido();if('Notification' in window){try{activas=(await Notification.requestPermission())==='granted'}catch(e){}}
  const b=$('alerta');b.classList.add('on');b.textContent=activas?'✅ Alertas activas':'✅ Aviso en pantalla y sonido activos'};
 
@@ -351,18 +372,20 @@ const hecho=P.g('kit',[]);
 $('kit').innerHTML=KIT.map((k,i)=>`<label class="ck"><input type="checkbox" data-k="${i}" ${hecho.includes(i)?'checked':''}>${k}</label>`).join('');
 $('kit').onchange=()=>P.s('kit',[...$('kit').querySelectorAll('input:checked')].map(x=>+x.dataset.k));
 /* ===== Informe dinámico + réplicas en vivo ===== */
-let INFORME={"version":2,"actualizado":"2026-10-10T13:25:00-05:00","actualizado_txt":"10 de octubre de 2026 · guía preventiva","nota_cabecera":"Esta sección es una guía preventiva, no un boletín de sismos ni un balance de daños. Los eventos y sus magnitudes deben comprobarse directamente en las fuentes enlazadas.","kpis":[["USGS","Catálogo internacional"],["EMSC","Catálogo europeo"],["IGC-UP","Referencia local"],["SINAPROC","Avisos oficiales"]],"nota":"La ausencia de un evento en un catálogo no demuestra que no haya ocurrido un sismo. Los datos preliminares pueden cambiar cuando las instituciones revisan sus cálculos.","secciones":[{"t":"Qué hacer durante un sismo","open":true,"items":["Agáchate, cúbrete y agárrate. Protégete bajo una mesa resistente o junto a un mueble bajo y firme.","Aléjate de ventanas, cristales, estanterías y objetos que puedan caer. No corras hacia las escaleras ni uses ascensores mientras tiembla.","Si estás afuera, aléjate de edificios, postes, cables y fachadas. Si conduces, detente en un lugar seguro lejos de puentes y líneas eléctricas."]},{"t":"Después del sismo","open":false,"items":["Prepárate para posibles réplicas. Revisa si hay heridos y brinda primeros auxilios solo si puedes hacerlo sin ponerte en peligro.","Si percibes olor a gas, fuego o daños estructurales, aléjate y contacta a los servicios de emergencia. No entres en edificios dañados.","Sigue los comunicados oficiales de SINAPROC y de las autoridades locales. No compartas cifras de daños que no tengan fuente verificable."]},{"t":"Cómo interpretar los datos en vivo","open":false,"items":["La hora del evento es distinta de la hora en que una institución lo publica o revisa.","Magnitud, profundidad y ubicación pueden cambiar en los primeros minutos. Diferentes instituciones pueden publicar estimaciones distintas.","Esta aplicación muestra datos de catálogos públicos y no sustituye una alerta oficial, las instrucciones de las autoridades ni una evaluación de daños."]}],"advertencia":"¿Tembló? Panamá es una herramienta informativa independiente. No es un sistema oficial de alerta temprana y no garantiza notificaciones si la página está cerrada, el dispositivo está sin conexión o el navegador limita su actividad.","fuentes":[["USGS · Últimos sismos","https://earthquake.usgs.gov/earthquakes/map/"],["EMSC · Actividad sísmica","https://www.emsc-csem.org/"],["Instituto de Geociencias · Universidad de Panamá","https://igc.up.ac.pa/"],["SINAPROC · Sistema Nacional de Protección Civil","https://www.sinaproc.gob.pa/"]],"noticias":[]};let lastLive=null;
+let INFORME={"version":2,"replicas":{"desde":"2026-10-09T17:56:00","minmag":4,"excluir_desde_mag":7},"actualizado":"2026-10-10T13:25:00-05:00","actualizado_txt":"10 de octubre de 2026 · guía preventiva","nota_cabecera":"Esta sección es una guía preventiva, no un boletín de sismos ni un balance de daños. Los eventos y sus magnitudes deben comprobarse directamente en las fuentes enlazadas.","kpis":[["USGS","Catálogo internacional"],["EMSC","Catálogo europeo"],["IGC-UP","Referencia local"],["SINAPROC","Avisos oficiales"]],"nota":"La ausencia de un evento en un catálogo no demuestra que no haya ocurrido un sismo. Los datos preliminares pueden cambiar cuando las instituciones revisan sus cálculos.","secciones":[{"t":"Qué hacer durante un sismo","open":true,"items":["Agáchate, cúbrete y agárrate. Protégete bajo una mesa resistente o junto a un mueble bajo y firme.","Aléjate de ventanas, cristales, estanterías y objetos que puedan caer. No corras hacia las escaleras ni uses ascensores mientras tiembla.","Si estás afuera, aléjate de edificios, postes, cables y fachadas. Si conduces, detente en un lugar seguro lejos de puentes y líneas eléctricas."]},{"t":"Después del sismo","open":false,"items":["Prepárate para posibles réplicas. Revisa si hay heridos y brinda primeros auxilios solo si puedes hacerlo sin ponerte en peligro.","Si percibes olor a gas, fuego o daños estructurales, aléjate y contacta a los servicios de emergencia. No entres en edificios dañados.","Sigue los comunicados oficiales de SINAPROC y de las autoridades locales. No compartas cifras de daños que no tengan fuente verificable."]},{"t":"Cómo interpretar los datos en vivo","open":false,"items":["La hora del evento es distinta de la hora en que una institución lo publica o revisa.","Magnitud, profundidad y ubicación pueden cambiar en los primeros minutos. Diferentes instituciones pueden publicar estimaciones distintas.","Esta aplicación muestra datos de catálogos públicos y no sustituye una alerta oficial, las instrucciones de las autoridades ni una evaluación de daños."]}],"advertencia":"¿Tembló? Panamá es una herramienta informativa independiente. No es un sistema oficial de alerta temprana y no garantiza notificaciones si la página está cerrada, el dispositivo está sin conexión o el navegador limita su actividad.","fuentes":[["USGS · Últimos sismos","https://earthquake.usgs.gov/earthquakes/map/"],["EMSC · Actividad sísmica","https://www.emsc-csem.org/"],["Instituto de Geociencias · Universidad de Panamá","https://igc.up.ac.pa/"],["SINAPROC · Sistema Nacional de Protección Civil","https://www.sinaproc.gob.pa/"]],"noticias":[]};let lastLive=null;
 const fm=t=>esc(t).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>');
 function renderInforme(){const I=INFORME;
- $('rep').innerHTML=`<div class="lbl">🛡️ Información sísmica y preparación</div><p class="note" style="margin:0 0 6px">${fm(I.nota_cabecera)}</p><div class="kp">${I.kpis.map(k=>`<div><b>${esc(k[0])}</b><span>${esc(k[1])}</span></div>`).join('')}</div><div class="warn" id="live" style="background:var(--chip);color:var(--tx);border-color:var(--bd)">⏳ Réplicas en vivo: calculando…</div><p class="note" style="margin:0 0 4px">${fm(I.nota)}</p>`
+ $('rep').innerHTML=`<div class="lbl">🛡️ Información sísmica y preparación</div><p class="note" style="margin:0 0 6px">${fm(I.nota_cabecera)}</p><div class="kp">${I.kpis.map(k=>`<div><b>${esc(k[0])}</b><span>${esc(k[1])}</span></div>`).join('')}</div>${I.replicas?'<div class="warn" id="live" role="status" style="background:var(--chip);color:var(--tx);border-color:var(--bd)">⏳ Réplicas en vivo: calculando…</div>':''}<p class="note" style="margin:0 0 4px">${fm(I.nota)}</p>`
  +(I.noticias&&I.noticias.length?`<details open><summary>📰 Últimas noticias (TV y prensa)</summary><ul>${I.noticias.map(n=>/^https:\/\//.test(n[2])?`<li><a href="${esc(n[2])}" target="_blank" rel="noopener">${esc(n[0])}</a><br><span class="note" style="margin:0">${esc(n[1])}</span></li>`:'').join('')}</ul><p class="note">Los enlaces necesitan internet. La app no puede transmitir la señal de televisión ni de radio.</p></details>`:'')+I.secciones.map(x=>`<details${x.open?' open':''}><summary>${esc(x.t)}</summary><ul>${x.items.map(i=>`<li>${fm(i)}</li>`).join('')}</ul></details>`).join('')
  +`<div class="warn">⚠️ ${fm(I.advertencia)}</div><details class="src"><summary>Fuentes</summary><ul>${I.fuentes.map(f=>/^https:\/\//.test(f[1])?`<li><a href="${esc(f[1])}" target="_blank" rel="noopener">${esc(f[0])}</a></li>`:`<li>${esc(f[0])}</li>`).join('')}</ul></details><p class="note">Balance actualizado: ${esc(I.actualizado_txt)}. Las réplicas en vivo se calculan desde el USGS; el resto del balance lo actualiza el administrador de la app.</p>`;
  if(lastLive)pintarLive(lastLive.v,lastLive.off)}
 function pintarLive(v,off){lastLive={v,off};const e=$('live');if(!e)return;
- e.innerHTML=`📡 <b>Réplicas M4+ en vivo (USGS):</b> ${v.n}`+(v.n?` · mayor M ${v.mx.toFixed(1)} · última ${hace(v.t)}`:'')+(off?` <span class="tag">guardado ${hace(v.at)}</span>`:'')}
+ const cf=INFORME.replicas||{};e.innerHTML=`📡 <b>Réplicas M${Number(cf.minmag)||4}+ en vivo (USGS)</b> desde ${esc(String(cf.desde||'').slice(0,10))}: ${v.n}`+(v.n?` · mayor M ${v.mx.toFixed(1)} · última ${hace(v.t)}`:'')+(off?` <span class="tag">guardado ${hace(v.at)}</span>`:'')}
 async function replicasVivo(){
- try{const j=await tj(`https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&orderby=time&limit=500&minmagnitude=4&starttime=2026-10-09T17:56:00&minlatitude=${B.la1}&maxlatitude=${B.la2}&minlongitude=${B.lo1}&maxlongitude=${B.lo2}`);
-  const r=j.features.filter(x=>x.properties.mag!=null&&x.properties.mag<7);
+ const cf=INFORME.replicas;if(!cf||!cf.desde)return;   /* sin "replicas" en informe.json no se muestra el cuadro */
+ const mn=Number(cf.minmag)||4,ex=Number(cf.excluir_desde_mag)||99;
+ try{const j=await tj(`https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&orderby=time&limit=500&minmagnitude=${mn}&starttime=${encodeURIComponent(cf.desde)}&minlatitude=${B.la1}&maxlatitude=${B.la2}&minlongitude=${B.lo1}&maxlongitude=${B.lo2}`);
+  const r=j.features.filter(x=>x.properties.mag!=null&&x.properties.mag<ex);
   const v={n:r.length,mx:r.length?Math.max(...r.map(x=>x.properties.mag)):0,t:r.length?Math.max(...r.map(x=>x.properties.time)):0,at:Date.now()};
   P.s('rep_live',v);pintarLive(v,false)}
  catch(e){const v=P.g('rep_live',null);if(v)pintarLive(v,true);else if($('live'))$('live').textContent='📡 Réplicas en vivo: sin conexión con el USGS.'}}
@@ -492,14 +515,14 @@ $('vista').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;vista=b.da
 $('vent').onchange=e=>{vent=+e.target.value;P.s('vent',vent);dibujar(datos)};
 /* ===== Apartados (pestañas) ===== */
 function ir(t){document.querySelectorAll('section.tab').forEach(x=>x.classList.toggle('on',x.dataset.tab===t));
- document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));P.s('tab',t)}
+ document.querySelectorAll('nav.tabs button').forEach(b=>{const on=b.dataset.t===t;b.classList.toggle('on',on);if(on)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});P.s('tab',t)}
 document.querySelector('nav.tabs').onclick=e=>{const b=e.target.closest('button');if(b){ir(b.dataset.t);window.scrollTo({top:0})}};
 ir(['inicio','mapa','informe','herramientas','plan'].includes(P.g('tab','inicio'))?P.g('tab','inicio'):'inicio');
 mkFondo();dibujar([]);iniciarMapa();cargarInforme();conectarWS();if(navigator.onLine)setModo('det');
 window.addEventListener('online',cargar);
 window.addEventListener('offline',()=>{$('dot').className='dot off';$('st').textContent='Sin conexión'});
 if('serviceWorker' in navigator&&/^https?:/.test(location.protocol))navigator.serviceWorker.register('sw.js').catch(()=>{});
-cargar();replicasVivo();setInterval(cargar,15000);setInterval(replicasVivo,60000);
+cargar();replicasVivo();setInterval(()=>{if(!wsOk||Date.now()-lastCarga>=60000)cargar()},15000);setInterval(replicasVivo,60000);
 </script>
 </body>
 </html>

@@ -1,5 +1,10 @@
 {
   "version": 2,
+  "replicas": {
+    "desde": "2026-10-09T17:56:00",
+    "minmag": 4,
+    "excluir_desde_mag": 7
+  },
   "actualizado": "2026-10-10T13:25:00-05:00",
   "actualizado_txt": "10 de octubre de 2026 · guía preventiva",
   "nota_cabecera": "Esta sección es una guía preventiva, no un boletín de sismos ni un balance de daños. Los eventos y sus magnitudes deben comprobarse directamente en las fuentes enlazadas.",

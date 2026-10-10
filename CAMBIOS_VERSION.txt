@@ -1,18 +1,15 @@
-¿Tembló? Panamá — versión mejorada
+¿Tembló? Panamá — cambios de esta versión
 
-Cambios incluidos:
-- Evita avisos sonoros/notificaciones de eventos sísmicos de más de 30 minutos cuando llegan por WebSocket o por la actualización periódica.
-- Valida magnitud, hora y coordenadas antes de aceptar un evento en tiempo real.
-- Actualiza la versión de caché del Service Worker para que el navegador instale el nuevo paquete.
-- Reemplaza el informe con cifras de daños no verificadas por una guía preventiva con enlaces a fuentes oficiales y catálogos sísmicos.
-- Mantiene los archivos de la app y sus funciones existentes.
+- IGC-UP conectado: el workflow ahora está en .github/workflows/igc.yml (antes estaba en la raíz y GitHub no lo ejecutaba). Genera igc.json cada 5 minutos y la app lo lee como tercera fuente (etiqueta «IGC-UP»). Se sirve primero de la red y cae al caché sin conexión.
+- Réplicas en vivo configurables desde informe.json (campo "replicas": desde, minmag, excluir_desde_mag). Si se quita ese campo, el cuadro no se muestra.
+- Menos carga en USGS/EMSC: con el WebSocket de EMSC activo la app consulta cada 60 s (cada 15 s solo si no hay WebSocket).
+- Enlaces «Detalle» validados (solo https) y escapados.
+- Textos del pie y del estado de fuentes unificados.
+- Accesibilidad: foco visible, lista de sismos usable con teclado, aria-current en la barra inferior, avisos con role="alert"/"status".
+- Nuevo botón «Mostrar distancia desde mi ubicación» (se calcula en el teléfono; no se envía ni se guarda).
+- Service Worker: caché temblo-v6 y no se guardan respuestas con error.
 
-Cómo publicar en GitHub Pages:
-1. Guarda una copia de tu repositorio actual.
-2. Descomprime este ZIP.
-3. En el repositorio temblo, reemplaza index.html, sw.js e informe.json por los de esta carpeta.
-4. Haz commit de los cambios.
-5. Abre la web desde el teléfono o computadora y actualiza. Si ves la versión anterior, cierra la app instalada y vuelve a abrirla después de que cargue la nueva versión.
+Después de subir: en GitHub entra a Settings > Actions > General > Workflow permissions y activa «Read and write permissions»; luego ejecuta el workflow una vez desde la pestaña Actions («Run workflow») para crear igc.json.
 
 Limitaciones:
 - Los catálogos públicos pueden tardar en publicar o revisar eventos.

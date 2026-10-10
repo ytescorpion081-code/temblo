@@ -7,3 +7,5 @@
 3. Android: menú ⋮ > Instalar app. iPhone: Compartir > Agregar a pantalla de inicio.
 
 Para actualizar el informe del terremoto: reemplaza solo informe.json.
+
+Listado del IGC-UP: el workflow está en .github/workflows/igc.yml y crea igc.json cada 5 minutos (ver CAMBIOS_VERSION.txt para activarlo).
