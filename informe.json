@@ -5,7 +5,7 @@
     "minmag": 4,
     "excluir_desde_mag": 7
   },
-  "actualizado": "2026-10-10T15:15:00-05:00",
+  "actualizado": "2026-10-10T15:30:00-05:00",
   "actualizado_txt": "10 de octubre de 2026 · guía preventiva y resumen en vivo",
   "nota_cabecera": "Resumen automático de los catálogos públicos y guía de preparación. No es un boletín oficial ni un balance de daños: comprueba los eventos y sus magnitudes en las fuentes enlazadas.",
   "kpis": [
@@ -105,6 +105,16 @@
         "Antes de compartir una alerta, comprueba la fuente: SINAPROC, IGC‑UP, USGS o EMSC.",
         "Desconfía de mensajes que dicen predecir sismos: hoy no es posible saber cuándo ni dónde ocurrirá uno.",
         "No compartas cifras de daños o víctimas que no tengan fuente oficial."
+      ]
+    },
+    {
+      "t": "Privacidad y datos",
+      "open": false,
+      "items": [
+        "La app no tiene cuentas ni servidor propio: tus ajustes (alertas, contactos, emisoras, mochila de emergencia) se guardan **solo en tu teléfono**.",
+        "La ubicación se usa únicamente si la activas, para calcular distancias o armar el mensaje «Estoy bien». No se envía a ningún servidor de la app; solo viaja en el SMS que tú decides enviar.",
+        "Para mostrar sismos y mapas, la app consulta USGS, EMSC y OpenStreetMap, y el listado del IGC‑UP publicado en este sitio. Como en cualquier página web, esos servicios pueden ver tu dirección IP.",
+        "Los SMS y mensajes salen desde tu propia aplicación de mensajes. Si te unes a un canal de Telegram, aplican las políticas de Telegram."
       ]
     }
   ],

@@ -1,3 +1,15 @@
+¿Tembló? Panamá — avisos con la app cerrada (opcional), privacidad y pulido
+
+- Avisos por Telegram (opcional): avisos.py publica en un canal cuando hay un sismo nuevo en la región. No hace nada hasta que configures los secretos TELEGRAM_TOKEN y TELEGRAM_CHAT; los pasos están en AVISOS.md. Llegan después del sismo y pueden tardar varios minutos: no es una alerta temprana.
+- El workflow sigue enviando avisos de USGS/EMSC aunque el IGC-UP esté caído, y marca error visible en Actions si no hay ninguna fuente.
+- La app muestra la tarjeta «Avisos con la app cerrada» solo si informe.json trae "canal" con una URL https (ver AVISOS.md).
+- Nueva sección «Privacidad y datos» en el Informe.
+- Respeta «reducir movimiento» del sistema (sin animaciones).
+- Icono maskable propio (icon-maskable-512.png) para que Android no recorte el logo.
+- .gitignore para archivos temporales de Python. Service Worker: caché temblo-v9.
+
+----------------------------------------------------------------------
+
 ¿Tembló? Panamá — alertas por cercanía y datos más confiables
 
 - Alertas por cercanía: nuevo selector «Solo si está a menos de» (50/100/200/300 km) en Herramientas > Alertas. Usa la ubicación solo en el teléfono (no se envía ni se guarda). Sin ubicación, la app avisa de todos los sismos que cumplan la magnitud.

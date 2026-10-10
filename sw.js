@@ -1,4 +1,4 @@
-const C='temblo-v8',T='temblo-tiles-v1';
+const C='temblo-v9',T='temblo-tiles-v1';
 const SHELL=['./','index.html','manifest.json','informe.json','icon-192.png','icon-512.png'];
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(C).then(c=>Promise.all(SHELL.map(u=>c.add(u).catch(()=>{})))))});
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C&&x!==T).map(x=>caches.delete(x)))).then(()=>self.clients.claim())));

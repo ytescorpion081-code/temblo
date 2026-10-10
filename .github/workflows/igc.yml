@@ -1,4 +1,4 @@
-name: Actualizar listado IGC-UP
+name: Actualizar listado IGC-UP y avisos
 on:
   schedule:
     - cron: "*/5 * * * *"
@@ -18,9 +18,22 @@ jobs:
           python-version: "3.12"
       - name: Descargar listado del IGC-UP
         run: python igc.py
+      # Avisos opcionales por Telegram (no hacen nada si no existen los secretos).
+      # Se ejecutan aunque falle el IGC-UP, para no perder avisos de USGS/EMSC.
+      - name: Avisos por Telegram (opcional)
+        if: always()
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT: ${{ secrets.TELEGRAM_CHAT }}
+          AVISO_MAGNITUD: ${{ vars.AVISO_MAGNITUD }}
+          AVISO_EDAD_MIN: ${{ vars.AVISO_EDAD_MIN }}
+        run: python avisos.py
       - name: Guardar si cambió
+        if: always()
         run: |
           git config user.name "igc-bot"
           git config user.email "igc-bot@users.noreply.github.com"
-          git add igc.json igc_estado.json
-          git diff --cached --quiet || (git commit -m "Actualizar igc.json" && git pull --rebase -q && git push)
+          for f in igc.json igc_estado.json avisos_estado.json; do
+            if [ -f "$f" ]; then git add "$f"; fi
+          done
+          git diff --cached --quiet || (git commit -m "Actualizar datos (bot)" && git pull --rebase -q && git push)
