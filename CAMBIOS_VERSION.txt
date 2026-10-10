@@ -1,0 +1,20 @@
+¿Tembló? Panamá — versión mejorada
+
+Cambios incluidos:
+- Evita avisos sonoros/notificaciones de eventos sísmicos de más de 30 minutos cuando llegan por WebSocket o por la actualización periódica.
+- Valida magnitud, hora y coordenadas antes de aceptar un evento en tiempo real.
+- Actualiza la versión de caché del Service Worker para que el navegador instale el nuevo paquete.
+- Reemplaza el informe con cifras de daños no verificadas por una guía preventiva con enlaces a fuentes oficiales y catálogos sísmicos.
+- Mantiene los archivos de la app y sus funciones existentes.
+
+Cómo publicar en GitHub Pages:
+1. Guarda una copia de tu repositorio actual.
+2. Descomprime este ZIP.
+3. En el repositorio temblo, reemplaza index.html, sw.js e informe.json por los de esta carpeta.
+4. Haz commit de los cambios.
+5. Abre la web desde el teléfono o computadora y actualiza. Si ves la versión anterior, cierra la app instalada y vuelve a abrirla después de que cargue la nueva versión.
+
+Limitaciones:
+- Los catálogos públicos pueden tardar en publicar o revisar eventos.
+- Las notificaciones web no están garantizadas si el navegador está cerrado, el dispositivo no tiene conexión o el sistema limita la ejecución en segundo plano.
+- Esta app es informativa y no sustituye los avisos de SINAPROC ni del Instituto de Geociencias de la Universidad de Panamá.
