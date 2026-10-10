@@ -5,7 +5,7 @@
     "minmag": 4,
     "excluir_desde_mag": 7
   },
-  "actualizado": "2026-10-10T15:30:00-05:00",
+  "actualizado": "2026-10-10T15:40:00-05:00",
   "actualizado_txt": "10 de octubre de 2026 · guía preventiva y resumen en vivo",
   "nota_cabecera": "Resumen automático de los catálogos públicos y guía de preparación. No es un boletín oficial ni un balance de daños: comprueba los eventos y sus magnitudes en las fuentes enlazadas.",
   "kpis": [
@@ -118,7 +118,7 @@
       ]
     }
   ],
-  "advertencia": "¿Tembló? Panamá es una herramienta informativa independiente. No es un sistema oficial de alerta temprana y no garantiza notificaciones si la página está cerrada, el dispositivo está sin conexión o el navegador limita su actividad.",
+  "advertencia": "Monitor Sísmico Panamá es una herramienta informativa independiente. No es un sistema oficial de alerta temprana y no garantiza notificaciones si la página está cerrada, el dispositivo está sin conexión o el navegador limita su actividad.",
   "fuentes": [
     [
       "USGS · Últimos sismos",

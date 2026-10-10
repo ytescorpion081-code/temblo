@@ -1,7 +1,7 @@
 {
  "id": "./",
- "name": "¿Tembló? Sismos en Panamá",
- "short_name": "¿Tembló?",
+ "name": "Monitor Sísmico Panamá",
+ "short_name": "Sismos PA",
  "description": "Sismos en Panamá en tiempo real, informe del terremoto y plan de emergencia. Funciona sin conexión.",
  "start_url": "./",
  "scope": "./",

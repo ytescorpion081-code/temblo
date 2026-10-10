@@ -1,4 +1,4 @@
-¿Tembló? Panamá — paquete para publicar como app
+Monitor Sísmico Panamá — paquete para publicar como app
 
 1. Sube TODOS estos archivos juntos a un hosting gratis con https:
    - Netlify Drop: app.netlify.com/drop (arrastra la carpeta o el zip)

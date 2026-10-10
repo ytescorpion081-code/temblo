@@ -1,3 +1,8 @@
+Nuevo nombre: «Monitor Sísmico Panamá» (antes «¿Tembló?»). Nombre corto en el teléfono: «Sismos PA».
+Cambia el nombre visible, el manifiesto, los mensajes SMS/notificaciones y la vista previa al compartir. La dirección del sitio sigue siendo /temblo/ (cambiarla rompería los enlaces ya compartidos y la app instalada). Service Worker: caché temblo-v10.
+
+----------------------------------------------------------------------
+
 ¿Tembló? Panamá — avisos con la app cerrada (opcional), privacidad y pulido
 
 - Avisos por Telegram (opcional): avisos.py publica en un canal cuando hay un sismo nuevo en la región. No hace nada hasta que configures los secretos TELEGRAM_TOKEN y TELEGRAM_CHAT; los pasos están en AVISOS.md. Llegan después del sismo y pueden tardar varios minutos: no es una alerta temprana.
