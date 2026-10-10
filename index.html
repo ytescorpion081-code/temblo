@@ -9,6 +9,16 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="¿Tembló?">
 <title>¿Tembló? · Sismos en Panamá en vivo</title>
+<meta name="description" content="Sismos en Panamá en tiempo real con mapa, alertas por magnitud y cercanía, plan de emergencia y herramientas que funcionan sin internet.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_PA">
+<meta property="og:site_name" content="¿Tembló? Panamá">
+<meta property="og:title" content="¿Tembló? · Sismos en Panamá en vivo">
+<meta property="og:description" content="Mapa de sismos en tiempo real, alertas y plan de emergencia. Funciona sin conexión.">
+<meta property="og:url" content="https://ytescorpion081-code.github.io/temblo/">
+<meta property="og:image" content="https://ytescorpion081-code.github.io/temblo/icon-512.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="icon-192.png">
 <link rel="manifest" href="manifest.json">
 <style>
 :root{--bg:#f2f4f8;--card:#fff;--tx:#0f172a;--mu:#64748b;--bd:#e2e8f0;--ac:#2563eb;--chip:#e8eefb}
@@ -31,6 +41,8 @@ main{margin-top:-40px;padding:0 14px calc(28px + env(safe-area-inset-bottom))}
 .card{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:14px;margin-bottom:12px;box-shadow:0 6px 20px rgba(2,8,23,.06)}
 #banner{display:none;background:#b91c1c;color:#fff;border-radius:16px;padding:13px 15px;margin-bottom:12px;font-weight:600;animation:bl 1s 4}
 @keyframes bl{50%{opacity:.55}}
+#igcw{display:none;background:#fff7e6;color:#7a4300;border:1px solid #f5c27a;border-radius:16px;padding:12px 14px;margin-bottom:12px;font-size:13.5px}
+#igcw a{color:inherit;font-weight:700}
 #err{display:none;background:#fff7e6;color:#7a4300;border:1px solid #f5c27a;border-radius:16px;padding:12px 14px;margin-bottom:12px;font-size:13.5px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
 .stats b{display:block;font-size:24px;font-weight:800}.stats span{font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:.5px}
@@ -97,6 +109,7 @@ main{padding-bottom:calc(88px + env(safe-area-inset-bottom))!important}
 <main class="wrap">
  <div id="banner" role="alert"></div>
  <div id="err" role="status"></div>
+ <div id="igcw" role="status"></div>
  <section class="tab on" data-tab="inicio">
 <div class="card stats">
   <div><b id="s1">–</b><span>Sismos</span></div><div><b id="s2">–</b><span>Mayor</span></div><div><b id="s3">–</b><span>Más reciente</span></div>
@@ -131,6 +144,8 @@ main{padding-bottom:calc(88px + env(safe-area-inset-bottom))!important}
  <p class="note">Deja el teléfono quieto sobre una superficie firme (mesa o piso). Marca al instante cualquier movimiento leve que sienta el propio teléfono, sin internet. No mide la magnitud real de un sismo y puede confundirse con pasos, vibraciones o música fuerte.</p></div>
 <div class="card"><div class="lbl">Alertas</div>
  <div class="row"><span>Avisar desde magnitud</span><select id="umbral"><option value="0">Todas</option><option value="3">M 3+</option><option value="4">M 4+</option><option value="5">M 5+</option></select></div>
+ <div class="row"><span>Solo si está a menos de</span><select id="radiokm" aria-label="Distancia máxima para avisar"><option value="0">Cualquier distancia</option><option value="50">50 km</option><option value="100">100 km</option><option value="200">200 km</option><option value="300">300 km</option></select></div>
+ <p class="note" id="radionote" style="margin:0 0 10px"></p>
  <button class="al" id="shake">📳 Activar detector de sacudidas</button>
  <button class="al sec" id="test">🔊 Probar alarma</button>
  <button class="al sec" id="wake">💡 Mantener pantalla encendida</button>
@@ -187,7 +202,7 @@ main{padding-bottom:calc(88px + env(safe-area-inset-bottom))!important}
 
 <script>
 const B={la1:5.5,la2:10.5,lo1:-84,lo2:-76.5},$=id=>document.getElementById(id);
-let vistos=new Set(),primera=true,activas=false,ctx,datos=[],sel=-1,mm='0',dd='7',lastCarga=0,miPos=null;
+let vistos=new Set(),primera=true,activas=false,ctx,datos=[],sel=-1,mm='0',dd='7',lastCarga=0,miPos=null,radiokm=0,igcOk=null;
 const col=m=>m>=6?'#991b1b':m>=5?'#ef4444':m>=4?'#f97316':m>=3?'#eab308':'#22c55e';
 const niv=m=>m>=6?'FUERTE':m>=5?'MODERADO':m>=4?'LIGERO':m>=3?'MENOR':'MICRO';
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -223,13 +238,25 @@ async function emsc(d,m,l=300){
 }
 /* IGC-UP: listado local que publica igc.json (lo genera .github/workflows/igc.yml) */
 async function igc(d,m){
- const j=await tj('igc.json?'+Math.floor(Date.now()/6e4));
+ const k=Math.floor(Date.now()/6e4);
+ const [j,es]=await Promise.all([tj('igc.json?'+k),tj('igc_estado.json?'+k).catch(()=>null)]);
+ igcOk=es&&Number.isFinite(es.ok)?es.ok:null;
  if(!Array.isArray(j))throw new Error('formato inválido');
  const ini=Date.now()-d*864e5;
  return j.filter(q=>q&&Number.isFinite(q.mag)&&Number.isFinite(q.t)&&Number.isFinite(q.la)&&Number.isFinite(q.lo)&&q.t>=ini&&q.mag>=m&&q.la>=B.la1&&q.la<=B.la2&&q.lo>=B.lo1&&q.lo<=B.lo2)
   .map(q=>({id:String(q.id),mag:q.mag,place:q.place,t:q.t,url:q.url,lo:q.lo,la:q.la,z:q.z||0,src:'IGC-UP'}));
 }
-function unir(a){a.sort((x,y)=>y.t-x.t);const o=[];for(const q of a){if(!o.some(r=>Math.abs(r.t-q.t)<120000&&Math.abs(r.la-q.la)<.7&&Math.abs(r.lo-q.lo)<.7))o.push(q)}return o}
+/* Un mismo sismo puede venir de varios catálogos: se deja el dato local (IGC-UP > USGS > EMSC) y se recuerdan las otras magnitudes */
+const PRI=s=>String(s).startsWith('IGC')?0:String(s).startsWith('USGS')?1:2;
+const mismo=(r,q)=>Math.abs(r.t-q.t)<120000&&Math.abs(r.la-q.la)<.5&&Math.abs(r.lo-q.lo)<.5&&Math.abs(r.mag-q.mag)<=1;
+function sumar(w,src,mag){const b=String(src).replace(' ⚡','');if(b===String(w.src).replace(' ⚡',''))return;w.otros=w.otros||[];if(!w.otros.some(o=>o.src===b))w.otros.push({src:b,mag})}
+function unir(a){a.sort((x,y)=>y.t-x.t);const o=[];
+ for(const q of a){const i=o.findIndex(r=>mismo(r,q));
+  if(i<0){o.push(q);continue}
+  const r=o[i],w=PRI(q.src)<PRI(r.src)?q:r,l=w===q?r:q;
+  sumar(w,l.src,l.mag);(l.otros||[]).forEach(x=>sumar(w,x.src,x.mag));o[i]=w}
+ return o.sort((x,y)=>y.t-x.t)}
+function otras(q){return q.otros&&q.otros.length?`<p>Otras fuentes: ${q.otros.map(o=>esc(o.src)+' M '+Number(o.mag).toFixed(1)).join(' · ')}</p>`:''}
 
 function pintar(qs){
  $('s1').textContent=qs.length;
@@ -238,7 +265,7 @@ function pintar(qs){
  if(qs.length){const q=qs[0];
   $('last').innerHTML=`<div class="ring" style="border-color:${col(q.mag)}"><b>${q.mag.toFixed(1)}</b><small>${niv(q.mag)}</small></div><div><h2>Último sismo</h2><p class="pl">${esc(lugar(q.place))}</p><p class="tm">${hace(q.t)} · prof. ${Math.round(q.z)} km${dist(q)}</p></div>`}
  else $('last').innerHTML='<div class="ring" style="border-color:#22c55e"><b>✓</b><small>CALMA</small></div><div><h2>Último sismo</h2><p class="pl">Sin sismos en este período</p></div>';
- $('lista').innerHTML=qs.length?qs.map((q,i)=>`<div class="q${i?'':' f'}" data-i="${i}" role="button" tabindex="0" aria-label="Ver en el mapa: magnitud ${q.mag.toFixed(1)}, ${esc(lugar(q.place))}"><div class="m" style="background:${col(q.mag)}">${q.mag.toFixed(1)}<small>${niv(q.mag)}</small></div><div><h3>${esc(lugar(q.place))}</h3><p>${hace(q.t)} · ${new Date(q.t).toLocaleString('es-PA',{dateStyle:'medium',timeStyle:'short'})}</p><p>Prof. ${Math.round(q.z)} km${dist(q)}<span class="tag">${q.src}</span> <a href="${esc(urlOk(q.url))}" target="_blank" rel="noopener">Detalle ›</a></p></div></div>`).join(''):'<p style="color:var(--mu);margin:4px 0">No hay sismos con estos filtros 🎉</p>';
+ $('lista').innerHTML=qs.length?qs.map((q,i)=>`<div class="q${i?'':' f'}" data-i="${i}" role="button" tabindex="0" aria-label="Ver en el mapa: magnitud ${q.mag.toFixed(1)}, ${esc(lugar(q.place))}"><div class="m" style="background:${col(q.mag)}">${q.mag.toFixed(1)}<small>${niv(q.mag)}</small></div><div><h3>${esc(lugar(q.place))}</h3><p>${hace(q.t)} · ${new Date(q.t).toLocaleString('es-PA',{dateStyle:'medium',timeStyle:'short'})}</p><p>Prof. ${Math.round(q.z)} km${dist(q)}<span class="tag">${q.src}</span> <a href="${esc(urlOk(q.url))}" target="_blank" rel="noopener">Detalle ›</a></p>${otras(q)}</div></div>`).join(''):'<p style="color:var(--mu);margin:4px 0">No hay sismos con estos filtros 🎉</p>';
  dibujar(qs);
 }
 const CK='tp_cache_v2';
@@ -321,14 +348,16 @@ async function cargar(){
  const k=mm+'|'+dd;
  if(primera&&!datos.length){const c=leer(k);if(c){datos=c.d;pintar(datos);$('st').textContent='Datos guardados · actualizando…'}}
  lastCarga=Date.now();
- const r=await Promise.allSettled([usgs(dd,mm),emsc(dd,mm),igc(dd,mm)]),ok=r.filter(x=>x.status==='fulfilled'),nom=['USGS','EMSC','IGC-UP']; if(!ok.length){const c=leer(k);$('dot').className='dot off';
+ const r=await Promise.allSettled([usgs(dd,mm),emsc(dd,mm),igc(dd,mm)]),ok=r.filter(x=>x.status==='fulfilled'),nom=['USGS','EMSC','IGC-UP'];
+ {const w=$('igcw'),viejo=igcOk&&navigator.onLine&&Date.now()-igcOk>3*36e5;w.style.display=viejo?'block':'none';
+  if(viejo)w.innerHTML=`⏱️ El listado del IGC‑UP no se actualiza desde ${hace(igcOk)}. Se muestran USGS y EMSC; verifica en <a href="https://sismosgeociencias.up.ac.pa/" target="_blank" rel="noopener">sismosgeociencias.up.ac.pa</a>.`} if(!ok.length){const c=leer(k);$('dot').className='dot off';
   if(c){datos=c.d;pintar(datos);$('st').textContent='Sin conexión · guardado '+hace(c.t);
    aviso('📴 <b>Sin conexión.</b> Mostrando los últimos datos guardados ('+hace(c.t)+'). Se actualizarán solos cuando vuelva el internet.')}
   else{$('st').textContent='Sin conexión';aviso('📴 <b>Sin conexión y aún no hay datos guardados.</b> Conéctate una vez a internet para descargar los sismos recientes; después podrás verlos sin conexión. '+esc(r.map((x,i)=>nom[i]+': '+(x.reason&&x.reason.message||'error')).join(' · ')))}
   return}
  aviso('');
  datos=unir(ok.flatMap(x=>x.value));guardar(k,datos);P.s('ult',Date.now());offEstado();
- datos.forEach(q=>{if(!yaVisto(q)){marcar(q);if(!primera&&Date.now()-q.t>=-120000&&Date.now()-q.t<=30*60*1000&&q.mag>=umbral)avisar(q)}});
+ datos.forEach(q=>{if(!yaVisto(q)){marcar(q);if(!primera&&Date.now()-q.t>=-120000&&Date.now()-q.t<=30*60*1000&&q.mag>=umbral&&cerca(q))avisar(q)}});
  primera=false;pintar(datos);
  $('dot').className='dot on';$('st').textContent='En vivo · '+new Date().toLocaleTimeString('es-PA',{hour:'2-digit',minute:'2-digit'})+(ok.length<r.length?` (${ok.length} de ${r.length} fuentes)`:'')+(wsOk?' ⚡':'');
 }
@@ -337,16 +366,23 @@ chips('cm',v=>mm=v);chips('cd',v=>dd=v);
 function abrirSismo(el){elegir(+el.dataset.i,true);ir('mapa');window.scrollTo({top:0,behavior:'smooth'})}
 $('lista').onclick=e=>{const el=e.target.closest('.q');if(!el||e.target.tagName==='A')return;abrirSismo(el)};
 $('lista').onkeydown=e=>{if(e.key!=='Enter'&&e.key!==' ')return;const el=e.target.closest('.q');if(!el||e.target.tagName==='A')return;e.preventDefault();abrirSismo(el)};
+function cerca(q){return !radiokm||!miPos||km(miPos.la,miPos.lo,q.la,q.lo)<=radiokm}
+function radioNota(){const n=$('radionote');if(!n)return;n.textContent=!radiokm?'':miPos?`Solo avisaré de sismos a ${radiokm} km o menos de tu ubicación. La ubicación se queda en tu teléfono.`:'Para filtrar por distancia activa tu ubicación (botón «Mostrar distancia» en Inicio). Mientras tanto avisaré de todos los sismos que cumplan la magnitud.'}
+function activarLoc(){const b=$('loc');
+ if(!navigator.geolocation){b.textContent='⚠️ Tu navegador no permite ubicación';radioNota();return Promise.resolve()}
+ return new Promise(r=>navigator.geolocation.getCurrentPosition(p=>{miPos={la:p.coords.latitude,lo:p.coords.longitude};b.classList.add('on');b.textContent='✅ Distancia activada (toca para quitar)';pintar(datos);radioNota();r()},()=>{b.textContent='⚠️ No se pudo obtener tu ubicación';radioNota();r()},{timeout:8000,maximumAge:300000}))}
 $('loc').onclick=()=>{const b=$('loc');
- if(miPos){miPos=null;b.classList.remove('on');b.textContent='📍 Mostrar distancia desde mi ubicación';pintar(datos);return}
- if(!navigator.geolocation){b.textContent='⚠️ Tu navegador no permite ubicación';return}
- navigator.geolocation.getCurrentPosition(p=>{miPos={la:p.coords.latitude,lo:p.coords.longitude};b.classList.add('on');b.textContent='✅ Distancia activada (toca para quitar)';pintar(datos)},()=>{b.textContent='⚠️ No se pudo obtener tu ubicación'},{timeout:8000,maximumAge:300000})};
+ if(miPos){miPos=null;b.classList.remove('on');b.textContent='📍 Mostrar distancia desde mi ubicación';pintar(datos);radioNota();return}
+ activarLoc()};
 $('alerta').onclick=async()=>{sonido();if('Notification' in window){try{activas=(await Notification.requestPermission())==='granted'}catch(e){}}
  const b=$('alerta');b.classList.add('on');b.textContent=activas?'✅ Alertas activas':'✅ Aviso en pantalla y sonido activos'};
 
 /* ===== Herramientas extra ===== */
 const P={g(k,d){try{const v=localStorage.getItem('tp_'+k);return v===null?d:JSON.parse(v)}catch(e){return d}},s(k,v){try{localStorage.setItem('tp_'+k,JSON.stringify(v))}catch(e){}}};
 let umbral=+P.g('umbral',0),shakeOn=false,lastM=null,hits=[],cool=0;
+radiokm=+P.g('radiokm',0);$('radiokm').value=String(radiokm);
+$('radiokm').onchange=e=>{radiokm=+e.target.value;P.s('radiokm',radiokm);radioNota();if(radiokm&&!miPos)activarLoc()};
+radioNota();try{if(radiokm&&navigator.permissions)navigator.permissions.query({name:'geolocation'}).then(p=>{if(p.state==='granted')activarLoc()}).catch(()=>{})}catch(e){}
 $('umbral').value=String(umbral);$('umbral').onchange=e=>{umbral=+e.target.value;P.s('umbral',umbral)};
 $('test').onclick=()=>{sonido();try{navigator.vibrate&&navigator.vibrate([300,150,300])}catch(e){}const b=$('banner');b.style.display='block';b.textContent='🔊 Prueba de alarma: si la escuchaste, tus alertas funcionan.';setTimeout(()=>b.style.display='none',5000)};
 function mov(e){const a=e.accelerationIncludingGravity;if(!a||a.x==null)return;
@@ -448,7 +484,7 @@ function ingresar(q){
  if(!yaVisto(q)){
    marcar(q);
    // No alertar por eventos históricos que llegan al reconectar.
-   if(!primera&&edad<=30*60*1000&&q.mag>=umbral)avisar(q);
+   if(!primera&&edad<=30*60*1000&&q.mag>=umbral&&cerca(q))avisar(q);
  }
  pintar(datos);guardar(mm+'|'+dd,datos)}
 function conectarWS(){
