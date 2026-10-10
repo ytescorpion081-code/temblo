@@ -123,6 +123,18 @@ button{touch-action:manipulation}
   <li><b>iPhone (Safari):</b> Compartir → Agregar a pantalla de inicio.</li>
   <li>Ábrela una vez con internet para que guarde el mapa y los datos.</li></ul></details>
 </div>
+<div class="card" id="radioc"><div class="lbl">Radio y señales de auxilio</div>
+ <details open><summary>📻 Radio de emergencia (sin internet)</summary><ul>
+  <li><b>Radio a pilas o de manivela:</b> es lo más seguro. Guárdala en tu mochila con pilas de repuesto. La radio del carro también sirve.</li>
+  <li><b>Radio FM del teléfono:</b> algunos Android la traen. Conecta audífonos con cable (hacen de antena) y abre la app de Radio FM del teléfono. Los iPhone no traen radio FM.</li>
+  <li><b>Qué sintonizar:</b> emisoras de noticias locales, que transmiten avisos oficiales en emergencias. Pregunta a Sinaproc cuáles y anótalas aquí.</li></ul>
+  <input id="radio" placeholder="Mis emisoras (frecuencia y nombre)"></details>
+ <details><summary>🆘 Señales de auxilio</summary>
+  <button class="al" id="sirena">🚨 Sirena</button>
+  <button class="al sec" id="sos">🔦 Destellos SOS (pantalla)</button>
+  <button class="al sec" id="luz">💡 Linterna (pantalla blanca)</button>
+  <p class="note">Úsalas solo si necesitas que te encuentren: gastan batería y la sirena suena fuerte. No uses los destellos si eres sensible a luces intermitentes. Funcionan sin internet.</p></details>
+</div>
 <div class="card"><div class="lbl">Plan de emergencia</div>
  <details open><summary>Avisar «Estoy bien»</summary>
   <input id="tels" type="tel" placeholder="Teléfonos de tus contactos, separados por coma">
@@ -377,6 +389,27 @@ let dip=null;addEventListener('beforeinstallprompt',e=>{e.preventDefault();dip=e
 $('inst').onclick=async()=>{if(!dip)return;dip.prompt();try{await dip.userChoice}catch(e){}dip=null;$('inst').style.display='none'};
 try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
 offEstado();
+/* ===== Radio y señales de auxilio (sin internet) ===== */
+$('radio').value=P.g('radio','');$('radio').onchange=e=>P.s('radio',e.target.value);
+let sir=null,sosT=null,torchS=null;
+function sirenaOff(){if(sir){clearInterval(sir.iv);try{sir.o.stop()}catch(e){}sir=null}}
+$('sirena').onclick=()=>{const b=$('sirena');
+ if(sir){sirenaOff();b.textContent='🚨 Sirena';b.classList.remove('on');return}
+ try{ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();ctx.resume&&ctx.resume();
+  const o=ctx.createOscillator(),g=ctx.createGain();o.type='square';g.gain.value=.5;o.connect(g);g.connect(ctx.destination);o.frequency.value=900;o.start();
+  let f=false;const iv=setInterval(()=>{f=!f;o.frequency.setValueAtTime(f?900:600,ctx.currentTime)},450);sir={o,iv};
+  b.textContent='⏹ Detener sirena';b.classList.add('on')}catch(e){b.textContent='⚠️ No se pudo activar el sonido'}};
+function overlay(color){let o=$('ov');
+ if(!o){o=document.createElement('div');o.id='ov';o.style.cssText='position:fixed;inset:0;z-index:9999;display:flex;align-items:flex-end;justify-content:center;padding:28px;color:#777;font:600 14px system-ui,sans-serif';o.textContent='Toca para cerrar';o.onclick=cerrarOv;document.body.appendChild(o)}
+ o.style.background=color;o.style.display='flex';return o}
+function soltarLuz(){if(torchS){torchS.getTracks().forEach(t=>t.stop());torchS=null}}
+function cerrarOv(){clearTimeout(sosT);sosT=null;const o=$('ov');if(o)o.style.display='none';soltarLuz()}
+$('sos').onclick=()=>{const o=overlay('#000'),U=220,seq=[];
+ '... --- ...'.split(' ').forEach(l=>{[...l].forEach(c=>{seq.push([1,c==='.'?U:3*U]);seq.push([0,U])});seq.push([0,2*U])});seq.push([0,4*U]);
+ let i=0;(function paso(){const x=seq[i%seq.length];o.style.background=x[0]?'#fff':'#000';i++;sosT=setTimeout(paso,x[1])})()};
+$('luz').onclick=async()=>{overlay('#fff');let s=null;
+ try{s=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}});await s.getVideoTracks()[0].applyConstraints({advanced:[{torch:true}]});torchS=s}
+ catch(e){if(s)s.getTracks().forEach(t=>t.stop())}};
 mkFondo();dibujar([]);iniciarMapa();cargarInforme();conectarWS();if(navigator.onLine)setModo('det');
 window.addEventListener('online',cargar);
 window.addEventListener('offline',()=>{$('dot').className='dot off';$('st').textContent='Sin conexión'});
