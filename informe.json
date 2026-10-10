@@ -1,44 +1,57 @@
 {
- "actualizado": "2026-10-09T20:42:00-05:00",
- "actualizado_txt": "9 de octubre de 2026, noche",
- "nota_cabecera": "Viernes 9/10/2026, 12:56 hora local. Balance preliminar compilado de Sinaproc, USGS, IGC‑UP y prensa. Cifras sujetas a cambio.",
+ "actualizado": "2026-10-10T09:30:00-05:00",
+ "actualizado_txt": "10 de octubre de 2026",
+ "nota_cabecera": "Viernes 9/10/2026, 12:56 hora local. Balance preliminar compilado de Sinaproc, COE, USGS, IGC‑UP y prensa. Cifras sujetas a cambio: los conteos siguen subiendo.",
  "kpis": [
   [
    "0",
-   "Fallecidos (prelim.)"
+   "Fallecidos reportados"
   ],
   [
-   "0",
-   "Desaparecidos (prelim.)"
+   "27",
+   "Heridos leves (Sinaproc)"
   ],
   [
-   "15+",
-   "Lesionados confirmados*"
+   "147",
+   "Réplicas hasta la noche del 9 (COE)"
   ],
   [
-   "80+",
-   "Réplicas contadas por Sinaproc"
+   "188",
+   "Centros educativos afectados"
+  ],
+  [
+   "136",
+   "Viviendas afectadas (prelim.)"
   ],
   [
    "6",
    "Estaciones de bomberos con daños"
-  ],
-  [
-   "100+",
-   "Viviendas afectadas en el Casco Antiguo (prelim.)"
   ]
  ],
- "nota": "*15 estudiantes con lesiones menores en Coclé y 1 persona rescatada en Aguadulce. No hay total nacional de lesionados. La CSS informó que no hubo pacientes ni trabajadores lesionados en sus instalaciones.",
+ "nota": "Los números cambiaron respecto al primer balance (15 estudiantes lesionados; 7 a 12 escuelas) porque los conteos siguen creciendo. Algunas cifras vienen de medios que citan a Sinaproc y no del comunicado original.",
  "secciones": [
   {
-   "t": "El sismo: magnitud y epicentro",
+   "t": "Balance más reciente (10 de octubre)",
    "open": true,
+   "items": [
+    "**Heridos:** 27 personas con heridas leves, según Sinaproc (La República). No se reportan víctimas mortales en los balances más recientes.",
+    "**Réplicas:** 147 hasta la noche del 9 de octubre, según el director del Centro de Operaciones de Emergencia (COE), René García.",
+    "**Afectaciones contadas** (según TeleSur, vía La República): 136 viviendas, 188 centros educativos, 14 establecimientos de salud, 30 edificios públicos, 20 iglesias y 11 hoteles.",
+    "Sinaproc presentó un balance preliminar con 188 escuelas afectadas, personas lesionadas y daños en varias provincias (Telemetro).",
+    "Se suspendieron clases y funciones de entidades públicas (Telemetro). El Canal de Panamá siguió operando con normalidad, según su administradora, Ilya Marotta.",
+    "Varios países ofrecieron asistencia (El Tiempo). La Alcaldía de Panamá anunció un centro de acopio (Telemetro)."
+   ]
+  },
+  {
+   "t": "El sismo: magnitud y epicentro",
+   "open": false,
    "items": [
     "**USGS:** magnitud 7.7 (primero 8.0, luego 7.6), profundidad 10 km, a unos 10 km al suroeste de Pitaloza Arriba (Herrera), cerca de Tonosí.",
     "**IGC‑UP (Universidad de Panamá):** magnitud 7.2, a 39 km al noroeste de Tonosí.",
     "Las dos cifras difieren porque cada institución usa redes y métodos distintos.",
     "**Réplicas:** 5.8, 5.5 y 5.2 (USGS) y hasta 6.6 (EFE y CNN). Una de 6.9 la menciona un solo medio y no está confirmada.",
-    "Último sismo con daños generalizados en Panamá antes de este: 1991 (AP)."
+    "Último sismo con daños generalizados en Panamá antes de este: 1991 (AP).",
+    "**IGC‑UP:** reportó una réplica inmediata de magnitud preliminar 6.0 y un sismo de magnitud 5.4, a 23 km al sureste de Tonosí (1:50 p. m., profundidad 18 km)."
    ]
   },
   {
@@ -62,7 +75,7 @@
    "items": [
     "**Agua potable:** varias plantas potabilizadoras dañadas; la de Federico Guardia Conte (Chilibre) operaba al 70% de su capacidad, afectando a Panamá y San Miguelito.",
     "**Hospitales:** 2 con daños leves y evacuaciones preventivas. La CSS mantiene urgencias abiertas las 24 horas.",
-    "**Escuelas:** Meduca habló de 7 afectadas y el listado de Sinaproc incluye 12. No hay cifra definitiva.",
+    "**Escuelas:** 188 centros educativos afectados según el balance más reciente de Sinaproc (el primer balance hablaba de 7 a 12).",
     "**Aeropuerto de Tocumen:** suspendió operaciones y las reanudó sin daños de consideración; vuelos desviados a Colombia y 7 a Costa Rica.",
     "**Metro:** servicio interrumpido temporalmente en las dos líneas. **Canal de Panamá:** tránsito normal.",
     "**Electricidad:** se reportaron cortes de energía.",
@@ -73,9 +86,8 @@
    "t": "Lo que todavía no se sabe",
    "open": false,
    "items": [
-    "Número total de lesionados.",
-    "Viviendas dañadas o destruidas en todo el país (no hay cifra nacional).",
-    "Número exacto de escuelas afectadas.",
+    "Número final de heridos (el conteo sigue creciendo).",
+    "Viviendas dañadas o destruidas en todo el país (136 es una cifra preliminar).",
     "Monto económico de los daños: ninguna fuente oficial lo ha publicado.",
     "Estado de comunidades aisladas, como Tonosí."
    ]
@@ -83,6 +95,34 @@
  ],
  "advertencia": "Una página de CNN en Español menciona 335 muertos y 4,516 heridos, pero ese párrafo se refiere a un sismo en Chocó, Colombia. No corresponde a Panamá.",
  "fuentes": [
+  [
+   "Ministerio de Gobierno: Sinaproc realiza monitoreo tras el sismo (comunicado)",
+   "https://www.mingob.gob.pa/sinaproc-realiza-monitoreo-tras-sismo-percibido-en-panama/"
+  ],
+  [
+   "Gestión: Temblor en Panamá hoy, 10 de octubre: último sismo",
+   "https://gestion.pe/mix/respuestas/temblor-en-panama-en-vivo-hoy-9-y-10-de-octubre-hora-exacta-magnitud-y-donde-fue-el-ultimo-temblor-segun-el-ifc-terremoto-usgs-nnda-nnrt-noticia/"
+  ],
+  [
+   "El Tiempo: Terremoto de 7,7 sacude Panamá: daños y ayuda internacional",
+   "https://www.eltiempo.com/mundo/latinoamerica/un-terremoto-de-magnitud-7-7-sacude-panama-provoca-danos-materiales-y-genera-alarma-entre-la-poblacion-varios-paises-ofrecen-asistencia-3592685"
+  ],
+  [
+   "Pulzo: Panamá entrega parte de tranquilidad: no hay víctimas fatales",
+   "https://www.pulzo.com/mundo/terremoto-panama-autoridades-confirman-que-no-hay-victimas-fatales-PP5326897"
+  ],
+  [
+   "La República (en vivo): Terremoto en Panamá EN VIVO: réplicas y zonas afectadas",
+   "https://larepublica.pe/mundo/2026/10/09/terremoto-en-panama-en-vivo-replicas-zonas-afectadas-y-ultimas-noticias-de-sismos-segun-el-igp-717318"
+  ],
+  [
+   "La República: Terremoto deja 27 heridos y colapso de edificios",
+   "https://larepublica.pe/mundo/2026/10/10/el-terremoto-en-panama-deja-27-heridos-y-provoca-el-colapso-de-edificios-y-danos-en-carreteras-de-varias-provincias-629670"
+  ],
+  [
+   "Telemetro (TV): EN VIVO: actualización de afectaciones y anuncios de autoridades",
+   "https://www.telemetro.com/nacionales/en-vivo-sismo-panama-suspenden-clases-y-funciones-entidades-publicas-n6094639"
+  ],
   [
    "La Estrella de Panamá (Sinaproc)",
    "https://www.laestrella.com.pa/panama/nacional/sinaproc-confirma-que-no-hay-victimas-fatales-tras-terremoto-de-72-en-panama-IC26359625"
@@ -122,6 +162,43 @@
   [
    "Sinaproc (sinaproc.gob.pa) · IGC‑UP (igc.up.ac.pa)",
    ""
+  ]
+ ],
+ "noticias": [
+  [
+   "EN VIVO: actualización de afectaciones y anuncios de autoridades",
+   "Telemetro (TV)",
+   "https://www.telemetro.com/nacionales/en-vivo-sismo-panama-suspenden-clases-y-funciones-entidades-publicas-n6094639"
+  ],
+  [
+   "Terremoto deja 27 heridos y colapso de edificios",
+   "La República",
+   "https://larepublica.pe/mundo/2026/10/10/el-terremoto-en-panama-deja-27-heridos-y-provoca-el-colapso-de-edificios-y-danos-en-carreteras-de-varias-provincias-629670"
+  ],
+  [
+   "Terremoto en Panamá EN VIVO: réplicas y zonas afectadas",
+   "La República (en vivo)",
+   "https://larepublica.pe/mundo/2026/10/09/terremoto-en-panama-en-vivo-replicas-zonas-afectadas-y-ultimas-noticias-de-sismos-segun-el-igp-717318"
+  ],
+  [
+   "Panamá entrega parte de tranquilidad: no hay víctimas fatales",
+   "Pulzo",
+   "https://www.pulzo.com/mundo/terremoto-panama-autoridades-confirman-que-no-hay-victimas-fatales-PP5326897"
+  ],
+  [
+   "Terremoto de 7,7 sacude Panamá: daños y ayuda internacional",
+   "El Tiempo",
+   "https://www.eltiempo.com/mundo/latinoamerica/un-terremoto-de-magnitud-7-7-sacude-panama-provoca-danos-materiales-y-genera-alarma-entre-la-poblacion-varios-paises-ofrecen-asistencia-3592685"
+  ],
+  [
+   "Temblor en Panamá hoy, 10 de octubre: último sismo",
+   "Gestión",
+   "https://gestion.pe/mix/respuestas/temblor-en-panama-en-vivo-hoy-9-y-10-de-octubre-hora-exacta-magnitud-y-donde-fue-el-ultimo-temblor-segun-el-ifc-terremoto-usgs-nnda-nnrt-noticia/"
+  ],
+  [
+   "Sinaproc realiza monitoreo tras el sismo (comunicado)",
+   "Ministerio de Gobierno",
+   "https://www.mingob.gob.pa/sinaproc-realiza-monitoreo-tras-sismo-percibido-en-panama/"
   ]
  ]
 }
