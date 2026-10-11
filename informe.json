@@ -1,141 +1,638 @@
 {
-  "version": 2,
-  "replicas": {
-    "desde": "2026-10-09T17:56:00",
-    "minmag": 4,
-    "excluir_desde_mag": 7
-  },
-  "actualizado": "2026-10-10T15:40:00-05:00",
-  "actualizado_txt": "10 de octubre de 2026 · guía preventiva y resumen en vivo",
-  "nota_cabecera": "Resumen automático de los catálogos públicos y guía de preparación. No es un boletín oficial ni un balance de daños: comprueba los eventos y sus magnitudes en las fuentes enlazadas.",
-  "kpis": [
-    [
-      "USGS",
-      "Catálogo internacional"
-    ],
-    [
-      "EMSC",
-      "Catálogo europeo"
-    ],
-    [
-      "IGC-UP",
-      "Referencia local"
-    ],
-    [
-      "SINAPROC",
-      "Avisos oficiales"
-    ]
+ "actualizado": "2026-10-10T20:00:00-05:00",
+ "actualizado_txt": "10 de octubre de 2026",
+ "nota_cabecera": "Terremoto del viernes 9/10/2026, 12:56 hora local. Balance preliminar compilado de Sinaproc, COE, IGC‑UP, USGS, EMSC y prensa. Las cifras siguen cambiando. La pestaña «En vivo» se actualiza sola; las cifras de las demás pestañas las actualiza el administrador.",
+ "nota": "La ausencia de un evento en un catálogo no demuestra que no haya ocurrido un sismo. Los datos preliminares pueden cambiar cuando las instituciones revisan sus cálculos.",
+ "kpis": [
+  [
+   "0",
+   "Fallecidos reportados"
   ],
-  "nota": "La ausencia de un evento en un catálogo no demuestra que no haya ocurrido un sismo. Los datos preliminares pueden cambiar cuando las instituciones revisan sus cálculos.",
-  "secciones": [
+  [
+   "27",
+   "Heridos leves"
+  ],
+  [
+   "147",
+   "Réplicas (COE, noche del 9)"
+  ],
+  [
+   "188",
+   "Escuelas afectadas"
+  ],
+  [
+   "136",
+   "Viviendas afectadas (prelim.)"
+  ],
+  [
+   "6",
+   "Estaciones de bomberos con daños"
+  ]
+ ],
+ "categorias": [
+  {
+   "id": "resumen",
+   "i": "📊",
+   "t": "Resumen",
+   "grupos": [
     {
-      "t": "Qué hacer durante un sismo",
-      "open": true,
-      "items": [
-        "**Agáchate, cúbrete y agárrate.** Protégete bajo una mesa resistente o junto a un mueble bajo y firme.",
-        "Aléjate de ventanas, cristales, estanterías y objetos que puedan caer. No corras hacia las escaleras ni uses ascensores mientras tiembla.",
-        "Si estás afuera, aléjate de edificios, postes, cables y fachadas. Si conduces, detente en un lugar seguro lejos de puentes y líneas eléctricas.",
-        "Si estás en la cama, quédate ahí y protégete la cabeza con la almohada."
+     "t": "Lo más importante",
+     "items": [
+      [
+       "No se reportan víctimas mortales en los balances más recientes.",
+       "Sinaproc",
+       "of"
+      ],
+      [
+       "27 personas con heridas leves; el primer balance hablaba de 15 estudiantes lesionados.",
+       "Sinaproc · La República",
+       "of"
+      ],
+      [
+       "Magnitud del sismo principal: 7.7 según el USGS y 7.2 según el IGC‑UP (cada red usa métodos distintos).",
+       "USGS · IGC‑UP",
+       "ci"
+      ],
+      [
+       "147 réplicas hasta la noche del 9 de octubre, y la cifra sigue subiendo (ver recuadro en vivo).",
+       "COE",
+       "of"
+      ],
+      [
+       "188 centros educativos afectados; el conteo de viviendas, hospitales e iglesias sigue en revisión.",
+       "Sinaproc · TeleSur",
+       "of"
       ]
-    },
-    {
-      "t": "Después del sismo",
-      "open": false,
-      "items": [
-        "Prepárate para posibles réplicas. Revisa si hay heridos y brinda primeros auxilios solo si puedes hacerlo sin ponerte en peligro.",
-        "Si percibes olor a gas, fuego o daños estructurales, aléjate y contacta a los servicios de emergencia. No entres en edificios dañados.",
-        "Usa mensajes de texto en vez de llamadas para dejar las líneas libres, y avisa que estás bien desde la pestaña Plan.",
-        "Sigue los comunicados oficiales de SINAPROC y de las autoridades locales."
-      ]
-    },
-    {
-      "t": "Qué significa la magnitud",
-      "open": false,
-      "items": [
-        "**Menos de 3:** casi nunca se siente; los instrumentos sí lo registran.",
-        "**3 a 3,9:** muchas personas lo sienten, sobre todo cerca del epicentro; los daños son poco comunes.",
-        "**4 a 4,9:** se siente claramente y hace vibrar objetos; puede haber daños leves cerca del epicentro.",
-        "**5 a 5,9:** puede dañar construcciones frágiles o mal construidas en el área cercana.",
-        "**6 o más:** puede causar daños importantes y sentirse a gran distancia. Sigue de inmediato las instrucciones oficiales.",
-        "La magnitud mide la energía del sismo; la intensidad es lo que se siente en cada lugar y depende de la distancia, la profundidad y el tipo de suelo."
-      ]
-    },
-    {
-      "t": "Costa y tsunami",
-      "open": false,
-      "items": [
-        "Si estás cerca de la costa y el temblor es fuerte o dura más de 20 segundos, o ves que el mar se retira de forma inusual, **sube a terreno alto sin esperar un aviso**.",
-        "Mantente en zona alta hasta que las autoridades indiquen que es seguro volver.",
-        "Un sismo pequeño o lejano rara vez genera tsunami, pero sigue siempre los avisos oficiales de SINAPROC."
-      ]
-    },
-    {
-      "t": "En casa, edificio, escuela o con movilidad reducida",
-      "open": false,
-      "items": [
-        "En un edificio no uses el ascensor; cuando pase la sacudida, sal con calma por las escaleras si es seguro.",
-        "En una escuela o lugar con niños, sigue el plan del centro y ayúdalos a protegerse bajo mesas o pupitres.",
-        "Si usas silla de ruedas, ponle el freno y cúbrete la cabeza y el cuello. Si puedes, pide ayuda a quien esté cerca."
-      ]
-    },
-    {
-      "t": "Prepárate antes de que ocurra",
-      "open": false,
-      "items": [
-        "Revisa la pestaña **Plan**: mochila de emergencia, números útiles y mensaje «Estoy bien».",
-        "Acuerda con tu familia un punto de encuentro y un contacto fuera de la zona.",
-        "Guarda copias de tus documentos en una bolsa plástica y en tu teléfono.",
-        "Asegura estantes, televisores y objetos pesados, y ubica las llaves del gas y la electricidad."
-      ]
-    },
-    {
-      "t": "Cómo interpretar los datos en vivo",
-      "open": false,
-      "items": [
-        "La hora del evento es distinta de la hora en que una institución lo publica o revisa.",
-        "Magnitud, profundidad y ubicación pueden cambiar en los primeros minutos. Diferentes instituciones pueden publicar estimaciones distintas.",
-        "El resumen de esta pestaña une y depura los eventos de USGS, EMSC e IGC‑UP; un mismo sismo puede aparecer en varios catálogos con valores algo distintos.",
-        "Esta aplicación no sustituye una alerta oficial, las instrucciones de las autoridades ni una evaluación de daños."
-      ]
-    },
-    {
-      "t": "Evita la desinformación",
-      "open": false,
-      "items": [
-        "Antes de compartir una alerta, comprueba la fuente: SINAPROC, IGC‑UP, USGS o EMSC.",
-        "Desconfía de mensajes que dicen predecir sismos: hoy no es posible saber cuándo ni dónde ocurrirá uno.",
-        "No compartas cifras de daños o víctimas que no tengan fuente oficial."
-      ]
-    },
-    {
-      "t": "Privacidad y datos",
-      "open": false,
-      "items": [
-        "La app no tiene cuentas ni servidor propio: tus ajustes (alertas, contactos, emisoras, mochila de emergencia) se guardan **solo en tu teléfono**.",
-        "La ubicación se usa únicamente si la activas, para calcular distancias o armar el mensaje «Estoy bien». No se envía a ningún servidor de la app; solo viaja en el SMS que tú decides enviar.",
-        "Para mostrar sismos y mapas, la app consulta USGS, EMSC y OpenStreetMap, y el listado del IGC‑UP publicado en este sitio. Como en cualquier página web, esos servicios pueden ver tu dirección IP.",
-        "Los SMS y mensajes salen desde tu propia aplicación de mensajes. Si te unes a un canal de Telegram, aplican las políticas de Telegram."
-      ]
+     ],
+     "open": true
     }
+   ]
+  },
+  {
+   "id": "auto",
+   "i": "🔄",
+   "t": "En vivo",
+   "auto": true
+  },
+  {
+   "id": "sismo",
+   "i": "🌋",
+   "t": "Sismo y réplicas",
+   "grupos": [
+    {
+     "t": "Sismo principal",
+     "items": [
+      [
+       "Hora: viernes 9 de octubre de 2026, 12:56 p. m. (hora local).",
+       "IGC‑UP · USGS",
+       "ci"
+      ],
+      [
+       "**USGS:** magnitud 7.7 (primero 8.0, luego 7.6), profundidad 10 km, a unos 10 km al suroeste de Pitaloza Arriba (Herrera), cerca de Tonosí.",
+       "USGS",
+       "ci"
+      ],
+      [
+       "**IGC‑UP (Universidad de Panamá):** magnitud 7.2 (revisado), a 39 km al noroeste de Tonosí, profundidad 4 km.",
+       "IGC‑UP",
+       "of"
+      ],
+      [
+       "Último sismo con daños generalizados en Panamá antes de este: 1991.",
+       "AP",
+       "pr"
+      ]
+     ],
+     "open": true
+    },
+    {
+     "t": "Réplicas",
+     "items": [
+      [
+       "El listado del IGC‑UP muestra unos 80 sismos posteriores al principal hasta las 11:14 p. m. del 9 de octubre, con magnitudes de 3.4 a 6.9.",
+       "IGC‑UP",
+       "of"
+      ],
+      [
+       "Mayor réplica: M 6.9 a las 3:25 p. m., 25 km al este de Coiba (revisada).",
+       "IGC‑UP",
+       "of"
+      ],
+      [
+       "Otras réplicas fuertes: M 6.1 (1:22 p. m. y 6:12 p. m.), M 6.2 (11:12 p. m.), M 5.7, M 5.6 y varias de M 5.5.",
+       "IGC‑UP",
+       "of"
+      ],
+      [
+       "El USGS reportó réplicas de 5.8, 5.5 y 5.2; al inicio EFE y CNN hablaban de hasta 6.6.",
+       "USGS · EFE · CNN",
+       "ci"
+      ]
+     ],
+     "open": false
+    },
+    {
+     "t": "Tsunami",
+     "items": [
+      [
+       "Hubo alertas iniciales de tsunami en el Pacífico (México, Colombia, Costa Rica, Ecuador y Perú). No pude verificar su estado actual: consulta a Sinaproc.",
+       "Prensa",
+       "nc"
+      ]
+     ],
+     "open": false
+    }
+   ]
+  },
+  {
+   "id": "victimas",
+   "i": "👥",
+   "t": "Víctimas",
+   "grupos": [
+    {
+     "t": "Fallecidos y desaparecidos",
+     "items": [
+      [
+       "Fallecidos: 0 en los balances preliminares más recientes.",
+       "Sinaproc · Pulzo",
+       "of"
+      ],
+      [
+       "Desaparecidos: 0 en el primer informe de Sinaproc.",
+       "Sinaproc",
+       "of"
+      ]
+     ],
+     "open": true
+    },
+    {
+     "t": "Heridos",
+     "items": [
+      [
+       "27 personas con heridas leves.",
+       "Sinaproc · La República",
+       "of"
+      ],
+      [
+       "15 estudiantes de la Escuela Alberto Zúñiga (Coclé) evacuados con lesiones menores.",
+       "Sinaproc",
+       "of"
+      ],
+      [
+       "1 persona rescatada en el mercado municipal de Aguadulce.",
+       "Sinaproc",
+       "of"
+      ],
+      [
+       "La Caja de Seguro Social informó que no hubo pacientes ni trabajadores lesionados en sus instalaciones.",
+       "ContraPunto",
+       "pr"
+      ],
+      [
+       "No se reportan heridos entre bomberos ni policías, aunque algunos cuarteles sufrieron daños.",
+       "Prensa",
+       "pr"
+      ]
+     ],
+     "open": false
+    }
+   ]
+  },
+  {
+   "id": "danos",
+   "i": "🏚️",
+   "t": "Daños por provincia",
+   "grupos": [
+    {
+     "t": "Coclé",
+     "items": [
+      [
+       "Hotel Dos Continentes (Penonomé): colapso parcial, sin heridos dentro.",
+       "Sinaproc",
+       "of"
+      ],
+      [
+       "Fachadas comerciales caídas y daños en iglesias y carreteras. Estación de bomberos de Penonomé con desprendimientos del techo.",
+       "Sinaproc",
+       "of"
+      ],
+      [
+       "Infobae y France 24 reportaron daños de consideración o colapso en la gobernación y la iglesia de Penonomé; Sinaproc habla de afectaciones.",
+       "Infobae · France 24",
+       "nc"
+      ]
+     ],
+     "open": true
+    },
+    {
+     "t": "Los Santos",
+     "items": [
+      [
+       "Viviendas colapsadas, edificios gubernamentales y religiosos dañados y red vial afectada.",
+       "Sinaproc",
+       "of"
+      ],
+      [
+       "Tonosí quedó incomunicado.",
+       "EFE",
+       "pr"
+      ],
+      [
+       "Hospitales de Tonosí y Pedasí con daños menores.",
+       "Sinaproc",
+       "of"
+      ],
+      [
+       "Isla Cañas: oleaje anómalo que entró a viviendas.",
+       "La Estrella",
+       "pr"
+      ]
+     ],
+     "open": false
+    },
+    {
+     "t": "Veraguas",
+     "items": [
+      [
+       "Estación de bomberos de Soná en gran parte desplomada; quedaron atrapados vehículos de emergencia y una embarcación.",
+       "Sinaproc",
+       "of"
+      ],
+      [
+       "Estación de Santiago con losas desprendidas y rajaduras.",
+       "Sinaproc",
+       "of"
+      ],
+      [
+       "Carretera de acceso a Torio (Mariato) fracturada.",
+       "Sinaproc",
+       "of"
+      ]
+     ],
+     "open": false
+    },
+    {
+     "t": "Herrera",
+     "items": [
+      [
+       "Catedral de Chitré con daños leves y rajaduras en otras edificaciones.",
+       "Sinaproc",
+       "of"
+      ]
+     ],
+     "open": false
+    },
+    {
+     "t": "Panamá y Panamá Oeste",
+     "items": [
+      [
+       "Más de 100 viviendas afectadas en el Casco Antiguo; los daños no se calificaron como graves.",
+       "Noticias RCN",
+       "pr"
+      ],
+      [
+       "4 propiedades horizontales con daños menores.",
+       "Sinaproc",
+       "of"
+      ],
+      [
+       "Estaciones de bomberos de La Chorrera (losas desprendidas) y Veracruz (rajaduras).",
+       "Sinaproc",
+       "of"
+      ],
+      [
+       "Archipiélago de Las Perlas: daños en comercios y viviendas.",
+       "Sinaproc",
+       "of"
+      ]
+     ],
+     "open": false
+    },
+    {
+     "t": "Chiriquí",
+     "items": [
+      [
+       "Daños leves en viviendas, comercios y 11 escuelas; estación de bomberos de David con rajaduras.",
+       "Sinaproc",
+       "of"
+      ]
+     ],
+     "open": false
+    },
+    {
+     "t": "Darién",
+     "items": [
+      [
+       "Centro Educativo de Zapayal con daños menores.",
+       "Sinaproc",
+       "of"
+      ]
+     ],
+     "open": false
+    },
+    {
+     "t": "Sin daños estructurales reportados",
+     "items": [
+      [
+       "Estaciones de bomberos de Colón, Bocas del Toro, Panamá Este y Bugaba.",
+       "Sinaproc",
+       "of"
+      ]
+     ],
+     "open": false
+    }
+   ]
+  },
+  {
+   "id": "servicios",
+   "i": "🏗️",
+   "t": "Servicios",
+   "grupos": [
+    {
+     "t": "Agua y energía",
+     "items": [
+      [
+       "Varias plantas potabilizadoras dañadas; la de Federico Guardia Conte (Chilibre) operaba al 70%, afectando a Panamá y San Miguelito.",
+       "Prensa",
+       "pr"
+      ],
+      [
+       "Se reportaron cortes de energía.",
+       "Mundo Now",
+       "pr"
+      ]
+     ],
+     "open": true
+    },
+    {
+     "t": "Salud",
+     "items": [
+      [
+       "2 hospitales con daños leves y evacuaciones preventivas.",
+       "Sinaproc",
+       "of"
+      ],
+      [
+       "14 establecimientos de salud afectados.",
+       "TeleSur · La República",
+       "pr"
+      ],
+      [
+       "La CSS mantiene urgencias abiertas las 24 horas.",
+       "Prensa",
+       "pr"
+      ]
+     ],
+     "open": false
+    },
+    {
+     "t": "Educación",
+     "items": [
+      [
+       "188 centros educativos afectados (el primer balance hablaba de 7 a 12).",
+       "Sinaproc · Telemetro",
+       "of"
+      ],
+      [
+       "Se suspendieron clases y funciones de entidades públicas.",
+       "Telemetro",
+       "pr"
+      ]
+     ],
+     "open": false
+    },
+    {
+     "t": "Edificios y viviendas",
+     "items": [
+      [
+       "136 viviendas, 30 edificios públicos, 20 iglesias y 11 hoteles afectados (cifras preliminares).",
+       "TeleSur · La República",
+       "pr"
+      ]
+     ],
+     "open": false
+    },
+    {
+     "t": "Transporte",
+     "items": [
+      [
+       "Aeropuerto de Tocumen: suspendió operaciones y las reanudó sin daños de consideración; vuelos desviados a Colombia y 7 a Costa Rica.",
+       "Prensa",
+       "pr"
+      ],
+      [
+       "Metro: servicio interrumpido temporalmente en las dos líneas. Canal de Panamá: tránsito normal.",
+       "Prensa",
+       "pr"
+      ],
+      [
+       "Los corredores fueron gratuitos hasta la medianoche.",
+       "La Estrella",
+       "pr"
+      ]
+     ],
+     "open": false
+    }
+   ]
+  },
+  {
+   "id": "respuesta",
+   "i": "🏛️",
+   "t": "Respuesta y ayuda",
+   "grupos": [
+    {
+     "t": "Autoridades",
+     "items": [
+      [
+       "El presidente José Raúl Mulino pidió calma y viajó a Penonomé, una de las zonas más afectadas.",
+       "Prensa",
+       "pr"
+      ],
+      [
+       "Sinaproc, Bomberos y Policía Nacional realizan evaluaciones; se pidió evacuar preventivamente edificios públicos, escuelas y viviendas con grietas.",
+       "Sinaproc",
+       "of"
+      ],
+      [
+       "El Ministerio de Trabajo pidió flexibilidad laboral.",
+       "Prensa",
+       "pr"
+      ],
+      [
+       "La Alcaldía de Panamá anunció un centro de acopio.",
+       "Telemetro",
+       "pr"
+      ]
+     ],
+     "open": true
+    },
+    {
+     "t": "Ayuda internacional y recursos",
+     "items": [
+      [
+       "Varios países ofrecieron asistencia.",
+       "El Tiempo",
+       "pr"
+      ],
+      [
+       "Panamá busca recursos del BID, el Banco Mundial y el FMI.",
+       "Infobae",
+       "pr"
+      ]
+     ],
+     "open": false
+    }
+   ]
+  },
+  {
+   "id": "dudas",
+   "i": "❓",
+   "t": "Sin confirmar",
+   "grupos": [
+    {
+     "t": "Lo que todavía no se sabe",
+     "items": [
+      [
+       "Número final de heridos (el conteo sigue creciendo).",
+       "",
+       "nc"
+      ],
+      [
+       "Viviendas dañadas o destruidas en todo el país; 136 es una cifra preliminar.",
+       "",
+       "nc"
+      ],
+      [
+       "Monto económico de los daños: ninguna fuente oficial lo ha publicado.",
+       "",
+       "nc"
+      ],
+      [
+       "Estado de comunidades aisladas, como Tonosí.",
+       "",
+       "nc"
+      ]
+     ],
+     "open": true
+    },
+    {
+     "t": "Información dudosa o incorrecta",
+     "items": [
+      [
+       "Una página de CNN en Español menciona 335 muertos y 4,516 heridos, pero ese párrafo se refiere a un sismo en Chocó, Colombia. No corresponde a Panamá.",
+       "CNN en Español",
+       "nc"
+      ],
+      [
+       "Reportes de colapso de la gobernación y la iglesia de Penonomé: Sinaproc solo habla de afectaciones.",
+       "Infobae · France 24",
+       "nc"
+      ]
+     ],
+     "open": false
+    }
+   ]
+  },
+  {
+   "id": "noticias",
+   "i": "📰",
+   "t": "Noticias",
+   "noticias": true
+  },
+  {
+   "id": "fuentes",
+   "i": "🔗",
+   "t": "Fuentes",
+   "fuentes": true
+  }
+ ],
+ "noticias": [
+  [
+   "EN VIVO: actualización de afectaciones y anuncios de autoridades",
+   "Telemetro (TV)",
+   "https://www.telemetro.com/nacionales/en-vivo-sismo-panama-suspenden-clases-y-funciones-entidades-publicas-n6094639"
   ],
-  "advertencia": "Monitor Sísmico Panamá es una herramienta informativa independiente. No es un sistema oficial de alerta temprana y no garantiza notificaciones si la página está cerrada, el dispositivo está sin conexión o el navegador limita su actividad.",
-  "fuentes": [
-    [
-      "USGS · Últimos sismos",
-      "https://earthquake.usgs.gov/earthquakes/map/"
-    ],
-    [
-      "EMSC · Actividad sísmica",
-      "https://www.emsc-csem.org/"
-    ],
-    [
-      "Instituto de Geociencias · Universidad de Panamá",
-      "https://igc.up.ac.pa/"
-    ],
-    [
-      "SINAPROC · Sistema Nacional de Protección Civil",
-      "https://www.sinaproc.gob.pa/"
-    ]
+  [
+   "Terremoto deja 27 heridos y colapso de edificios",
+   "La República",
+   "https://larepublica.pe/mundo/2026/10/10/el-terremoto-en-panama-deja-27-heridos-y-provoca-el-colapso-de-edificios-y-danos-en-carreteras-de-varias-provincias-629670"
   ],
-  "noticias": []
+  [
+   "Terremoto en Panamá EN VIVO: réplicas y zonas afectadas",
+   "La República (en vivo)",
+   "https://larepublica.pe/mundo/2026/10/09/terremoto-en-panama-en-vivo-replicas-zonas-afectadas-y-ultimas-noticias-de-sismos-segun-el-igp-717318"
+  ],
+  [
+   "Panamá entrega parte de tranquilidad: no hay víctimas fatales",
+   "Pulzo",
+   "https://www.pulzo.com/mundo/terremoto-panama-autoridades-confirman-que-no-hay-victimas-fatales-PP5326897"
+  ],
+  [
+   "Terremoto de 7,7 sacude Panamá: daños y ayuda internacional",
+   "El Tiempo",
+   "https://www.eltiempo.com/mundo/latinoamerica/un-terremoto-de-magnitud-7-7-sacude-panama-provoca-danos-materiales-y-genera-alarma-entre-la-poblacion-varios-paises-ofrecen-asistencia-3592685"
+  ],
+  [
+   "Temblor en Panamá hoy, 10 de octubre: último sismo",
+   "Gestión",
+   "https://gestion.pe/mix/respuestas/temblor-en-panama-en-vivo-hoy-9-y-10-de-octubre-hora-exacta-magnitud-y-donde-fue-el-ultimo-temblor-segun-el-ifc-terremoto-usgs-nnda-nnrt-noticia/"
+  ],
+  [
+   "Balance y viviendas del Casco Antiguo",
+   "Noticias RCN",
+   "https://www.noticiasrcn.com/internacional/balance-del-terremoto-en-panama-no-hay-victimas-mortales-1070384"
+  ],
+  [
+   "Balance provisional y CSS",
+   "ContraPunto",
+   "https://www.contrapunto.com.sv/terremoto-de-magnitud-77-sacude-panama-danos-en-iglesias-hoteles-y-edificios-descartan-victimas-mortales-en-el-balance-preliminar/"
+  ],
+  [
+   "Primer balance de Sinaproc",
+   "Infobae",
+   "https://www.infobae.com/panama/2026/10/09/terremoto-en-panama-deja-al-menos-15-estudiantes-lesionados-y-danos-en-edificios-publicos-y-viviendas/"
+  ],
+  [
+   "Derrumbes, un pueblo aislado y sin víctimas mortales",
+   "Infobae / EFE",
+   "https://www.infobae.com/america/agencias/2026/10/10/terremoto-de-77-sacude-panama-derrumbes-un-pueblo-aislado-y-sin-victimas-mortales/"
+  ],
+  [
+   "En directo: el presidente viaja a Penonomé",
+   "France 24",
+   "https://www.france24.com/es/am%C3%A9rica-latina/20261009-en-directo-el-fuerte-terremoto-en-panam%C3%A1-causa-da%C3%B1os-en-edificaciones-el-canal-no-se-vio-afectado"
+  ],
+  [
+   "Sinaproc confirma que no hay víctimas fatales",
+   "La Estrella de Panamá",
+   "https://www.laestrella.com.pa/panama/nacional/sinaproc-confirma-que-no-hay-victimas-fatales-tras-terremoto-de-72-en-panama-IC26359625"
+  ],
+  [
+   "Sinaproc realiza monitoreo tras el sismo (comunicado)",
+   "Ministerio de Gobierno",
+   "https://www.mingob.gob.pa/sinaproc-realiza-monitoreo-tras-sismo-percibido-en-panama/"
+  ]
+ ],
+ "fuentes_oficiales": [
+  [
+   "USGS",
+   "Catálogo internacional",
+   "https://earthquake.usgs.gov"
+  ],
+  [
+   "EMSC",
+   "Catálogo europeo",
+   "https://www.seismicportal.eu"
+  ],
+  [
+   "IGC‑UP",
+   "Red sísmica nacional",
+   "https://sismosgeociencias.up.ac.pa/"
+  ],
+  [
+   "SINAPROC",
+   "Avisos oficiales",
+   "https://www.mingob.gob.pa/sinaproc-realiza-monitoreo-tras-sismo-percibido-en-panama/"
+  ]
+ ]
 }
