@@ -1,6 +1,12 @@
 {
- "actualizado": "2026-10-11T09:35:29.640734+00:00",
+ "actualizado": "2026-10-11T09:52:39.003014+00:00",
  "items": [
+  {
+   "t": "Mapa: Un fuerte terremoto se registra en Panamá",
+   "u": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQcFVQLVdaNFJ1cjJLVFI1V1Zra2JZbXJ1eXpNaXFnZ2FjT1JLc2E2YXdzcDVXVFJ3QXZfM2hFdWRpcUZONU5MTXBNajFvcEFneHN2RzdRc2c5bUFuak9XMmpOZ291amZuVkhRVG5zdTlkYWJPRlpySDFpc2JzTS1nS3hQeFA0QQ?oc=5",
+   "f": "The New York Times",
+   "d": 1791709952000
+  },
   {
    "t": "Sin luz ni agua potable: la tragedia continúa en Panamá tras el terremoto",
    "u": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNX0s3aVlsbzMwR0dDMUZORklReU1VX2xIR3dITEVCa3JXMVN3dGNFSU03bEQ3MmVURUUwai11Nms0cTkzdmZuWEdMNmFfZ1ZKS2tYRTdONzlvREZPd3djR3AtNGdPYUhRS3BIQ1N2X01VaGRkaFZKYlJpaHFuNi1nTWNPamN1QnJNRmZ4eThRRDVvYjJ0SGVMZ1lOLVRGTGhwWjh2VFVseEN3ajVnMjUw?oc=5",
@@ -26,16 +32,10 @@
    "d": 1791705370000
   },
   {
-   "t": "Panamá declara emergencia nacional tras violento terremoto,",
-   "u": "https://news.google.com/rss/articles/CBMigAJBVV95cUxOQjlQWUVPWjZ1S1JpY20wdlN1NVNhekllYk5PQ0xPWFVaT25HSHFGZUNKb09sVHEtdTdHMzlNSHk1M05TUjJ5NkUxU2UzSHZsSUdVbzR2ZkxZMjdZOWZyU25BeV9kOFN5TEhHSWNnZlVhTU9rTkozQkZqX2pXN0tlWU96TXh5WW1MZENRdjZGVnNZRW0yRkc5RGlEQXhvXzRKQjBhNXI2bEUxaGdaMU5ya3lYTmQ1dWN0ZU1jdkZkWGdlQ2dKd012SWxZTVl5RU56ejBHcVJMTVZqOThMMFpzSzFZekhOckxVOTZraGtwMHVSLUJnc1VuRkJiUnh1akVN0gGAAkFVX3lxTE5COVBZRU9aNnVLUmljbTB2U3U1U2F6SWViTk9DTE9YVVpPbkdIcUZlQ0pvT2xUcS11N0czOU1IeTUzTlNSMnk2RTFTZTNIdmxJR1VvNHZmTFkyN1k5ZnJTbkF5X2Q4U3lMSEdJY2dmVWFNT2tOSjNCRmpfalc3S2VZT3pNeHlZbUxkQ1F2NkZWc1lFbTJGRzlEaURBeG9fNEpCMGE1cjZsRTFoZ1oxTnJreVhOZDV1Y3RlTWN2RmRYZ2VDZ0p3TXZJbFlNWXlFTnp6MEdxUkxNVmo5OEwwWnNLMVl6SE5yTFU5Nmtoa3AwdVItQmdzVW5GQmJSeHVqRU0?oc=5",
-   "f": "DW.com",
-   "d": 1791704266000
-  },
-  {
-   "t": "Mapa: Un fuerte terremoto se registra en Panamá",
-   "u": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQcFVQLVdaNFJ1cjJLVFI1V1Zra2JZbXJ1eXpNaXFnZ2FjT1JLc2E2YXdzcDVXVFJ3QXZfM2hFdWRpcUZONU5MTXBNajFvcEFneHN2RzdRc2c5bUFuak9XMmpOZ291amZuVkhRVG5zdTlkYWJPRlpySDFpc2JzTS1nS3hQeFA0QQ?oc=5",
-   "f": "The New York Times",
-   "d": 1791698914000
+   "t": "Terremoto en Panamá: sin agua ni luz mientras todo sigue temblando",
+   "u": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOQVR6ZXpHZEZnRFJ1bkQzeEY0X0J2TDV4bUx1VGkzNHM0TWtVMVBRX0J3Tlp5RVNBbTU0UlgwSW5ROHdTZnZFMFBkMzlkVjB6dU16UmhzalBfQkFTZnNNZ3hpMjNLYWRKbEFEV1hBSEg0bVEtRGVfRnBqRUYwRDJmWmowMGF5dHdMX05BdUUwWENySExyamp1SGk0bUhkRUR2Mk5qZ3J6ZnAtbV8zRDUwNGl0ZVlGMGNPZERDb2Fob3lESnJrTjAtT0FB0gHeAUFVX3lxTE9sT2ZNeXUwaXNRMW5kOExINlIzQ3pWdGxNSHpWR0pzWXpvTGF4Zm52VlZVVG90M09HbWRhN2J4VTMtZnFQRlU3Y1JpTF9KNXZnanZrcEF0dXB5RDM3RFF3UlM2NVNaV1RyZC1oVnhnMS1PMEhQVERDd2hpVXB1NXZTcnRHLTQ5WjBtSHlyTUxhRFVSNy1ZXzZSY2dhZmVGUXhlcjVPZnVGRU9QUVRsLUZqTmJWS2x6QVdYbHZ3NUg4Yl9MeWJPaUVhS1pRVEpkMHRwZWVJaHVEdUxxUDBaZw?oc=5",
+   "f": "La Razón",
+   "d": 1791696830000
   },
   {
    "t": "Panamá registra más de 187 réplicas tras el terremoto de magnitud 7.5",
