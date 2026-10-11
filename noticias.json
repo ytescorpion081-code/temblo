@@ -1,6 +1,12 @@
 {
- "actualizado": "2026-10-11T04:25:24.994977+00:00",
+ "actualizado": "2026-10-11T04:45:21.416517+00:00",
  "items": [
+  {
+   "t": "Panamá declara el estado de emergencia tras un fuerte terremoto.",
+   "u": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNbHVLX0NYY1BFQkNZcHpOb1dERUc2Qnl6b2JSdnpRMlFoVklqZDJFM3J5WWlGMkI5OUFzd3VfQUdnVG5qNnoyT3pUc0trX1NDLXllZm1DNldoQlBZcjYxbXJkODFycHZoOXRnLTNndUtWMkltcW1WNjRDdzRxcFotT0NhMGdMNVlRTGc?oc=5",
+   "f": "Vietnam.vn",
+   "d": 1791693600000
+  },
   {
    "t": "Metro de Panamá prevé reanudar el servicio este domingo si concluyen las pruebas de seguridad",
    "u": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNMXpac2VOaWJJU0NHTWNvOVNveHVfVUUzQlhBNGtBaXN0cFpyUFB3T2YwdGdxM0sxcm9XYy1QcElYemJtaE9TZUhFOXo4VEYwdy1RdmtPZDA5QUNaU3R1WTIxcnBocnh3WkhUbUFKWjNRVW5wMTdxT3ZHSmo4RVFNUHY5bm56WXNfNHJoRVQ0bkhGSlRmZnAyYkswU293Z2VSaWJ0elFOVVZ2N2huQTVXTWs4a3J4RGtuOUVLZGFMR0ZTTVdnVHpMUUN2RFQycDQ2dkHSAewBQVVfeXFMTTQ3c1A0U1BxNTF6TXJmU1E1WTJUZC1UcWp2SFU1WGhVNDJLbjV6MXpKanRrN2ZjSTN3TjR2TDFmVVBYZC1oNHI3S1lxT3RRbFR2LTBGam9zVTRyZXFpQWJwSGFMSmduZkIwVTF3LWsycVJmSkR0MjRkaFhDQ2JaQklRU0x4V1p2ZDF1Z0Q3QjVUX0ZpMmNHd3hHNTF3YXdlaTd5SU5ocEx4ZlNyVVc0VlBBeVFpYUJNbC1FX0g2R0FCWW1fU09CR2YwU3k3bWlnVW1sZEtqTE43ME96ckxkbkdvRHF0QXYwb3haYlI?oc=5",
@@ -74,6 +80,12 @@
    "d": 1791682807000
   },
   {
+   "t": "Panamá suspendió las clases del lunes 12 de octubre tras el sismo y sus réplicas",
+   "u": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQeTlSN292UFozUlRXYS1mLURpWkNfNEI3dXdKbFFxY2J2MDgtXzN6b2hGdlRHVGw2c2p2Q3NvVG91ckJrd1UwZ0h5SzFSakplWWNzYmhoR2RVLXJSTnNCQVMxVm04ajB2ZnZxOTRpcWpMSW5wOXl3R1pXXzVlR0ViN0lVRDd4ZWZtZ19zNUFTeW5aR0VaOHV4Njh4bS1FcE1hbXdiZnVkVUdOa2sxb2RLWWJidzZkelpfRm1PUDFaTUHSAdsBQVVfeXFMUG51RUFXRVdKZHFnSXZ0ZzhPWWhiVlEzVm1xMDFvdDNRdXFrRnlmamxWTDZ4c2hfMmtqdTJYeWwta3ZRWFRHWE5qR09kTkRVNzJ1ZGZUS1l1dk9GTXJGdUxNRHJhOVhVaGs2M0t3dHBwUnduZjJ3cXpncXpJb1NJZmp4MjlDb3VNODc5S0tETEU5TjF3UzZLdXZzUlI0amw1aWtPTkRiZWpPdjl0MnIwQ0xOeDFZcjh3QVduZTVyYjdaejl6WUk1T0szZTFaMXB5TGRQU0xPUjhJX3hz?oc=5",
+   "f": "Infobae",
+   "d": 1791682740000
+  },
+  {
    "t": "Panamá registra al menos 161 réplicas tras terremoto",
    "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTE4tTkpHM0ZsamNReUlNZ2tXc3dQTmkyWklCdUtweExncGt0YmpMcGxyOTk0SVhzN04wRTFXcHl2NzE1em9nRDFPYkQ3NHlhcXJQbTB6TVkwSER4TWh4NUpYZUpxZ19UajFVVjZpZ0RzdVo2dk5oZTFoNXFkb2Y5NEE?oc=5",
    "f": "El Dia.com.do",
@@ -90,12 +102,6 @@
    "u": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPSUZhOENTZ2JQUGdmeUxZS0lmdGdsWGlrQk5YWGhQZDJfZUhtdnczX01yTmkxT3FmeF94MGVXcDRFRHdWWkhaWHRIV0FRbElPcmNMWENJSTRZMGF2M1FwZUtwOFNZdS01bDZ2SU8xaEV4NjZJcWlRNWk4V3FwdEctZEhpcUVXRzV4ZFViOW55YU9sSjViVHpUTk1mcnV6bjl5Y3Zvcm5Yb19SZlNwVjZ2bG1SZ0lzRlpVUnlQeXIzb2tFcVhPXzZoNnFVd2VNbldjWGhDSdIB7wFBVV95cUxNVUszWUxQN1JwaGJSZVZCYXc1QjFObGlrSkZmTU9UTk03UG9leFlSVFhPcV9YQklQRUFEYkJDbFV6X0hHNUZYVkhlSjlrSHBielY5MTZYYU50V2ZhNkNPX0FWSlFUUE9TWEZlaDVFQ2NTYTB2N3U5ZG9MdC1pV0k1ZWpuOVR5UkhpaUpCbm5YdTlfR2Y2cURvVU9lOVo2VXROODBHQ2RKUzR3djh2SGhNRWZ2Q1RpQ3FIQm5nTGx4SWJVZmpUSHlMRjJXaDQyaVo1Ykh2RVhuWlVMQ1E5Tnh0ckVBUFpaTTJrai1lRUF6Zw?oc=5",
    "f": "Infobae",
    "d": 1791679725000
-  },
-  {
-   "t": "Panamá suspendió las clases del lunes 12 de octubre tras el sismo y sus réplicas",
-   "u": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQeTlSN292UFozUlRXYS1mLURpWkNfNEI3dXdKbFFxY2J2MDgtXzN6b2hGdlRHVGw2c2p2Q3NvVG91ckJrd1UwZ0h5SzFSakplWWNzYmhoR2RVLXJSTnNCQVMxVm04ajB2ZnZxOTRpcWpMSW5wOXl3R1pXXzVlR0ViN0lVRDd4ZWZtZ19zNUFTeW5aR0VaOHV4Njh4bS1FcE1hbXdiZnVkVUdOa2sxb2RLWWJidzZkelpfRm1PUDFaTUHSAdsBQVVfeXFMUG51RUFXRVdKZHFnSXZ0ZzhPWWhiVlEzVm1xMDFvdDNRdXFrRnlmamxWTDZ4c2hfMmtqdTJYeWwta3ZRWFRHWE5qR09kTkRVNzJ1ZGZUS1l1dk9GTXJGdUxNRHJhOVhVaGs2M0t3dHBwUnduZjJ3cXpncXpJb1NJZmp4MjlDb3VNODc5S0tETEU5TjF3UzZLdXZzUlI0amw1aWtPTkRiZWpPdjl0MnIwQ0xOeDFZcjh3QVduZTVyYjdaejl6WUk1T0szZTFaMXB5TGRQU0xPUjhJX3hz?oc=5",
-   "f": "Infobae",
-   "d": 1791679386000
   },
   {
    "t": "Bolivia activa asistencia consular tras terremoto de magnitud 7,7 en Panamá",
@@ -144,12 +150,6 @@
    "u": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPZ1dnZ0RKaUpuWEtHRjJ4dVZXeVhyNkNNbmk2cFc1WGhIOGx2LVE1Y2hEX0ZLNlZzY3J2bkRSeFhwNWNkMzh3N1R5eEpZMGxSRWhCYmZndzVma29oUWpYWTdGNHZYVGgxWDBCemttX1RrNFlhNzFGR3Nhazl5ZzBzNHA0dGoxd2dYWVhsSk1tdW1IZ1RpYnQzQmU1VkVUbkdOUjNKSERrcjVicWdMeXZjU1RlejZEOW9pQW5yRk1hYW5BTmlXQTJPMGYxb9IBywFBVV95cUxPRlBRVTlzZ251ejNSVEZrODFJdDNmVjdGbFJsOUNOTGdWSkw0T0FLM0ZTdjJsQ2xhOFNhSDl4RXN4Q3BybXJmeS1wVlpVYldtLVRmaEd2ZnRRSmxYUzRNNVJDTVgwVVVDSklRZmtLTS1XZDFTamtVRTdQbll3eEMwd1F4N0VPVkRDZTNiMUlwSzZFdnJWS05YS01XUXczTGN0Z3hIcmZIaUFaTDB2MjF3YVZ2RWtiTmMtaDFhVWJZakh0Vy1aTWVGMklMdw?oc=5",
    "f": "NTN24",
    "d": 1791676130000
-  },
-  {
-   "t": "Más de 100 réplicas registradas tras sismo de magnitud 7.7 en Panamá",
-   "u": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPYUlRY3pERk9YZVdnNUZEcGRTcHVHY044VFh3NC1HenVXaEwtV1VUVEx5RUFlWUFGek54VmFaenZQVUxaMXk0T3FRMFJyVEF2SXpmWVFtOFM4dUttSFMtdE1qSDRjb0xneFVoeno4LWM3SXhNcC02TGZCNlo5bEVkQWFKb0FaNGYtTTFJbTNPWVduN0lBVWVyWTlYTjRRdXZTNzF2dnZxMA?oc=5",
-   "f": "Canal 9 Bío Bío Televisión",
-   "d": 1791675883000
   }
  ],
  "cifras": []
