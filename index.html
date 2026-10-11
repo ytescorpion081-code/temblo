@@ -138,7 +138,7 @@ main{padding-bottom:calc(88px + env(safe-area-inset-bottom))!important}
   <li><b>IV</b> Moderado: lo sienten muchos; tiembla la vajilla.</li><li><b>V</b> Algo fuerte: casi todos lo sienten; se mueven objetos.</li><li><b>VI</b> Fuerte: todos lo sienten; se mueven muebles; daños leves.</li>
   <li><b>VII o más</b> Muy fuerte: daños. Protégete y sigue a Sinaproc.</li></ul></details></div>
 <div class="card"><div class="lbl">Alertas</div>
- <div class="row"><span>Avisar desde magnitud</span><select id="umbral"><option value="0">Todas</option><option value="3">M 3+</option><option value="4">M 4+</option><option value="5">M 5+</option></select></div>
+ <div class="row"><span>Avisar desde magnitud</span><select id="umbral"><option value="0">Todas (M 2+)</option><option value="3">M 3+</option><option value="4">M 4+</option><option value="5">M 5+</option></select></div>
  <button class="al" id="shake">📳 Activar detector de sacudidas</button>
  <button class="al sec" id="test">🔊 Probar alarma</button>
  <button class="al sec" id="wake">💡 Mantener pantalla encendida</button>
@@ -205,10 +205,12 @@ function lugar(p){p=p||'Panamá';
  return p.replace(/Panama\b/g,'Panamá').replace(/PANAMA/g,'PANAMÁ')}
 function hace(t){const s=(Date.now()-t)/1000;if(s<60)return 'hace instantes';const m=s/60;if(m<60)return `hace ${Math.floor(m)} min`;const h=m/60;if(h<24)return `hace ${Math.floor(h)} h`;return `hace ${Math.floor(h/24)} d`}
 function sonido(){try{ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();ctx.resume&&ctx.resume();[0,.35,.7].forEach(t=>{const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.value=880;o.connect(g);g.connect(ctx.destination);g.gain.setValueAtTime(.2,ctx.currentTime+t);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+t+.3);o.start(ctx.currentTime+t);o.stop(ctx.currentTime+t+.3)})}catch(e){}}
-function avisar(q){const t=`M ${q.mag.toFixed(1)} · ${lugar(q.place)} · ocurrió ${hace(q.t)}${dist(q)}`;
- const b=$('banner');b.style.display='block';b.textContent='⚠️ Nuevo sismo: '+t;try{window.scrollTo({top:0,behavior:'smooth'})}catch(e){}
- sonido();try{navigator.vibrate&&navigator.vibrate([300,150,300])}catch(e){}
- if(activas&&'Notification' in window&&Notification.permission==='granted'){notificar('¿Tembló? Sismo en Panamá',t)}}
+function alarmaFuerte(){try{ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();ctx.resume&&ctx.resume();for(let i=0;i<16;i++){const t=i*.5,o=ctx.createOscillator(),g=ctx.createGain();o.type='square';o.frequency.value=i%2?1100:760;o.connect(g);g.connect(ctx.destination);g.gain.setValueAtTime(.35,ctx.currentTime+t);g.gain.setValueAtTime(.001,ctx.currentTime+t+.42);o.start(ctx.currentTime+t);o.stop(ctx.currentTime+t+.45)}}catch(e){}}
+function avisar(q){if(q.mag<2)return;const fuerte=q.mag>=6;const t=`M ${q.mag.toFixed(1)} · ${lugar(q.place)} · ocurrió ${hace(q.t)}${dist(q)}`;
+ const b=$('banner');b.style.display='block';b.textContent=(fuerte?'🚨 SISMO FUERTE: ':'⚠️ Nuevo sismo: ')+t;try{window.scrollTo({top:0,behavior:'smooth'})}catch(e){}
+ if(fuerte){alarmaFuerte();try{navigator.vibrate&&navigator.vibrate([500,200,500,200,500,200,500])}catch(e){}}
+ else{try{navigator.vibrate&&navigator.vibrate([200])}catch(e){}}
+ if(activas&&'Notification' in window&&Notification.permission==='granted'){notificar((fuerte?'🚨 SISMO FUERTE en Panamá':'¿Tembló? Sismo en Panamá'),t)}}
 
 /* fetch simple (sin AbortSignal: algunos visores no lo soportan) + timeout con Promise.race */
 function tj(url,ms=15000){
