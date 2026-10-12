@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#15222b">
+<title>Sismos Panamá en vivo</title>
+<style>
+:root{--paper:#f3f5f2;--card:#fff;--ink:#15222b;--grid:#d3dbd8;--mu:#5b6b73;--ac:#1d6f6a;--m0:#2f7d6d;--m3:#b8860b;--m4:#d9661f;--m5:#c8281e;--m6:#7d0f1e}
+@media(prefers-color-scheme:dark){:root{--paper:#0f1a21;--card:#16252e;--ink:#e9efee;--grid:#27383f;--mu:#93a6ae;--ac:#5fc4b8}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-variant-numeric:tabular-nums}
+.w{max-width:680px;margin:auto;padding:0 16px}
+header{padding:calc(14px + env(safe-area-inset-top)) 0 0}
+.bar{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--mu)}
+.bar b{color:var(--ink);font-size:17px}
+.st{display:flex;align-items:center;gap:6px}.dot{width:8px;height:8px;border-radius:50%;background:var(--m3)}.dot.ok{background:var(--m0)}.dot.bad{background:var(--m5)}
+h1{font-size:26px;line-height:1.2;margin:18px 0 4px;font-weight:700;letter-spacing:-.01em}
+.sub{color:var(--mu);margin:0 0 14px}
+.chart{background:var(--card);border:1px solid var(--grid);border-radius:10px;padding:8px 8px 4px;margin:0 0 14px}
+.chart svg{display:block;width:100%;height:auto}
+.seg{display:flex;gap:6px;margin:0 0 10px;overflow-x:auto;scrollbar-width:none}
+.seg button{flex:none;border:1px solid var(--grid);background:none;color:var(--ink);padding:7px 13px;border-radius:99px;font:inherit;font-size:14px}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+main{padding-bottom:calc(90px + env(safe-area-inset-bottom))}
+section{display:none}section.on{display:block}
+.q{border-top:1px solid var(--grid)}
+.q>button{all:unset;box-sizing:border-box;width:100%;display:flex;gap:12px;align-items:center;padding:12px 0;cursor:pointer}
+.q>button:focus-visible{outline:2px solid var(--ac)}
+.mag{flex:none;width:50px;height:50px;border-radius:8px;color:#fff;display:grid;place-items:center;font-weight:700;font-size:19px}
+.q h3{margin:0;font-size:16px;font-weight:600;line-height:1.3}.q p{margin:0;font-size:14px;color:var(--mu)}
+.det{display:none;padding:0 0 12px 62px;font-size:14px;color:var(--mu)}.q.open .det{display:block}
+.det a{color:var(--ac)}
+.empty{padding:28px 0;color:var(--mu);text-align:center}
+#toast{position:fixed;left:12px;right:12px;top:calc(10px + env(safe-area-inset-top));z-index:9;background:var(--m5);color:#fff;padding:12px 14px;border-radius:10px;font-weight:600;display:none}
+#toast.s{background:var(--m6)}
+nav{position:fixed;inset:auto 0 0 0;background:var(--card);border-top:1px solid var(--grid);display:flex;padding-bottom:env(safe-area-inset-bottom)}
+nav button{flex:1;border:0;background:none;padding:11px 4px;font-size:14px;color:var(--mu)}
+nav button[aria-current=page]{color:var(--ac);font-weight:700;box-shadow:inset 0 3px 0 var(--ac)}
+.map{background:var(--card);border:1px solid var(--grid);border-radius:10px}
+.news a{display:block;padding:12px 0;border-top:1px solid var(--grid);color:var(--ink);text-decoration:none}
+.news small{color:var(--mu)}
+.box{background:var(--card);border:1px solid var(--grid);border-radius:10px;padding:14px;margin:0 0 12px}
+.box h2{font-size:17px;margin:0 0 6px}.box p{margin:0 0 10px;color:var(--mu);font-size:14px}
+.btn{border:0;background:var(--ink);color:var(--paper);padding:11px 16px;border-radius:8px;font-weight:600;margin:0 8px 8px 0}
+.btn.on{background:var(--m0);color:#fff}
+select{font:inherit;padding:8px;border-radius:8px;border:1px solid var(--grid);background:var(--card);color:var(--ink)}
+@media(prefers-reduced-motion:no-preference){.dot.ok{animation:p 2s infinite}@keyframes p{50%{opacity:.4}}}
+.fx{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;margin:0 0 12px}.fx dt{font-size:13px;color:var(--mu)}.fx dd{margin:0;font-weight:600}
+.pr{background:var(--card);border:1px solid var(--grid);border-left:4px solid var(--m6);border-radius:10px;padding:10px 12px;margin:0 0 12px;font-size:15px}
+.srcs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px;font-size:13px;color:var(--mu)}.srcs span{border:1px solid var(--grid);border-radius:99px;padding:3px 10px}.srcs .ok::before{content:"● ";color:var(--m0)}.srcs .no::before{content:"● ";color:var(--m5)}
+.tag{display:inline-block;font-size:12px;border:1px solid var(--grid);border-radius:6px;padding:0 6px;margin:2px 4px 0 0;color:var(--mu)}
+.ll{font-size:14px;margin:0 0 12px;color:var(--mu)}.ll button{border:1px solid var(--grid);background:none;border-radius:8px;padding:8px 12px;color:var(--ink)}
+details{border-top:1px solid var(--grid);padding:10px 0}summary{font-weight:600;cursor:pointer}details ol{margin:8px 0 0;padding-left:20px}details li{margin:6px 0}
+.tel{display:flex;gap:8px;flex-wrap:wrap}.tel a{flex:1;text-align:center;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:700;padding:11px;border-radius:8px}
+</style>
+</head>
+<body>
+<div id="toast" role="alert"></div>
+<header><div class="w">
+ <div class="bar"><b>Sismos Panamá</b><span class="st"><i class="dot" id="dot"></i><span id="st">Conectando</span></span></div>
+ <h1 id="hl">Buscando el último sismo…</h1>
+ <p class="sub" id="sb"></p>
+ <dl class="fx" id="fx"></dl><div class="ll" id="ll"></div><div class="pr" id="pr" hidden></div>
+ <div class="srcs" id="src"></div>
+ <div class="chart"><svg id="sg" viewBox="0 0 640 130" role="img" aria-label="Sismograma de los últimos sismos"></svg></div>
+</div></header>
+<main class="w">
+ <section id="t-sismos" class="on">
+  <div class="seg" id="fm" aria-label="Magnitud mínima"></div>
+  <div class="seg" id="fd" aria-label="Período"></div><div class="seg" id="fo" aria-label="Orden"></div>
+  <div id="lista"></div>
+ </section>
+ <section id="t-mapa"><svg id="mp" class="map" viewBox="0 0 640 430" role="img" aria-label="Mapa de sismos"></svg><p class="sub" id="mpn" style="margin-top:8px"></p></section>
+ <section id="t-noticias"><div class="news" id="nw"></div></section>
+ <section id="t-guia">
+  <div class="box"><h2>Qué hacer ante un sismo</h2><p>Recomendaciones básicas. Sigue siempre las indicaciones del SINAPROC.</p>
+  <details open><summary>Durante el temblor</summary><ol><li>Agáchate, cúbrete la cabeza y sujétate bajo una mesa firme o junto a una pared interior.</li><li>Aléjate de ventanas, espejos y muebles altos.</li><li>No corras ni uses el ascensor.</li><li>En la costa, si el temblor es fuerte o largo, sube a terreno alto sin esperar un aviso.</li></ol></details>
+  <details><summary>Justo después</summary><ol><li>Revisa si hay heridos y ayuda con calma.</li><li>Revisa gas y electricidad. Usa linterna, no fósforos.</li><li>Usa mensajes de texto: así dejas libres las líneas.</li></ol></details>
+  <details><summary>Próximas horas y réplicas</summary><ol><li>Espera réplicas: repite agacharte y cubrirte cada vez.</li><li>Aléjate de estructuras dañadas.</li><li>Ten a mano mochila, agua, linterna y radio a pilas.</li></ol></details></div>
+  <div class="box"><h2>Emergencias</h2><div class="tel"><a href="tel:911">911</a><a href="tel:103">Bomberos 103</a><a href="tel:104">Policía 104</a></div>
+  <p style="margin-top:10px">Llama solo si hay peligro para la vida. Boletines oficiales: <a href="https://www.sinaproc.gob.pa/" target="_blank" rel="noopener">SINAPROC</a>, <a href="https://sismosgeociencias.up.ac.pa/" target="_blank" rel="noopener">IGC-UP</a> y avisos de tsunami en <a href="https://www.tsunami.gov/" target="_blank" rel="noopener">tsunami.gov</a>.</p></div></section>
+ <section id="t-alertas">
+  <div class="box"><h2>Alertas en este teléfono</h2>
+   <p>Sismos de M 2 a 5.9: notificación. Sismos de M 6 o más: alarma sonora, vibración y notificación. Funcionan con esta página abierta.</p>
+   <button class="btn" id="bn">Activar alertas</button><button class="btn" id="bt">Probar alarma</button>
+   <label style="display:block;margin:0 0 10px"><input type="checkbox" id="voz"> Leer los sismos nuevos en voz alta</label><label>Notificar desde <select id="um"><option value="2">M 2</option><option value="3">M 3</option><option value="4">M 4</option><option value="5">M 5</option></select></label></div>
+  <div class="box"><h2>Alertas con la app cerrada</h2>
+   <p>Esta página no puede avisarte si está cerrada. Para eso instala la app gratuita ntfy y suscríbete al tema que te dio tu administrador; los avisos los envía el servidor de GitHub cada pocos minutos.</p></div>
+  <div class="box"><h2>Información</h2>
+   <p>Datos del USGS, EMSC e IGC-UP, actualizados cada minuto; si varias agencias publican el mismo sismo, se muestra una sola vez. Los datos preliminares pueden cambiar. Esto no es una alerta temprana: el aviso llega cuando la agencia publica el sismo, y y no reemplazan los comunicados de SINAPROC ni del IGC-UP. Emergencias: 911 · SINAPROC 520-4400.</p></div>
+ </section>
+</main>
+<nav id="nv"><button data-t="sismos" aria-current="page">Sismos</button><button data-t="mapa">Mapa</button><button data-t="noticias">Noticias</button><button data-t="alertas">Alertas</button><button data-t="guia">Guía</button></nav>
+<script>
+const $=s=>document.querySelector(s),LS=localStorage;
+const J=(k,d)=>{try{return JSON.parse(LS.getItem(k))??d}catch(e){return d}};
+const S={min:+J('min',0),days:+J('days',7),ord:J('ord','rec'),data:[],ok:false,src:{},pos:null};
+const CIUDADES=[["Ciudad de Panamá",8.98,-79.52],["Colón",9.36,-79.9],["David",8.43,-82.43],["Santiago",8.1,-80.98],["Chitré",7.96,-80.43],["Las Tablas",7.77,-80.28],["Tonosí",7.41,-80.44],["Pedasí",7.53,-80.03],["Soná",8.0,-81.31],["Coiba",7.45,-81.75],["Aguadulce",8.25,-80.55],["Penonomé",8.52,-80.36],["Bocas del Toro",9.34,-82.25],["Changuinola",9.43,-82.52],["Almirante",9.3,-82.4],["Boquete",8.78,-82.44],["Puerto Armuelles",8.29,-82.87],["La Palma",8.4,-78.15],["Metetí",8.5,-77.95],["Yaviza",8.16,-77.69],["Puerto Obaldía",8.67,-77.42]];
+const BOX=[5.5,10.5,-84,-76.5];
+const color=m=>m>=6?'var(--m6)':m>=5?'var(--m5)':m>=4?'var(--m4)':m>=3?'var(--m3)':'var(--m0)';
+const km=(a,b,c,d)=>{const r=Math.PI/180,x=Math.sin((c-a)*r/2)**2+Math.cos(a*r)*Math.cos(c*r)*Math.sin((d-b)*r/2)**2;return 12742*Math.asin(Math.sqrt(x))};
+const rumbo=(a,b,c,d)=>{const r=Math.PI/180,y=Math.sin((d-b)*r)*Math.cos(c*r),x=Math.cos(a*r)*Math.sin(c*r)-Math.sin(a*r)*Math.cos(c*r)*Math.cos((d-b)*r);return(Math.atan2(y,x)/r+360)%360};
+const cerca=q=>{let b=null,bd=1e9;for(const c of CIUDADES){const d=km(q.lat,q.lon,c[1],c[2]);if(d<bd){bd=d;b=c}}return{n:b[0],d:Math.round(bd),dir:['norte','noreste','este','sureste','sur','suroeste','oeste','noroeste'][Math.round(rumbo(b[1],b[2],q.lat,q.lon)/45)%8]}};
+const hace=t=>{const m=Math.round((Date.now()-t)/6e4);return m<1?'hace instantes':m<60?`hace ${m} min`:m<1440?`hace ${Math.floor(m/60)} h`:`hace ${Math.floor(m/1440)} d`};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lugar=q=>{const c=cerca(q);return(c.d<6?`cerca de ${c.n}`:`a ${c.d} km al ${c.dir} de ${c.n}`)+(c.d>200?' (fuera de Panamá)':'')};
+const cap=t=>t[0].toUpperCase()+t.slice(1);
+const tnt=m=>{const t=10**(1.5*m+4.8)/4.184e9;return t<1?Math.round(t*1000)+' kg de TNT':t<1000?Math.round(t)+' toneladas de TNT':t<1e6?Math.round(t/1000)+' mil toneladas de TNT':(t/1e6).toFixed(1)+' millones de toneladas de TNT'};
+const seg=s=>s<60?s+' s':Math.floor(s/60)+' min '+(s%60)+' s';
+
+/* ---- datos ---- */
+async function ju(u,ms=15000){const c=new AbortController(),t=setTimeout(()=>c.abort(),ms);try{const r=await fetch(u,{cache:'no-store',signal:c.signal});if(!r.ok)throw 0;return await r.json()}finally{clearTimeout(t)}}
+const dentro=q=>q.lat>=BOX[0]&&q.lat<=BOX[1]&&q.lon>=BOX[2]&&q.lon<=BOX[3];
+const fUSGS=async ini=>(await ju(`https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&orderby=time&limit=800&minmagnitude=2&starttime=${ini}&minlatitude=${BOX[0]}&maxlatitude=${BOX[1]}&minlongitude=${BOX[2]}&maxlongitude=${BOX[3]}`)).features.filter(f=>f.properties.mag!=null).map(f=>({id:'u'+f.id,mag:f.properties.mag,t:f.properties.time,lon:f.geometry.coordinates[0],lat:f.geometry.coordinates[1],prof:f.geometry.coordinates[2],url:f.properties.url,src:'USGS',pre:f.properties.status!=='reviewed'}));
+const fEMSC=async ini=>(await ju(`https://www.seismicportal.eu/fdsnws/event/1/query?format=json&orderby=time&limit=800&minmag=2&start=${ini}&minlat=${BOX[0]}&maxlat=${BOX[1]}&minlon=${BOX[2]}&maxlon=${BOX[3]}`)).features.filter(f=>f.properties.mag!=null).map(f=>({id:'e'+f.id,mag:f.properties.mag,t:Date.parse(f.properties.time),lon:f.properties.lon,lat:f.properties.lat,prof:f.properties.depth,url:'https://www.seismicportal.eu/eventdetails.html?unid='+f.properties.unid,src:'EMSC',pre:false}));
+const fIGC=async()=>(await ju('igc.json?'+Math.floor(Date.now()/3e4))).map(x=>({id:'i'+x.id,mag:+x.mag,t:x.t,lon:x.lo,lat:x.la,prof:x.z||0,url:x.url||'https://sismosgeociencias.up.ac.pa/',src:'IGC',pre:x.est!=='REVISADO'})).filter(q=>isFinite(q.mag)&&dentro(q)&&q.mag>=2);
+const PRIO={USGS:0,IGC:1,EMSC:2};
+function unir(a){a.sort((x,y)=>y.t-x.t);const out=[];
+ for(const q of a){const o=out.find(r=>!r.srcs.includes(q.src)&&Math.abs(r.t-q.t)<9e4&&Math.abs(r.lat-q.lat)<.7&&Math.abs(r.lon-q.lon)<.7&&Math.abs(r.mag-q.mag)<1);
+  if(o){o.srcs.push(q.src);if(PRIO[q.src]<PRIO[o.src]){const sr=o.srcs;Object.assign(o,q,{srcs:sr})}}else out.push(Object.assign({},q,{srcs:[q.src]}))}
+ return out}
+async function cargar(){
+ const ini=new Date(Date.now()-30*864e5).toISOString().slice(0,19);
+ const r=await Promise.allSettled([fUSGS(ini),fEMSC(ini),fIGC()]),N=['USGS','EMSC','IGC'];
+ S.src={};let todo=[];
+ r.forEach((x,i)=>{S.src[N[i]]=x.status==='fulfilled';if(x.status==='fulfilled')todo=todo.concat(x.value)});
+ S.ok=Object.values(S.src).some(Boolean);
+ if(S.ok){S.data=unir(todo);LS.setItem('q',JSON.stringify(S.data));avisar()}
+ else if(!S.data.length)S.data=J('q',[]);
+ estado();pintar();
+}
+function estado(){
+ $('#dot').className='dot'+(S.ok?' ok':' bad');
+ $('#st').textContent=S.ok?'En vivo':(S.data.length?'Sin conexión · datos guardados':'Sin conexión');
+ $('#src').innerHTML=Object.keys(S.src).map(k=>`<span class="${S.src[k]?'ok':'no'}">${k} ${S.src[k]?'al día':'sin respuesta'}</span>`).join('');
+}
+
+/* ---- alertas ---- */
+let ac;const seen=J('seen2',[]);let primera=!LS.getItem('seen2');
+function sonar(){if(!ac)return;ac.resume&&ac.resume();for(let i=0;i<16;i++){const t=ac.currentTime+i*.5,o=ac.createOscillator(),g=ac.createGain();o.type='square';o.frequency.value=i%2?1100:760;o.connect(g);g.connect(ac.destination);g.gain.setValueAtTime(.3,t);g.gain.setValueAtTime(.001,t+.42);o.start(t);o.stop(t+.45)}}
+function hablar(x){if(!J('voz',true)||!window.speechSynthesis)return;try{const u=new SpeechSynthesisUtterance(x);u.lang='es-PA';speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
+function toast(txt,fuerte){const e=$('#toast');e.textContent=txt;e.className=fuerte?'s':'';e.style.display='block';setTimeout(()=>e.style.display='none',fuerte?20000:9000)}
+function avisar(){
+ const um=+J('um',2);
+ for(const q of S.data){
+  if(seen.some(s=>Math.abs(s.t-q.t)<9e4&&Math.abs(s.lat-q.lat)<.7&&Math.abs(s.lon-q.lon)<.7))continue;
+  seen.push({t:q.t,lat:q.lat,lon:q.lon});
+  if(primera||Date.now()-q.t>3*36e5||q.mag<um)continue;
+  const fuerte=q.mag>=6,txt=`${fuerte?'SISMO FUERTE ':'Sismo '}M ${q.mag.toFixed(1)}, ${lugar(q)}, ${hace(q.t)}`;
+  toast(txt,fuerte);
+  if(fuerte){sonar();navigator.vibrate&&navigator.vibrate([500,200,500,200,500])}else navigator.vibrate&&navigator.vibrate(200);
+  setTimeout(()=>hablar(`Nuevo sismo de magnitud ${q.mag.toFixed(1).replace('.',' punto ')}, ${lugar(q)}`),fuerte?8500:300);
+  if('Notification' in window&&Notification.permission==='granted'&&J('notif',false))try{new Notification(fuerte?'Sismo fuerte en Panamá':'Sismo en Panamá',{body:txt})}catch(e){}
+ }
+ primera=false;LS.setItem('seen2',JSON.stringify(seen.slice(-800)));
+}
+$('#bn').onclick=async()=>{
+ ac=ac||new(window.AudioContext||window.webkitAudioContext)();
+ if(!('Notification' in window)){toast('Este navegador no permite notificaciones.');return}
+ const p=await Notification.requestPermission();
+ LS.setItem('notif',JSON.stringify(p==='granted'));
+ $('#bn').textContent=p==='granted'?'Alertas activadas':'Permiso denegado: actívalo en los ajustes del navegador';
+ $('#bn').classList.toggle('on',p==='granted');
+};
+$('#bt').onclick=()=>{ac=ac||new(window.AudioContext||window.webkitAudioContext)();sonar();navigator.vibrate&&navigator.vibrate([500,200,500])};
+$('#voz').checked=J('voz',true);$('#voz').onchange=e=>LS.setItem('voz',e.target.checked);$('#um').value=J('um',2);$('#um').onchange=e=>LS.setItem('um',e.target.value);
+if(J('notif',false)&&'Notification' in window&&Notification.permission==='granted'){$('#bn').textContent='Alertas activadas';$('#bn').classList.add('on')}
+
+/* ---- pintar ---- */
+function filtrados(){const lim=Date.now()-S.days*864e5;return S.data.filter(q=>q.mag>=S.min&&q.t>=lim)}
+function pintar(){hero();sismograma();lista();mapa()}
+function principal(){const lim=Date.now()-7*864e5,a=S.data.filter(q=>q.t>=lim);let m=null;for(const q of a)if(!m||q.mag>m.mag)m=q;return m&&m.mag>=6?m:null}
+const replica=(q,m)=>m&&q!==m&&q.t>m.t&&q.t<m.t+30*864e5&&km(q.lat,q.lon,m.lat,m.lon)<250;
+function hero(){
+ const q=S.data[0];
+ if(!q){$('#hl').textContent='Sin sismos registrados';$('#sb').textContent='No hay datos de M 2 o más en los últimos 30 días.';$('#fx').innerHTML='';return}
+ $('#hl').textContent=`Magnitud ${q.mag.toFixed(1)}, ${lugar(q)}`;
+ $('#sb').textContent=`${hace(q.t)}${q.pre?' · preliminar: puede cambiar':''}`;
+ const pa=CIUDADES[0],dp=Math.round(km(q.lat,q.lon,pa[1],pa[2])),f=new Date(q.t);
+ let h=`<div><dt>Hora de Panamá</dt><dd>${f.toLocaleString('es-PA',{day:'numeric',month:'short',hour:'numeric',minute:'2-digit'})}</dd></div><div><dt>Profundidad</dt><dd>${Math.round(q.prof)} km${q.prof<=30?', superficial':''}</dd></div><div><dt>Energía aproximada</dt><dd>${tnt(q.mag)}</dd></div><div><dt>Distancia a Ciudad de Panamá</dt><dd>${dp} km</dd></div><div><dt>Fuentes</dt><dd>${q.srcs.join(', ')}</dd></div>`;
+ $('#fx').innerHTML=h;
+ const ci=CIUDADES.map(c=>({n:c[0],d:km(q.lat,q.lon,c[1],c[2])})).sort((a,b)=>a.d-b.d).slice(0,3).map(c=>`${c.n} a ${Math.round(c.d)} km: ${seg(Math.round(Math.hypot(c.d,q.prof)/3.7))}`);
+ let l=`<b>Cuánto tardó en llegar el temblor</b> (onda S, 3.7 km/s, estimado)<br>${ci.join('<br>')}<br>`;
+ if(S.pos){const d=km(q.lat,q.lon,S.pos[0],S.pos[1]);l+=`<b>A ${Math.round(d)} km de ti</b>; la onda S tarda unos ${seg(Math.round(Math.hypot(d,q.prof)/3.7))}.`}
+ else l+='<button id="gp">Ver distancia a mi ubicación</button> <small>Se calcula en tu teléfono; no se envía.</small>';
+ $('#ll').innerHTML=l;
+ const m=principal(),p=$('#pr');
+ if(m){const n=S.data.filter(x=>replica(x,m)),may=n.reduce((a,x)=>Math.max(a,x.mag),0);p.hidden=false;p.innerHTML=`<b>Sismo principal: magnitud ${m.mag.toFixed(1)}, ${lugar(m)}, ${hace(m.t)}.</b><br>${n.length} réplicas de M 2 o más registradas; la mayor, M ${may.toFixed(1)}.`}else p.hidden=true;
+}
+$('#ll').onclick=e=>{if(e.target.id!=='gp')return;navigator.geolocation?navigator.geolocation.getCurrentPosition(p=>{S.pos=[p.coords.latitude,p.coords.longitude];hero()},()=>toast('No pude obtener tu ubicación. Revisa el permiso del navegador.')):toast('Tu navegador no da la ubicación.')};
+function sismograma(){
+ const W=640,H=130,B=70,lim=Date.now()-S.days*864e5,now=Date.now(),X=t=>10+(t-lim)/(now-lim)*(W-20);
+ let g='';for(let i=0;i<=S.days&&S.days<=7;i++){const x=X(lim+i*864e5);g+=`<line x1="${x}" x2="${x}" y1="8" y2="${H-18}" stroke="var(--grid)"/>`}
+ const arr=filtrados().slice().reverse();let d=`M10,${B}`;
+ for(const q of arr){const x=X(q.t),h=Math.min(60,q.mag*10.5);d+=`L${x-2},${B}L${x-1},${B-h}L${x+1},${B+h*.7}L${x+2},${B}`}
+ d+=`L${W-10},${B}`;
+ g+=`<path d="${d}" fill="none" stroke="var(--ink)" stroke-width="1.2" stroke-linejoin="round"/>`;
+ for(const q of arr)if(q.mag>=4)g+=`<circle cx="${X(q.t)}" cy="${B-Math.min(60,q.mag*10.5)}" r="3.5" fill="${color(q.mag)}"/>`;
+ g+=`<text x="10" y="${H-4}" font-size="11" fill="var(--mu)">hace ${S.days} ${S.days>1?'días':'día'}</text><text x="${W-10}" y="${H-4}" text-anchor="end" font-size="11" fill="var(--mu)">ahora</text>`;
+ $('#sg').innerHTML=g;
+}
+function lista(){
+ const m=principal();let a=filtrados();if(S.ord==='mag')a=a.slice().sort((x,y)=>y.mag-x.mag||y.t-x.t);
+ $('#lista').innerHTML=a.length?a.slice(0,150).map(q=>`<div class="q"><button aria-expanded="false"><span class="mag" style="background:${color(q.mag)}">${q.mag.toFixed(1)}</span><span><h3>${esc(cap(lugar(q)))}</h3><p>${hace(q.t)} · ${Math.round(q.prof)} km de profundidad</p>${replica(q,m)?'<span class="tag">Réplica</span>':''}${q.pre?'<span class="tag">Preliminar</span>':''}<span class="tag">${q.srcs.join(' · ')}</span></span></button><div class="det">${new Date(q.t).toLocaleString('es-PA')}<br>Coordenadas ${q.lat.toFixed(2)}, ${q.lon.toFixed(2)} · energía ${tnt(q.mag)}<br><a href="${esc(q.url)}" target="_blank" rel="noopener">Ficha de la agencia</a> · <a href="https://www.openstreetmap.org/?mlat=${q.lat}&mlon=${q.lon}#map=9/${q.lat}/${q.lon}" target="_blank" rel="noopener">Ver en mapa</a></div></div>`).join(''):'<div class="empty">No hay sismos con estos filtros. Prueba con una magnitud menor o un período más largo.</div>';
+}
+$('#lista').onclick=e=>{const b=e.target.closest('.q>button');if(!b)return;const q=b.parentNode;q.classList.toggle('open');b.setAttribute('aria-expanded',q.classList.contains('open'))};
+function mapa(){
+ const W=640,H=430,X=lo=>(lo-BOX[2])/(BOX[3]-BOX[2])*W,Y=la=>(BOX[1]-la)/(BOX[1]-BOX[0])*H;
+ let g='';for(let la=6;la<=10;la++)g+=`<line x1="0" x2="${W}" y1="${Y(la)}" y2="${Y(la)}" stroke="var(--grid)"/><text x="4" y="${Y(la)-3}" font-size="10" fill="var(--mu)">${la}°N</text>`;
+ for(let lo=-83;lo<=-77;lo++)g+=`<line y1="0" y2="${H}" x1="${X(lo)}" x2="${X(lo)}" stroke="var(--grid)"/><text x="${X(lo)+3}" y="${H-4}" font-size="10" fill="var(--mu)">${-lo}°O</text>`;
+ for(const c of CIUDADES)g+=`<rect x="${X(c[2])-2.5}" y="${Y(c[1])-2.5}" width="5" height="5" fill="var(--ink)"/><text x="${X(c[2])+6}" y="${Y(c[1])+4}" font-size="11" fill="var(--ink)">${c[0]}</text>`;
+ const a=filtrados();
+ for(const q of a.slice().reverse())g+=`<circle cx="${X(q.lon)}" cy="${Y(q.lat)}" r="${3+q.mag*1.6}" fill="${color(q.mag)}" fill-opacity=".55" stroke="${color(q.mag)}"><title>M ${q.mag.toFixed(1)} · ${hace(q.t)}</title></circle>`;
+ $('#mp').innerHTML=g;$('#mpn').textContent=`${a.length} sismos según los filtros. Los cuadrados son ciudades de referencia; no es un mapa de fronteras.`;
+}
+
+/* ---- filtros y pestañas ---- */
+function chips(id,ops,key){
+ const e=$(id);e.innerHTML=ops.map(o=>`<button aria-pressed="${S[key]===o[0]}" data-v="${o[0]}">${o[1]}</button>`).join('');
+ e.onclick=ev=>{const b=ev.target.closest('button');if(!b)return;S[key]=isNaN(+b.dataset.v)?b.dataset.v:+b.dataset.v;LS.setItem(key,JSON.stringify(S[key]));chips(id,ops,key);pintar()};
+}
+chips('#fm',[[0,'Todos'],[3,'M 3+'],[4,'M 4+'],[5,'M 5+']],'min');
+chips('#fo',[['rec','Más recientes'],['mag','Mayor magnitud']],'ord');
+chips('#fd',[[1,'24 horas'],[7,'7 días'],[30,'30 días']],'days');
+$('#nv').onclick=e=>{const b=e.target.closest('button');if(!b)return;
+ document.querySelectorAll('nav button').forEach(x=>x.removeAttribute('aria-current'));b.setAttribute('aria-current','page');
+ document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id==='t-'+b.dataset.t));
+ if(b.dataset.t==='noticias')noticias();scrollTo(0,0)};
+async function noticias(){
+ const e=$('#nw');
+ try{const r=await fetch('noticias.json?'+Math.floor(Date.now()/6e4));const j=await r.json();LS.setItem('nw',JSON.stringify(j));ver(j)}
+ catch(x){const j=J('nw',null);j?ver(j):e.innerHTML='<div class="empty">Aún no hay titulares. Se generan con el workflow de noticias de GitHub.</div>'}
+ function ver(j){e.innerHTML=(j.items||[]).slice(0,30).map(n=>`<a href="${esc(n.u)}" target="_blank" rel="noopener">${esc(n.t)}<br><small>${esc(n.f||'')} · ${hace(n.d)}</small></a>`).join('')||'<div class="empty">No hay titulares por ahora.</div>'}
+}
+S.data=J('q',[]);estado();pintar();cargar();setInterval(cargar,6e4);
+addEventListener('online',cargar);
+</script>
+</body>
+</html>
