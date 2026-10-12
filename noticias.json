@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-10-12T01:02:54.419939+00:00",
+ "actualizado": "2026-10-12T01:27:41.265751+00:00",
  "items": [
   {
    "t": "ACNUR responde ante el terremoto en Panamá",
@@ -36,12 +36,6 @@
    "u": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNUUdlVnZLNWdleUM1SUJkMHMyZzJOV0NaV09tYkpvU1Nzb3M0bTEzeC0zMGhOeU1qQXFJVHhXVllGSHNxcE9QWVZBTDg1WXdCQVR6czZQcHdhM0drQ2dpYWdOd1ZnR0ladzV6R0xndVhtUDF4UWxrRzBaRG5qdVRFcWFyQkZFdGFXS25xU2RUZjl1ZDhYTXhWM3F2aF9pMzBYZ0hURmRaTF9fbVh1bUFCMzRuRDQzOGxVNDcwcTQ3Wnk0Z9IBxwFBVV95cUxQaWZ4bm5ENEE4WTRFa3NrMnEzNWJmeDhaRFNRZmV6cG9ONzVkVl9rNm1lRG5Xblpac3ctenJqSkVJVjFxTGJ0bjViaHpIaDdUZExkNVpHRDlCeXZValpvY0pqMi1WdFdRR0xVeGtSeXNtdmF0bkExejVmalRnZ2pDLUd3dEdGbG83U2VERm5qZ0dodDlBUUNMMXBLZ0dNOF8xMGV0VWluVldicVBsdEIxQXFnalc5MWcyaldoUk9CRFQ0eEZ5MVBz?oc=5",
    "f": "Telemetro",
    "d": 1791761400000
-  },
-  {
-   "t": "Panamá registra 256 réplicas tras el terremoto de magnitud 7.5",
-   "u": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQckR6SEp0c0NZc1hEa05faVVOXzF6cFB4MXp2QTZGMzVZMkMyLU1td2RqMVJFeEYyODdGaWk2OHQzZXZCVHYyeUQtbVhWSl9Fck5waXlSMm5reThFb1RXSS1XWjFGb295RVUwcWVyOU9ZMTZtZ1A0QVQ0V3pNblV1TmFfRk1NZmg5ekV0YzJTZzZsMkNxbW9RVHFVaThXTkUzQmFyd2FPcnpQY2ktSm14VV9pQm56c0pLTnfSAb8BQVVfeXFMTk9PUE9HTmotblZlcUthOHJqQVlFV2lTS2pveTczOXhDTlppaElwaURDd1E0Mm9MaUx2SDh2VVc1ZFlYWnBCaUlFM2Vydl9rVXpmWEhCdDdkNVFFRmN3VV9kMWRxbTFoX24talB5OThFLXVIQm1mUC1aS2JWak85S0syUEVidk9JZHV2UnF6Tzl0TnEtekVZQUpOaTNkaVFWQWhna3BOM2hkaURPUW9aYy1yaGpoR3JzQm5BMEhyWWc?oc=5",
-   "f": "La Estrella de Panamá",
-   "d": 1791761352000
   },
   {
    "t": "Damnificados del terremoto en Panamá piden agilizar ayuda humanitaria",
@@ -102,6 +96,12 @@
    "u": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOX2VscmtFTmZ2Q0VZT1I4MXhTZXZOaUE4QlhYU3B2b0g1NHVtMExMSUpaalRKemxrdy1iSzRlb1FWRnk1RXJDNV9XSVpuVHp6ZHJWVDdkZkVOYmlXRDBTdm8wem9RQ0Excm5MWkh5NFhjRnphLUNyTUJ3Z09JV3JsbjlPV0NhWUVGY19ya2owLWtyOEFmYkZtMHN2S293WkVJaGtJRy1ZRy1nT0thTEE?oc=5",
    "f": "Prensa Latina",
    "d": 1791753600000
+  },
+  {
+   "t": "Panamá registra 256 réplicas tras el terremoto de magnitud 7.5",
+   "u": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQckR6SEp0c0NZc1hEa05faVVOXzF6cFB4MXp2QTZGMzVZMkMyLU1td2RqMVJFeEYyODdGaWk2OHQzZXZCVHYyeUQtbVhWSl9Fck5waXlSMm5reThFb1RXSS1XWjFGb295RVUwcWVyOU9ZMTZtZ1A0QVQ0V3pNblV1TmFfRk1NZmg5ekV0YzJTZzZsMkNxbW9RVHFVaThXTkUzQmFyd2FPcnpQY2ktSm14VV9pQm56c0pLTnfSAb8BQVVfeXFMTk9PUE9HTmotblZlcUthOHJqQVlFV2lTS2pveTczOXhDTlppaElwaURDd1E0Mm9MaUx2SDh2VVc1ZFlYWnBCaUlFM2Vydl9rVXpmWEhCdDdkNVFFRmN3VV9kMWRxbTFoX24talB5OThFLXVIQm1mUC1aS2JWak85S0syUEVidk9JZHV2UnF6Tzl0TnEtekVZQUpOaTNkaVFWQWhna3BOM2hkaURPUW9aYy1yaGpoR3JzQm5BMEhyWWc?oc=5",
+   "f": "La Estrella de Panamá",
+   "d": 1791753240000
   },
   {
    "t": "Israel envió ayuda humanitaria tras el terremoto en Panamá",
