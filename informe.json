@@ -1,32 +1,32 @@
 {
- "actualizado": "2026-10-10T20:00:00-05:00",
- "actualizado_txt": "10 de octubre de 2026",
- "nota_cabecera": "Terremoto del viernes 9/10/2026, 12:56 hora local. Balance preliminar compilado de Sinaproc, COE, IGC‑UP, USGS, EMSC y prensa. Las cifras siguen cambiando. La pestaña «En vivo» se actualiza sola; las cifras de las demás pestañas las actualiza el administrador.",
- "nota": "La ausencia de un evento en un catálogo no demuestra que no haya ocurrido un sismo. Los datos preliminares pueden cambiar cuando las instituciones revisan sus cálculos.",
+ "actualizado": "2026-10-11T20:30:00-05:00",
+ "actualizado_txt": "11 de octubre de 2026 (Comunicado N.° 7 de Sinaproc, corte 12:00 m.)",
+ "nota_cabecera": "Terremoto del viernes 9/10/2026, 12:56 hora local. Balance de Sinaproc (Comunicado N.° 7, corte del 11 de octubre, 12:00 m.) y otras fuentes. Las cifras siguen cambiando. La pestaña «En vivo» se actualiza sola; las demás las actualiza el administrador.",
+ "nota": "La ausencia de un evento en un catálogo no demuestra que no haya ocurrido un sismo. Los datos preliminares pueden cambiar cuando las instituciones revisan sus cálculos. Las cifras del Comunicado N.° 7 las leí en un medio que lo cita (RetenChiriquí); no pude ver el comunicado original.",
  "kpis": [
   [
    "0",
    "Fallecidos reportados"
   ],
   [
+   "0",
+   "Desaparecidos (corte 11 oct)"
+  ],
+  [
    "27",
    "Heridos leves"
   ],
   [
-   "147",
-   "Réplicas (COE, noche del 9)"
+   "1,293",
+   "Viviendas evaluadas"
   ],
   [
-   "188",
-   "Escuelas afectadas"
+   "~619",
+   "Centros educativos afectados"
   ],
   [
-   "136",
-   "Viviendas afectadas (prelim.)"
-  ],
-  [
-   "6",
-   "Estaciones de bomberos con daños"
+   "275",
+   "Réplicas (SismoLive, 11 oct)"
   ]
  ],
  "categorias": [
@@ -39,29 +39,39 @@
      "t": "Lo más importante",
      "items": [
       [
-       "No se reportan víctimas mortales en los balances más recientes.",
+       "Sin víctimas mortales confirmadas y sin personas desaparecidas (corte del 11 de octubre, 12:00 m.).",
+       "Sinaproc · Infobae",
+       "of"
+      ],
+      [
+       "27 personas con heridas leves y unos 300 evacuados preventivos (balance del 10 de octubre).",
        "Sinaproc",
        "of"
       ],
       [
-       "27 personas con heridas leves; el primer balance hablaba de 15 estudiantes lesionados.",
-       "Sinaproc · La República",
-       "of"
+       "Viviendas: 1,293 evaluadas y al menos 1,264 con daños según la suma de las cifras provinciales; el primer balance hablaba de 142.",
+       "Sinaproc Com. N.° 7 · RetenChiriquí",
+       "pr"
       ],
       [
-       "Magnitud del sismo principal: 7.7 según el USGS y 7.2 según el IGC‑UP (cada red usa métodos distintos).",
-       "USGS · IGC‑UP",
+       "Centros educativos: cerca de 619 afectados según el Ministerio de Educación; antes se habían reportado 188 y 419.",
+       "Meduca · RetenChiriquí · Infobae",
+       "pr"
+      ],
+      [
+       "Magnitud del sismo principal: 7.7 (USGS y EMSC). El IGC‑UP publicó 7.2 y luego la revisó a 7.5–7.6.",
+       "USGS · EMSC · IGC‑UP",
        "ci"
       ],
       [
-       "147 réplicas hasta la noche del 9 de octubre, y la cifra sigue subiendo (ver recuadro en vivo).",
-       "COE",
-       "of"
+       "Réplicas: 275 y 331 sismos en 7 días en Panamá y alrededores.",
+       "SismoLive (Alcaldía de Panamá)",
+       "ci"
       ],
       [
-       "188 centros educativos afectados; el conteo de viviendas, hospitales e iglesias sigue en revisión.",
-       "Sinaproc · TeleSur",
-       "of"
+       "El Gobierno declaró estado de emergencia y destinó 100 millones de dólares.",
+       "EcoAvant",
+       "pr"
       ]
      ],
      "open": true
@@ -88,13 +98,18 @@
        "ci"
       ],
       [
-       "**USGS:** magnitud 7.7 (primero 8.0, luego 7.6), profundidad 10 km, a unos 10 km al suroeste de Pitaloza Arriba (Herrera), cerca de Tonosí.",
-       "USGS",
+       "**USGS:** magnitud 7.7 y profundidad de 13 km (revisada; al inicio se dijo 10 km), cerca de Tonosí.",
+       "USGS · SismoLive",
        "ci"
       ],
       [
-       "**IGC‑UP (Universidad de Panamá):** magnitud 7.2 (revisado), a 39 km al noroeste de Tonosí, profundidad 4 km.",
-       "IGC‑UP",
+       "**EMSC:** magnitud 7.7 a 10 km de profundidad.",
+       "EMSC · SismoLive",
+       "ci"
+      ],
+      [
+       "**IGC‑UP (Universidad de Panamá):** publicó primero 7.2; la prensa cita 7.5 y SismoLive muestra 7.6 (revisado), a 39 km al noroeste de Tonosí y unos 4 km de profundidad.",
+       "IGC‑UP · EcoAvant · SismoLive",
        "of"
       ],
       [
@@ -109,24 +124,29 @@
      "t": "Réplicas",
      "items": [
       [
-       "El listado del IGC‑UP muestra unos 80 sismos posteriores al principal hasta las 11:14 p. m. del 9 de octubre, con magnitudes de 3.4 a 6.9.",
-       "IGC‑UP",
-       "of"
-      ],
-      [
-       "Mayor réplica: M 6.9 a las 3:25 p. m., 25 km al este de Coiba (revisada).",
-       "IGC‑UP",
-       "of"
-      ],
-      [
-       "Otras réplicas fuertes: M 6.1 (1:22 p. m. y 6:12 p. m.), M 6.2 (11:12 p. m.), M 5.7, M 5.6 y varias de M 5.5.",
-       "IGC‑UP",
-       "of"
-      ],
-      [
-       "El USGS reportó réplicas de 5.8, 5.5 y 5.2; al inicio EFE y CNN hablaban de hasta 6.6.",
-       "USGS · EFE · CNN",
+       "**275 réplicas** y 331 sismos en los últimos 7 días en Panamá y alrededores, al 11 de octubre. El recuadro de arriba cuenta las del IGC‑UP en vivo.",
+       "SismoLive (Alcaldía de Panamá)",
        "ci"
+      ],
+      [
+       "El listado del IGC‑UP muestra réplicas de hasta M 6.9 (3:25 p. m. del 9 de octubre, 25 km al este de Coiba) y varias de M 6.1 a 6.2.",
+       "IGC‑UP",
+       "of"
+      ],
+      [
+       "El 11 de octubre siguieron ocurriendo réplicas de M 4 a 5.2 (por ejemplo, M 5.2 a las 12:11 p. m., 24 km al noreste de Coiba).",
+       "SismoLive",
+       "ci"
+      ],
+      [
+       "El USGS reportó réplicas de 5.8, 5.5 y 5.2 el primer día.",
+       "USGS",
+       "ci"
+      ],
+      [
+       "Sinaproc y el COE contaron 147 réplicas hasta la noche del 9 de octubre.",
+       "COE",
+       "of"
       ]
      ],
      "open": false
@@ -135,8 +155,8 @@
      "t": "Tsunami",
      "items": [
       [
-       "Hubo alertas iniciales de tsunami en el Pacífico (México, Colombia, Costa Rica, Ecuador y Perú). No pude verificar su estado actual: consulta a Sinaproc.",
-       "Prensa",
+       "Hubo alertas iniciales de tsunami en el Pacífico. Las comunidades costeras de Los Santos subieron a zonas altas por precaución. No pude verificar el estado actual: consulta tsunami.gov y a Sinaproc.",
+       "El Litoral · Prensa",
        "nc"
       ]
      ],
@@ -153,14 +173,14 @@
      "t": "Fallecidos y desaparecidos",
      "items": [
       [
-       "Fallecidos: 0 en los balances preliminares más recientes.",
-       "Sinaproc · Pulzo",
+       "Fallecidos: 0 en los balances más recientes.",
+       "Sinaproc · Infobae · EcoAvant",
        "of"
       ],
       [
-       "Desaparecidos: 0 en el primer informe de Sinaproc.",
-       "Sinaproc",
-       "of"
+       "Desaparecidos: 0 hasta las 12:00 m. del 11 de octubre.",
+       "Sinaproc Com. N.° 7",
+       "pr"
       ]
      ],
      "open": true
@@ -169,17 +189,17 @@
      "t": "Heridos",
      "items": [
       [
-       "27 personas con heridas leves.",
-       "Sinaproc · La República",
+       "27 personas con heridas leves en todo el país.",
+       "Sinaproc · Ámbito · EcoAvant",
        "of"
       ],
       [
-       "15 estudiantes de la Escuela Alberto Zúñiga (Coclé) evacuados con lesiones menores.",
-       "Sinaproc",
-       "of"
+       "Por provincia: Coclé 17 con lesiones menores, Los Santos 6 y Herrera 1.",
+       "Sinaproc Com. N.° 7 · RetenChiriquí",
+       "pr"
       ],
       [
-       "1 persona rescatada en el mercado municipal de Aguadulce.",
+       "15 estudiantes de la Escuela Alberto Zúñiga (Coclé) y 1 persona rescatada en el mercado de Aguadulce, en el primer balance.",
        "Sinaproc",
        "of"
       ],
@@ -187,10 +207,26 @@
        "La Caja de Seguro Social informó que no hubo pacientes ni trabajadores lesionados en sus instalaciones.",
        "ContraPunto",
        "pr"
+      ]
+     ],
+     "open": false
+    },
+    {
+     "t": "Evacuados y albergues",
+     "items": [
+      [
+       "Unos 300 evacuados preventivos.",
+       "Sinaproc",
+       "of"
       ],
       [
-       "No se reportan heridos entre bomberos ni policías, aunque algunos cuarteles sufrieron daños.",
-       "Prensa",
+       "Veraguas: más de 310 personas en 5 albergues. Coclé: 30 en Penonomé y Natá. Colón: 257 en el Polideportivo de Barrio Norte.",
+       "Sinaproc Com. N.° 7 · RetenChiriquí",
+       "pr"
+      ],
+      [
+       "Los Santos: unas 1,500 personas impactadas; en Isla Caña se atiende a 210.",
+       "Sinaproc Com. N.° 7 · RetenChiriquí",
        "pr"
       ]
      ],
@@ -204,43 +240,17 @@
    "t": "Daños por provincia",
    "grupos": [
     {
-     "t": "Coclé",
-     "items": [
-      [
-       "Hotel Dos Continentes (Penonomé): colapso parcial, sin heridos dentro.",
-       "Sinaproc",
-       "of"
-      ],
-      [
-       "Fachadas comerciales caídas y daños en iglesias y carreteras. Estación de bomberos de Penonomé con desprendimientos del techo.",
-       "Sinaproc",
-       "of"
-      ],
-      [
-       "Infobae y France 24 reportaron daños de consideración o colapso en la gobernación y la iglesia de Penonomé; Sinaproc habla de afectaciones.",
-       "Infobae · France 24",
-       "nc"
-      ]
-     ],
-     "open": true
-    },
-    {
      "t": "Los Santos",
      "items": [
       [
-       "Viviendas colapsadas, edificios gubernamentales y religiosos dañados y red vial afectada.",
-       "Sinaproc",
-       "of"
-      ],
-      [
-       "Tonosí quedó incomunicado.",
-       "EFE",
+       "421 viviendas afectadas, daños parciales en 4 hospitales, 35 centros educativos, 5 hoteles, 28 edificios gubernamentales, 3 carreteras y 1 puente.",
+       "Sinaproc Com. N.° 7 · RetenChiriquí",
        "pr"
       ],
       [
-       "Hospitales de Tonosí y Pedasí con daños menores.",
-       "Sinaproc",
-       "of"
+       "Tonosí quedó incomunicado por tierra y viviendas colapsaron en la zona del epicentro.",
+       "EFE · Sinaproc",
+       "pr"
       ],
       [
        "Isla Cañas: oleaje anómalo que entró a viviendas.",
@@ -248,25 +258,41 @@
        "pr"
       ]
      ],
-     "open": false
+     "open": true
     },
     {
      "t": "Veraguas",
      "items": [
       [
-       "Estación de bomberos de Soná en gran parte desplomada; quedaron atrapados vehículos de emergencia y una embarcación.",
+       "Más de 305 residencias, 8 centros de salud, 192 centros educativos, 3 iglesias y 7 edificios gubernamentales afectados. Cortes de agua, electricidad e internet en algunas comunidades.",
+       "Sinaproc Com. N.° 7 · RetenChiriquí",
+       "pr"
+      ],
+      [
+       "Estación de bomberos de Soná en gran parte desplomada; la de Santiago con losas desprendidas. Carretera de acceso a Torio (Mariato) fracturada.",
+       "Sinaproc",
+       "of"
+      ]
+     ],
+     "open": false
+    },
+    {
+     "t": "Coclé",
+     "items": [
+      [
+       "229 residencias, 6 hoteles con daños de consideración, 2 hospitales, 32 centros educativos, 10 iglesias, 10 edificios gubernamentales y 1 puente peatonal. 17 personas con lesiones menores.",
+       "Sinaproc Com. N.° 7 · RetenChiriquí",
+       "pr"
+      ],
+      [
+       "Hotel Dos Continentes (Penonomé): colapso parcial, sin heridos dentro.",
        "Sinaproc",
        "of"
       ],
       [
-       "Estación de Santiago con losas desprendidas y rajaduras.",
-       "Sinaproc",
-       "of"
-      ],
-      [
-       "Carretera de acceso a Torio (Mariato) fracturada.",
-       "Sinaproc",
-       "of"
+       "Reportes de colapso de la gobernación y la iglesia de Penonomé: Sinaproc habla de afectaciones.",
+       "Infobae · France 24",
+       "nc"
       ]
      ],
      "open": false
@@ -275,35 +301,9 @@
      "t": "Herrera",
      "items": [
       [
-       "Catedral de Chitré con daños leves y rajaduras en otras edificaciones.",
-       "Sinaproc",
-       "of"
-      ]
-     ],
-     "open": false
-    },
-    {
-     "t": "Panamá y Panamá Oeste",
-     "items": [
-      [
-       "Más de 100 viviendas afectadas en el Casco Antiguo; los daños no se calificaron como graves.",
-       "Noticias RCN",
+       "206 residencias con daños parciales o totales, 3 hospitales con daños parciales, 91 centros educativos, 5 iglesias, 6 edificios gubernamentales y 4 vías afectadas. Catedral de Chitré con daños leves.",
+       "Sinaproc Com. N.° 7 · RetenChiriquí",
        "pr"
-      ],
-      [
-       "4 propiedades horizontales con daños menores.",
-       "Sinaproc",
-       "of"
-      ],
-      [
-       "Estaciones de bomberos de La Chorrera (losas desprendidas) y Veracruz (rajaduras).",
-       "Sinaproc",
-       "of"
-      ],
-      [
-       "Archipiélago de Las Perlas: daños en comercios y viviendas.",
-       "Sinaproc",
-       "of"
       ]
      ],
      "open": false
@@ -312,7 +312,28 @@
      "t": "Chiriquí",
      "items": [
       [
-       "Daños leves en viviendas, comercios y 11 escuelas; estación de bomberos de David con rajaduras.",
+       "75 residencias, 87 centros educativos, 23 iglesias, 14 edificios gubernamentales, 2 centros de salud y 1 vía afectados. Colapsó un tanque de agua y una planta potabilizadora tiene una fisura.",
+       "Sinaproc Com. N.° 7 · RetenChiriquí",
+       "pr"
+      ]
+     ],
+     "open": false
+    },
+    {
+     "t": "Panamá y Panamá Oeste",
+     "items": [
+      [
+       "Más de 40 pacientes evacuados de la antigua sala de maternidad del Hospital Santo Tomás por daños estructurales.",
+       "RetenChiriquí",
+       "pr"
+      ],
+      [
+       "Daños menores en 4 edificios residenciales, comercios y viviendas de Las Perlas; más de 100 viviendas afectadas en el Casco Antiguo, sin daños graves.",
+       "Sinaproc · Noticias RCN",
+       "pr"
+      ],
+      [
+       "Estaciones de bomberos de La Chorrera (losas desprendidas) y Veracruz (rajaduras).",
        "Sinaproc",
        "of"
       ]
@@ -320,12 +341,12 @@
      "open": false
     },
     {
-     "t": "Darién",
+     "t": "Colón, Darién y Bocas del Toro",
      "items": [
       [
-       "Centro Educativo de Zapayal con daños menores.",
-       "Sinaproc",
-       "of"
+       "Colón: 19 caserones afectados. Darién: 1 residencia y 8 centros educativos. También hay centros educativos afectados en Bocas del Toro.",
+       "RetenChiriquí · Infobae",
+       "pr"
       ]
      ],
      "open": false
@@ -352,13 +373,18 @@
      "t": "Agua y energía",
      "items": [
       [
-       "Varias plantas potabilizadoras dañadas; la de Federico Guardia Conte (Chilibre) operaba al 70%, afectando a Panamá y San Miguelito.",
-       "Prensa",
+       "Varias plantas potabilizadoras dañadas; la de Federico Guardia Conte (Chilibre) operaba al 70%. En Chiriquí colapsó un tanque y otra planta tiene una fisura.",
+       "Prensa · RetenChiriquí",
        "pr"
       ],
       [
-       "Se reportaron cortes de energía.",
-       "Mundo Now",
+       "Se movilizaron 170 toneladas de agua para comunidades y hospitales. Hay cortes de energía en algunas zonas.",
+       "Sinaproc Com. N.° 7 · Mundo Now",
+       "pr"
+      ],
+      [
+       "Cinco comunidades quedaron temporalmente incomunicadas.",
+       "El Litoral",
        "pr"
       ]
      ],
@@ -368,13 +394,8 @@
      "t": "Salud",
      "items": [
       [
-       "2 hospitales con daños leves y evacuaciones preventivas.",
+       "Hospitales con daños: 4 en Los Santos, 3 en Herrera, 2 en Coclé, y centros de salud en Veraguas (8) y Chiriquí (2). Balance del 10 de octubre: 20 centros sanitarios afectados.",
        "Sinaproc",
-       "of"
-      ],
-      [
-       "14 establecimientos de salud afectados.",
-       "TeleSur · La República",
        "pr"
       ],
       [
@@ -389,24 +410,24 @@
      "t": "Educación",
      "items": [
       [
-       "188 centros educativos afectados (el primer balance hablaba de 7 a 12).",
-       "Sinaproc · Telemetro",
-       "of"
+       "Cerca de 619 centros educativos afectados según el Ministerio de Educación (antes 188 y 419). El desglose por provincia aún no cuadra con el total nacional.",
+       "Meduca · RetenChiriquí",
+       "pr"
       ],
       [
-       "Se suspendieron clases y funciones de entidades públicas.",
-       "Telemetro",
+       "Clases suspendidas. La ministra anunció que el domingo 11 se informaría si se reanudan el lunes 12.",
+       "EcoAvant",
        "pr"
       ]
      ],
      "open": false
     },
     {
-     "t": "Edificios y viviendas",
+     "t": "Edificios y templos",
      "items": [
       [
-       "136 viviendas, 30 edificios públicos, 20 iglesias y 11 hoteles afectados (cifras preliminares).",
-       "TeleSur · La República",
+       "Iglesias afectadas: 23 en Chiriquí, 10 en Coclé, 5 en Herrera y 3 en Veraguas. Edificios gubernamentales: 28 en Los Santos, 14 en Chiriquí, 10 en Coclé, 7 en Veraguas y 6 en Herrera.",
+       "Sinaproc Com. N.° 7 · RetenChiriquí",
        "pr"
       ]
      ],
@@ -416,18 +437,13 @@
      "t": "Transporte",
      "items": [
       [
-       "Aeropuerto de Tocumen: suspendió operaciones y las reanudó sin daños de consideración; vuelos desviados a Colombia y 7 a Costa Rica.",
-       "Prensa",
+       "9 puentes con daños (balance del 10 de octubre). Carreteras afectadas en Los Santos (3), Herrera (4 vías) y Chiriquí (1).",
+       "Sinaproc · RetenChiriquí",
        "pr"
       ],
       [
-       "Metro: servicio interrumpido temporalmente en las dos líneas. Canal de Panamá: tránsito normal.",
+       "Aeropuerto de Tocumen: reanudó operaciones sin daños de consideración. Metro: interrupción temporal. Canal de Panamá: tránsito normal.",
        "Prensa",
-       "pr"
-      ],
-      [
-       "Los corredores fueron gratuitos hasta la medianoche.",
-       "La Estrella",
        "pr"
       ]
      ],
@@ -441,20 +457,20 @@
    "t": "Respuesta y ayuda",
    "grupos": [
     {
-     "t": "Autoridades",
+     "t": "Gobierno y Sinaproc",
      "items": [
       [
-       "El presidente José Raúl Mulino pidió calma y viajó a Penonomé, una de las zonas más afectadas.",
-       "Prensa",
+       "El Gobierno declaró estado de emergencia y destinó 100 millones de dólares.",
+       "EcoAvant",
        "pr"
       ],
       [
-       "Sinaproc, Bomberos y Policía Nacional realizan evaluaciones; se pidió evacuar preventivamente edificios públicos, escuelas y viviendas con grietas.",
-       "Sinaproc",
-       "of"
+       "Se transportaron por aire más de 66,140 libras de ayuda y 170 toneladas de agua; el COE coordina la respuesta.",
+       "Sinaproc Com. N.° 7 · RetenChiriquí",
+       "pr"
       ],
       [
-       "El Ministerio de Trabajo pidió flexibilidad laboral.",
+       "El presidente José Raúl Mulino pidió calma y visitó Penonomé, una de las zonas más afectadas.",
        "Prensa",
        "pr"
       ],
@@ -493,22 +509,22 @@
      "t": "Lo que todavía no se sabe",
      "items": [
       [
-       "Número final de heridos (el conteo sigue creciendo).",
+       "Número final de heridos (27 es el último balance, pero las zonas aisladas siguen evaluándose).",
        "",
        "nc"
       ],
       [
-       "Viviendas dañadas o destruidas en todo el país; 136 es una cifra preliminar.",
+       "Viviendas dañadas: 142 → 1,293 evaluadas → al menos 1,264 con daños. Las cifras suben porque avanzan las inspecciones.",
        "",
        "nc"
       ],
       [
-       "Monto económico de los daños: ninguna fuente oficial lo ha publicado.",
+       "Centros educativos: 188 → 419 → cerca de 619; el desglose por provincia no concilia con el total.",
        "",
        "nc"
       ],
       [
-       "Estado de comunidades aisladas, como Tonosí.",
+       "Monto económico de los daños: no hay cifra oficial.",
        "",
        "nc"
       ]
@@ -524,8 +540,8 @@
        "nc"
       ],
       [
-       "Reportes de colapso de la gobernación y la iglesia de Penonomé: Sinaproc solo habla de afectaciones.",
-       "Infobae · France 24",
+       "Magnitud del IGC‑UP: 7.2 al inicio, 7.5 según la prensa y 7.6 según SismoLive. Consulta el listado del IGC‑UP para el valor vigente.",
+       "IGC‑UP",
        "nc"
       ]
      ],
@@ -548,14 +564,44 @@
  ],
  "noticias": [
   [
+   "Terremoto de 7,5 deja más de 700 viviendas dañadas y 419 escuelas afectadas",
+   "Infobae",
+   "https://www.infobae.com/panama/2026/10/11/terremoto-de-75-en-panama-deja-mas-de-700-viviendas-danadas-y-419-escuelas-afectadas/"
+  ],
+  [
+   "Panamá declara el estado de emergencia tras el terremoto",
+   "EcoAvant",
+   "https://www.ecoavant.com/actualidad/panama-declara-estado-emergencia-terremoto-dana-cientos-escuelas-viviendas_17587_102.html"
+  ],
+  [
+   "SINAPROC reporta daños en más de 1,200 viviendas y cerca de 619 centros educativos",
+   "RetenChiriquí",
+   "https://www.retenchiriqui.com/post/terremoto-en-panam%C3%A1-sinaproc-reporta-da%C3%B1os-en-m%C3%A1s-de-1-200-viviendas-y-cerca-de-619-centros-educati"
+  ],
+  [
+   "Al menos 27 heridos, cientos de evacuados y graves daños en edificios",
+   "Ámbito",
+   "https://www.ambito.com/mundo/terremoto-panama-al-menos-27-heridos-cientos-evacuados-y-graves-danos-edificios-n6332329"
+  ],
+  [
+   "Más de 20 heridos y daños estructurales por provincia",
+   "Semana",
+   "https://www.semana.com/amp/mundo/articulo/terremoto-en-panama-mas-de-20-heridos-y-danos-estructurales-en-escuelas-viviendas-hospitales-e-iglesias/202654/"
+  ],
+  [
+   "Primeras cifras: 27 heridos, unos 300 evacuados y cientos de edificaciones dañadas",
+   "El País (Colombia)",
+   "https://www.elpais.com.co/mundo/panama-presenta-primeras-cifras-27-heridos-unos-300-evacuados-y-cientos-de-edificaciones-danadas-tras-terremoto-1016.html"
+  ],
+  [
+   "Qué se sabe de los daños, los heridos y el impacto a un día del sismo",
+   "El Litoral",
+   "https://www.ellitoral.com/internacionales/sismo-panama-sinaproc-tonosi-terremoto-cocle-lossantos_0_q82uQVQQS8.html"
+  ],
+  [
    "EN VIVO: actualización de afectaciones y anuncios de autoridades",
    "Telemetro (TV)",
    "https://www.telemetro.com/nacionales/en-vivo-sismo-panama-suspenden-clases-y-funciones-entidades-publicas-n6094639"
-  ],
-  [
-   "Terremoto deja 27 heridos y colapso de edificios",
-   "La República",
-   "https://larepublica.pe/mundo/2026/10/10/el-terremoto-en-panama-deja-27-heridos-y-provoca-el-colapso-de-edificios-y-danos-en-carreteras-de-varias-provincias-629670"
   ],
   [
    "Terremoto en Panamá EN VIVO: réplicas y zonas afectadas",
@@ -563,49 +609,14 @@
    "https://larepublica.pe/mundo/2026/10/09/terremoto-en-panama-en-vivo-replicas-zonas-afectadas-y-ultimas-noticias-de-sismos-segun-el-igp-717318"
   ],
   [
-   "Panamá entrega parte de tranquilidad: no hay víctimas fatales",
-   "Pulzo",
-   "https://www.pulzo.com/mundo/terremoto-panama-autoridades-confirman-que-no-hay-victimas-fatales-PP5326897"
-  ],
-  [
-   "Terremoto de 7,7 sacude Panamá: daños y ayuda internacional",
-   "El Tiempo",
-   "https://www.eltiempo.com/mundo/latinoamerica/un-terremoto-de-magnitud-7-7-sacude-panama-provoca-danos-materiales-y-genera-alarma-entre-la-poblacion-varios-paises-ofrecen-asistencia-3592685"
-  ],
-  [
-   "Temblor en Panamá hoy, 10 de octubre: último sismo",
-   "Gestión",
-   "https://gestion.pe/mix/respuestas/temblor-en-panama-en-vivo-hoy-9-y-10-de-octubre-hora-exacta-magnitud-y-donde-fue-el-ultimo-temblor-segun-el-ifc-terremoto-usgs-nnda-nnrt-noticia/"
+   "Sinaproc confirma que no hay víctimas fatales",
+   "La Estrella de Panamá",
+   "https://www.laestrella.com.pa/panama/nacional/sinaproc-confirma-que-no-hay-victimas-fatales-tras-terremoto-de-72-en-panama-IC26359625"
   ],
   [
    "Balance y viviendas del Casco Antiguo",
    "Noticias RCN",
    "https://www.noticiasrcn.com/internacional/balance-del-terremoto-en-panama-no-hay-victimas-mortales-1070384"
-  ],
-  [
-   "Balance provisional y CSS",
-   "ContraPunto",
-   "https://www.contrapunto.com.sv/terremoto-de-magnitud-77-sacude-panama-danos-en-iglesias-hoteles-y-edificios-descartan-victimas-mortales-en-el-balance-preliminar/"
-  ],
-  [
-   "Primer balance de Sinaproc",
-   "Infobae",
-   "https://www.infobae.com/panama/2026/10/09/terremoto-en-panama-deja-al-menos-15-estudiantes-lesionados-y-danos-en-edificios-publicos-y-viviendas/"
-  ],
-  [
-   "Derrumbes, un pueblo aislado y sin víctimas mortales",
-   "Infobae / EFE",
-   "https://www.infobae.com/america/agencias/2026/10/10/terremoto-de-77-sacude-panama-derrumbes-un-pueblo-aislado-y-sin-victimas-mortales/"
-  ],
-  [
-   "En directo: el presidente viaja a Penonomé",
-   "France 24",
-   "https://www.france24.com/es/am%C3%A9rica-latina/20261009-en-directo-el-fuerte-terremoto-en-panam%C3%A1-causa-da%C3%B1os-en-edificaciones-el-canal-no-se-vio-afectado"
-  ],
-  [
-   "Sinaproc confirma que no hay víctimas fatales",
-   "La Estrella de Panamá",
-   "https://www.laestrella.com.pa/panama/nacional/sinaproc-confirma-que-no-hay-victimas-fatales-tras-terremoto-de-72-en-panama-IC26359625"
   ],
   [
    "Sinaproc realiza monitoreo tras el sismo (comunicado)",
@@ -614,6 +625,21 @@
   ]
  ],
  "fuentes_oficiales": [
+  [
+   "SISMOLIVE",
+   "Panel sísmico · Alcaldía de Panamá",
+   "https://sismolive.mupa.gob.pa/"
+  ],
+  [
+   "IGC‑UP",
+   "Red sísmica nacional",
+   "https://sismosgeociencias.up.ac.pa/"
+  ],
+  [
+   "SINAPROC",
+   "Avisos oficiales",
+   "https://www.sinaproc.gob.pa/"
+  ],
   [
    "USGS",
    "Catálogo internacional",
@@ -625,14 +651,9 @@
    "https://www.seismicportal.eu"
   ],
   [
-   "IGC‑UP",
-   "Red sísmica nacional",
-   "https://sismosgeociencias.up.ac.pa/"
-  ],
-  [
-   "SINAPROC",
-   "Avisos oficiales",
-   "https://www.mingob.gob.pa/sinaproc-realiza-monitoreo-tras-sismo-percibido-en-panama/"
+   "TSUNAMI.GOV",
+   "Avisos de tsunami (NOAA)",
+   "https://www.tsunami.gov/"
   ]
  ]
 }

@@ -1,0 +1,20 @@
+AVISOS DE SISMOS CON LA APP CERRADA (Cloudflare Workers + ntfy, gratis)
+
+Qué hace: cada minuto revisa IGC-UP, USGS y EMSC y manda una notificación push a tu celular (app ntfy),
+con la pantalla bloqueada. No depende de que la app esté abierta.
+Límite: avisa cuando la red sísmica publica el sismo (suele ser 1 a 8 minutos después de que ocurre).
+
+1. En el celular instala la app "ntfy" (Android o iPhone). Inventa un tema difícil de adivinar,
+   por ejemplo sismos-panama-7k2x9q, y suscríbete: "+" > escribe el tema > Suscribirse.
+2. Entra a dash.cloudflare.com y crea una cuenta gratis.
+3. Workers & Pages > Create > Create Worker > ponle nombre "sismos-panama" > Deploy.
+4. Toca "Edit code", borra todo, pega el contenido de worker.js y toca Deploy.
+5. En Storage & databases > KV > Create namespace: nómbralo "sismos".
+6. En tu Worker > Settings > Bindings > Add > KV namespace: variable ESTADO, elige "sismos".
+7. En Settings > Variables and secrets: agrega NTFY_TOPIC = tu tema.  (Opcional: MIN_MAG = 2.5)
+8. En Settings > Trigger events > Cron triggers > Add: escribe  * * * * *  (cada minuto).
+9. Abre la dirección de tu Worker agregando /?probar al final: te debe llegar un aviso de prueba.
+10. Desde el celular, en la app, ve a Herramientas > Avisos con la app cerrada para enviar otra prueba.
+
+Notas: la primera ejecución manda "Alertas de sismos activadas" y no avisa los sismos anteriores.
+Si más de 5 sismos nuevos llegan juntos, manda un solo resumen. No sustituye a SINAPROC ni al IGC-UP.
